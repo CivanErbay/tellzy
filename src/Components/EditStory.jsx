@@ -22,6 +22,7 @@ export default class EditStory extends Component {
     const {
       match: { params },
     } = this.props;
+    console.log(this.props);
     const storyId = params.storyId;
     this.getStory(storyId);
     this.setState({ storyId });
