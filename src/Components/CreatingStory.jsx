@@ -87,9 +87,13 @@ export default class CreatingStory extends Component {
   render() {
     const { submitSuccess, nextLink, isUnfold, nextParticipant } = this.state;
     return (
-      <Container className="create-story">
+      <div className="create-story">
         <Row className="my-5">
-          <Col sm={2}></Col>
+          <Col sm={2}>
+            <Link to="/">
+              <Button className="btn-home">Home</Button>
+            </Link>
+          </Col>
           <Col sm={8} className="h-100">
             {submitSuccess ? (
               <div className="d-flex flex-column justify-content-center align-items-center mt-3">
@@ -112,13 +116,13 @@ export default class CreatingStory extends Component {
                   </span>
                 </CopyToClipboard>
                 <p className="p-5 p-cs-true text-center">
-                  Copy link and send it to <strong>{nextParticipant.email}</strong>. Soon you'll get the whole
+                  Copy link and send it to <strong>{nextParticipant}</strong>. Soon you'll get the whole
                   story!
                 </p>
               </div>
             ) : (
               <>
-                <h1>Creating new story</h1>
+                <h1>Create new story</h1>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group>
                     <Form.Label>Email address</Form.Label>
@@ -132,7 +136,7 @@ export default class CreatingStory extends Component {
                   </Form.Group>
                   {/* Participants */}
                   <Form.Group>
-                    <Form.Label>Participants emails</Form.Label>
+                    <Form.Label>Participants Emails</Form.Label>
                     <Form.Control
                       required
                       as="textarea"
@@ -167,9 +171,6 @@ export default class CreatingStory extends Component {
 
                   <Row className="d-flex justify-content-between p-3">
                     <Button type="submit">Go</Button>
-                    <Link to="/">
-                      <Button className="button-back">Back</Button>
-                    </Link>
                   </Row>
                 </Form>
               </>
@@ -177,7 +178,7 @@ export default class CreatingStory extends Component {
           </Col>
           <Col sm={2}></Col>
         </Row>
-      </Container>
+      </div>
     );
   }
 }

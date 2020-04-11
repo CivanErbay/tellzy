@@ -15,9 +15,7 @@ export default class Landing extends Component {
                     <Col></Col>
                     <Col className="text-center d-flex align-items-center justify-content-center">
                         <Link to="/story">
-                            <Button className="p-3 button-style">
-                                New Story
-                            </Button>
+                            <Button className="new-story-btn">New Story</Button>
                         </Link>
                     </Col>
                 </Row>
