@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Navbar from "./Components/Navbar";
+import Navbarr from "./Components/Navbar";
 import Landing from "./Components/Landing";
 import CreatingStory from "./Components/CreatingStory";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Navbar></Navbar>
+        <Navbarr></Navbarr>
       </header>
       <Router>
         <Switch>
