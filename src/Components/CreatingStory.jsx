@@ -99,14 +99,18 @@ export default class CreatingStory extends Component {
     render() {
         const { submitSuccess, nextLink, isUnfold } = this.state;
         return (
-            <Container className="create-story">
+            <div className="create-story">
                 <Row className="my-5">
                     <Col sm={2}></Col>
                     <Col sm={8} className="h-100">
                         {submitSuccess ? (
                             <div className="d-flex flex-column justify-content-center align-items-center mt-3">
                                 <h1 className="h1-cs-true">Thank you!</h1>
-
+                                {isUnfold && (
+                                    <>
+                                        <p>Succesfully copied!</p>
+                                    </>
+                                )}
                                 <CopyToClipboard
                                     className="clipboard"
                                     text={nextLink}
@@ -128,11 +132,6 @@ export default class CreatingStory extends Component {
                                     participant. Soon you'll get the whole
                                     story!
                                 </p>
-                                {isUnfold && (
-                                    <>
-                                        <p>copied!</p>
-                                    </>
-                                )}
                             </div>
                         ) : (
                             <>
@@ -210,7 +209,7 @@ export default class CreatingStory extends Component {
                     </Col>
                     <Col sm={2}></Col>
                 </Row>
-            </Container>
+            </div>
         );
     }
 }
