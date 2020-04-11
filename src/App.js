@@ -6,6 +6,7 @@ import Landing from "./Components/Landing";
 import CreatingStory from "./Components/CreatingStory";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import EditStory from "./Components/EditStory";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
@@ -15,15 +16,9 @@ function App() {
       </header> */}
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Landing />
-          </Route>
-          <Route exact path="/story">
-            <CreatingStory />
-          </Route>
-          <Route path="/story/:storyId">
-            <EditStory></EditStory>
-          </Route>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/story" component={CreatingStory} />
+          <Route path="/story/:storyId" component={EditStory} />
         </Switch>
       </Router>
     </div>
