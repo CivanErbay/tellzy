@@ -64,13 +64,25 @@ export default class CreatingStory extends Component {
                   onChange={this.handleChange.bind(this)}
                 />
               </Form.Group>
+              {/* Participants */}
+              <Form.Group>
+                <Form.Label>Participants emails</Form.Label>
+                <Form.Control
+                  required
+                  as="textarea"
+                  rows="2"
+                  name="participantEmails"
+                  onChange={this.handleChange.bind(this)}
+                />
+              </Form.Group>
+
               {/* TITLE */}
               <Form.Group>
                 <Form.Label>Story Title</Form.Label>
                 <Form.Control
                   required
                   as="textarea"
-                  rows="3"
+                  rows="1"
                   name="storyTitle"
                   onChange={this.handleChange.bind(this)}
                 />
@@ -81,7 +93,7 @@ export default class CreatingStory extends Component {
                 <Form.Control
                   required
                   as="textarea"
-                  rows="3"
+                  rows="10"
                   name="storyText"
                   onChange={this.handleChange.bind(this)}
                 />
