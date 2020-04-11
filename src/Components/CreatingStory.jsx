@@ -37,9 +37,18 @@ export default class CreatingStory extends Component {
       text: storyText,
     };
     let participants = participantsEmails.split(/,\s*/g).map((email) => {
-      return { email, secret: this.makeid(8), isSubmitted: false, submittedOn: null };
+      return {
+        email,
+        secret: this.makeid(8),
+        isSubmitted: false,
+        submittedOn: null,
+      };
     });
-    participants.push({ email: creatorEmail, isSubmitted: true, submittedOn: new Date() });
+    participants.push({
+      email: creatorEmail,
+      isSubmitted: true,
+      submittedOn: new Date(),
+    });
 
     const newStory = {
       creatorEmail,
@@ -103,8 +112,7 @@ export default class CreatingStory extends Component {
                   </span>
                 </CopyToClipboard>
                 <p className="p-5 p-cs-true text-center">
-                  Copy link and send it to <strong>{nextParticipant}</strong>. Soon you'll get the whole
-                  story!
+                  Copy link and send it <strong>{nextParticipant}</strong>. Soon you'll get the whole story!
                 </p>
               </div>
             ) : (
