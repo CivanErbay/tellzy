@@ -14,6 +14,10 @@
     margin-top: ;
 }
 
+.create-story {
+    height: 100%;
+}
+
 .h1 {
     font-size: 8.5rem !important;
 
@@ -34,3 +38,12 @@
 }
 .button-back {
 }
+
+/* <Row className="d-flex justify-content-between p-3">
+<Button type="submit">Go</Button>
+<Link to="/">
+    <Button className="button-back">
+        Back
+    </Button>
+</Link>
+</Row> */
