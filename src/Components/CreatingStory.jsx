@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import firebase from "./../config/firebaseConfig";
 import { Row, Col, Container } from "react-bootstrap";
-import Modal from "react-bootstrap/Modal";
 
 export default class CreatingStory extends Component {
   constructor(props) {
@@ -13,7 +12,7 @@ export default class CreatingStory extends Component {
       participantsEmails: "",
       storyTitle: "",
       storyText: "",
-      showModal: false,
+      submitSuccess: false,
       nextLink: "",
     };
   }
@@ -76,87 +75,76 @@ export default class CreatingStory extends Component {
   }
 
   render() {
+    const { submitSuccess, nextLink } = this.state;
     return (
       <Container className="create-story">
-        <Row>
+        <Row className="my-5">
           <Col sm={2}></Col>
-          <Col sm={8}>
-            <h2>Creating new story</h2>
-            <Form onSubmit={this.handleSubmit}>
-              <Form.Group>
-                <Form.Label>Email address</Form.Label>
-                <Form.Control
-                  required
-                  type="email"
-                  placeholder="name@example.com"
-                  name="creatorEmail"
-                  onChange={this.handleChange.bind(this)}
-                />
-              </Form.Group>
-              {/* Participants */}
-              <Form.Group>
-                <Form.Label>Participants emails</Form.Label>
-                <Form.Control
-                  required
-                  as="textarea"
-                  rows="2"
-                  name="participantsEmails"
-                  onChange={this.handleChange.bind(this)}
-                />
-              </Form.Group>
+          <Col sm={8} className="h-100">
+            {submitSuccess ? (
+              <div className="d-flex flex-column justify-content-center align-items-center">
+                <p>Thank you!</p>
+                <a rel="noopener noreferrer" href={nextLink} target="_blank">
+                  {nextLink}
+                </a>
+              </div>
+            ) : (
+              <>
+                <h2>Creating new story</h2>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Group>
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                      required
+                      type="email"
+                      placeholder="name@example.com"
+                      name="creatorEmail"
+                      onChange={this.handleChange.bind(this)}
+                    />
+                  </Form.Group>
+                  {/* Participants */}
+                  <Form.Group>
+                    <Form.Label>Participants emails</Form.Label>
+                    <Form.Control
+                      required
+                      as="textarea"
+                      rows="2"
+                      name="participantsEmails"
+                      onChange={this.handleChange.bind(this)}
+                    />
+                  </Form.Group>
 
-              {/* TITLE */}
-              <Form.Group>
-                <Form.Label>Story Title</Form.Label>
-                <Form.Control
-                  required
-                  as="textarea"
-                  rows="1"
-                  name="storyTitle"
-                  onChange={this.handleChange.bind(this)}
-                />
-              </Form.Group>
-              {/* STAT STORY */}
-              <Form.Group>
-                <Form.Label>Start your Story!</Form.Label>
-                <Form.Control
-                  required
-                  as="textarea"
-                  placeholder="Once upon a time..."
-                  rows="10"
-                  name="storyText"
-                  onChange={this.handleChange.bind(this)}
-                />
-              </Form.Group>
+                  {/* TITLE */}
+                  <Form.Group>
+                    <Form.Label>Story Title</Form.Label>
+                    <Form.Control
+                      required
+                      as="textarea"
+                      rows="1"
+                      name="storyTitle"
+                      onChange={this.handleChange.bind(this)}
+                    />
+                  </Form.Group>
+                  {/* STAT STORY */}
+                  <Form.Group>
+                    <Form.Label>Start your Story!</Form.Label>
+                    <Form.Control
+                      required
+                      as="textarea"
+                      placeholder="Once upon a time..."
+                      rows="10"
+                      name="storyText"
+                      onChange={this.handleChange.bind(this)}
+                    />
+                  </Form.Group>
 
-              <Button type="submit">Submit story</Button>
-            </Form>
+                  <Button type="submit">Submit story</Button>
+                </Form>
+              </>
+            )}
           </Col>
           <Col sm={2}></Col>
         </Row>
-
-        {this.state.showModal && (
-          <Modal show={this.state.showModal} onHide={this.handleClose}>
-            <Modal.Header closeButton>
-              <Modal.Title>Success!</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              Share this link with your friends!
-              <br />
-              <a rel="noopener noreferrer" href={this.state.nextLink} target="_blank">
-                {this.state.nextLink}
-              </a>
-              {this.state.participantsEmails.split(/,\s*/g).map((email) => (
-                <p>{email}</p>
-              ))}
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={this.handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        )}
       </Container>
     );
   }

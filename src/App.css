@@ -19,6 +19,10 @@
   margin-top: ;
 }
 
+.create-story {
+  height: 100%;
+}
+
 .h1 {
   font-size: 8.5rem !important;
   letter-spacing: -px;
