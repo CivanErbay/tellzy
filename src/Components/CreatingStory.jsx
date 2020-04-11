@@ -3,28 +3,38 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { db } from "./../config/firebaseConfig";
 import { Row, Col, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default class CreatingStory extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      creatorEmail: "",
-      participantsEmails: "",
-      storyTitle: "",
-      storyText: "",
-      submitSuccess: false,
-      nextLink: "",
-    };
-  }
+    constructor(props) {
+        super(props);
+        this.state = {
+            creatorEmail: "",
+            participantsEmails: "",
+            storyTitle: "",
+            storyText: "",
+            submitSuccess: true,
+            nextLink: "this is the link",
+            isUnfold: false,
+        };
+    }
 
-  handleChange(event) {
-    let fieldName = event.target.name;
-    let fleldVal = event.target.value;
-    this.setState({ form: { ...this.state, [fieldName]: fleldVal } });
-  }
+    handleChange(event) {
+        let fieldName = event.target.name;
+        let fleldVal = event.target.value;
+        this.setState({ ...this.state, [fieldName]: fleldVal });
+    }
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
+    handleSubmit = async (event) => {
+        event.preventDefault();
+
+        const {
+            creatorEmail,
+            storyTitle,
+            storyText,
+            participantsEmails,
+        } = this.state;
 
     const { creatorEmail, storyTitle, storyText, participantsEmails } = this.state;
     const firstPart = {
@@ -60,15 +70,33 @@ export default class CreatingStory extends Component {
     });
   };
 
-  makeid(length) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        var db = firebase.firestore();
+        let docRef = await db
+            .collection("stories")
+            .add(newStory)
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+            });
+
+        console.log("Document written with ID: ", docRef.id);
+        this.setState({
+            nextLink: `www.tellzy.web.app/story/${docRef.id}`,
+            submitSuccess: true,
+        });
+    };
+
+    makeid(length) {
+        var result = "";
+        var characters =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(
+                Math.floor(Math.random() * charactersLength)
+            );
+        }
+        return result;
     }
-    return result;
-  }
 
   render() {
     const { submitSuccess, nextLink } = this.state;
@@ -78,13 +106,36 @@ export default class CreatingStory extends Component {
           <Col sm={2}></Col>
           <Col sm={8} className="h-100">
             {submitSuccess ? (
-              <div className="d-flex flex-column justify-content-center align-items-center">
-                <p>Thank you!</p>
-                <a rel="noopener noreferrer" href={nextLink} target="_blank">
-                  {nextLink}
-                </a>
-              </div>
-            ) : (
+                            <div className="d-flex flex-column justify-content-center align-items-center mt-3">
+                                <h1 className="h1-cs-true">Thank you!</h1>
+                                {isUnfold && (
+                                    <>
+                                        <p>Succesfully copied!</p>
+                                    </>
+                                )}
+                                <CopyToClipboard
+                                    className="clipboard"
+                                    text={nextLink}
+                                    onCopy={() =>
+                                        this.setState({ isUnfold: true })
+                                    }
+                                >
+                                    <span>
+                                        <Row className="row-cs-true p-3">
+                                            <p className="mr-5 my-auto copy-cs-true">
+                                                Copy Link
+                                            </p>
+                                            <img src="assets/images/copy.png" />
+                                        </Row>
+                                    </span>
+                                </CopyToClipboard>
+                                <p className="p-5 p-cs-true text-center">
+                                    Copy link and send it to the next
+                                    participant. Soon you'll get the whole
+                                    story!
+                                </p>
+                            </div>
+                        ) : (
               <>
                 <h1>Creating new story</h1>
                 <Form onSubmit={this.handleSubmit}>
@@ -109,39 +160,51 @@ export default class CreatingStory extends Component {
                       onChange={this.handleChange.bind(this)}
                     />
                   </Form.Group>
+                                    {/* TITLE */}
+                                    <Form.Group>
+                                        <Form.Label>Story Title</Form.Label>
+                                        <Form.Control
+                                            required
+                                            as="textarea"
+                                            rows="1"
+                                            name="storyTitle"
+                                            onChange={this.handleChange.bind(
+                                                this
+                                            )}
+                                        />
+                                    </Form.Group>
+                                    {/* STAT STORY */}
+                                    <Form.Group>
+                                        <Form.Label>
+                                            Start your Story!
+                                        </Form.Label>
+                                        <Form.Control
+                                            required
+                                            as="textarea"
+                                            placeholder="Once upon a time..."
+                                            rows="10"
+                                            name="storyText"
+                                            onChange={this.handleChange.bind(
+                                                this
+                                            )}
+                                        />
+                                    </Form.Group>
 
-                  {/* TITLE */}
-                  <Form.Group>
-                    <Form.Label>Story Title</Form.Label>
-                    <Form.Control
-                      required
-                      as="textarea"
-                      rows="1"
-                      name="storyTitle"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
-                  {/* STAT STORY */}
-                  <Form.Group>
-                    <Form.Label>Start your Story!</Form.Label>
-                    <Form.Control
-                      required
-                      as="textarea"
-                      placeholder="Once upon a time..."
-                      rows="10"
-                      name="storyText"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
-
-                  <Button type="submit">Submit story</Button>
-                </Form>
-              </>
-            )}
-          </Col>
-          <Col sm={2}></Col>
-        </Row>
-      </Container>
-    );
-  }
+                                    <Row className="d-flex justify-content-between p-3">
+                                        <Button type="submit">Go</Button>
+                                        <Link to="/">
+                                            <Button className="button-back">
+                                                Back
+                                            </Button>
+                                        </Link>
+                                    </Row>
+                                </Form>
+                            </>
+                        )}
+                    </Col>
+                    <Col sm={2}></Col>
+                </Row>
+            </div>
+        );
+    }
 }

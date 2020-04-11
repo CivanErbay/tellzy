@@ -1,26 +1,21 @@
 .App {
-  background-color: #282c34;
-  min-height: 100vh;
-  /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
-  font-size: calc(10px + 2vmin);
-  color: white;
-  overflow: hidden;
+    background-color: #282c34;
+    min-height: 100vh;
+
+    color: white;
+    overflow: hidden;
 }
 
 .first-row {
-  /* top: 0px !important; */
-  height: 20%;
+    height: 20%;
 }
 
 .second-row {
-  margin-top: ;
+    margin-top: ;
 }
 
 .create-story {
-  height: 100%;
+    height: 100%;
 }
 
 .edit-story {
@@ -33,16 +28,43 @@
 }
 
 .h1 {
-  font-size: 8.5rem !important;
-  letter-spacing: -px;
-  font-family: "Permanent Marker", cursive;
+    font-size: 8.5rem !important;
+
+    font-family: "Permanent Marker", cursive;
 }
 
 .wrap {
-  /* margin-left: 2.5rem; */
-  font-size: 4rem !important;
+    font-size: 4rem !important;
 }
 
 .wrap h3 {
-  padding: 0.3rem;
+    padding: 0.3rem;
+}
+
+.h2-creator {
+    padding: 1.5em 1.5em 1em 0;
+    font-size: 3rem;
+}
+.button-back {
+}
+
+.clipboard {
+    cursor: pointer;
+}
+.h1-cs-true {
+    font-size: 7.5rem !important;
+    padding: 0.8em 0 0.8em 0;
+    letter-spacing: -2px;
+    /* border-bottom: solid; */
+}
+.row-cs-true {
+    border: solid;
+    border-radius: 5px;
+}
+.p-cs-true {
+    font-size: 1.5rem;
+}
+.copy-cs-true {
+    font-size: 1.5rem;
+    font-weight: bold;
 }
