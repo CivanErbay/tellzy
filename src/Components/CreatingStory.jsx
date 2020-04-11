@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import firebase from "./../config/firebaseConfig";
+import { db } from "./../config/firebaseConfig";
 import { Row, Col, Container } from "react-bootstrap";
 
 export default class CreatingStory extends Component {
@@ -45,18 +45,18 @@ export default class CreatingStory extends Component {
       storyParts: [firstPart],
     };
 
-    var db = firebase.firestore();
     let docRef = await db
       .collection("stories")
       .add(newStory)
       .catch(function (error) {
         console.error("Error adding document: ", error);
+        return;
       });
 
     console.log("Document written with ID: ", docRef.id);
     this.setState({
       nextLink: `www.tellzy.web.app/story/${docRef.id}`,
-      showModal: true,
+      submitSuccess: true,
     });
   };
 
@@ -68,10 +68,6 @@ export default class CreatingStory extends Component {
       result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
-  }
-
-  handleClose() {
-    this.setState({ showModal: false });
   }
 
   render() {

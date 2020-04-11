@@ -23,6 +23,15 @@
   height: 100%;
 }
 
+.edit-story {
+  height: 100%;
+}
+
+.edit-story textarea {
+  resize: none !important;
+  overflow: hidden;
+}
+
 .h1 {
   font-size: 8.5rem !important;
   letter-spacing: -px;
