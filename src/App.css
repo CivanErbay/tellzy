@@ -1,17 +1,12 @@
 .App {
     background-color: #282c34;
     min-height: 100vh;
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
-    /* font-size: calc(10px + 2vmin); */
+
     color: white;
     overflow: hidden;
 }
 
 .first-row {
-    /* top: 0px !important; */
     height: 20%;
 }
 
@@ -21,15 +16,21 @@
 
 .h1 {
     font-size: 8.5rem !important;
-    letter-spacing: -px;
+
     font-family: "Permanent Marker", cursive;
 }
 
 .wrap {
-    /* margin-left: 2.5rem; */
     font-size: 4rem !important;
 }
 
 .wrap h3 {
     padding: 0.3rem;
+}
+
+.h2-creator {
+    padding: 1.5em 1.5em 1em 0;
+    font-size: 3rem;
+}
+.button-back {
 }
