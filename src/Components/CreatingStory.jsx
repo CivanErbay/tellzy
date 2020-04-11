@@ -14,7 +14,7 @@ export default class CreatingStory extends Component {
             participantsEmails: "",
             storyTitle: "",
             storyText: "",
-            submitSuccess: true,
+            submitSuccess: false,
             nextLink: "this is the link",
             isUnfold: false,
         };
@@ -101,7 +101,13 @@ export default class CreatingStory extends Component {
         return (
             <div className="create-story">
                 <Row className="my-5">
-                    <Col sm={2}></Col>
+                    <Col sm={2}>
+                        <Link to="/">
+                            <Button className="p-3 ml-5 button-back">
+                                Home
+                            </Button>
+                        </Link>
+                    </Col>
                     <Col sm={8} className="h-100">
                         {submitSuccess ? (
                             <div className="d-flex flex-column justify-content-center align-items-center mt-3">
@@ -138,7 +144,7 @@ export default class CreatingStory extends Component {
                                 <h2>Creating new story</h2>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group>
-                                        <Form.Label>Email address</Form.Label>
+                                        <Form.Label>Email Address</Form.Label>
                                         <Form.Control
                                             required
                                             type="email"
@@ -152,7 +158,7 @@ export default class CreatingStory extends Component {
                                     {/* Participants */}
                                     <Form.Group>
                                         <Form.Label>
-                                            Participants emails
+                                            Participants Emails
                                         </Form.Label>
                                         <Form.Control
                                             required
@@ -197,11 +203,6 @@ export default class CreatingStory extends Component {
 
                                     <Row className="d-flex justify-content-between p-3">
                                         <Button type="submit">Go</Button>
-                                        <Link to="/">
-                                            <Button className="button-back">
-                                                Back
-                                            </Button>
-                                        </Link>
                                     </Row>
                                 </Form>
                             </>
