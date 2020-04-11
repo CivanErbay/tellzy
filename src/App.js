@@ -10,9 +10,9 @@ import EditStory from "./Components/EditStory";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      {/* <header className="App-header">
         <Navbar></Navbar>
-      </header>
+      </header> */}
       <Router>
         <Switch>
           <Route exact path="/">
