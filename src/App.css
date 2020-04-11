@@ -39,11 +39,24 @@
 .button-back {
 }
 
-/* <Row className="d-flex justify-content-between p-3">
-<Button type="submit">Go</Button>
-<Link to="/">
-    <Button className="button-back">
-        Back
-    </Button>
-</Link>
-</Row> */
+.clipboard {
+    cursor: pointer;
+}
+.h1-cs-true {
+    font-size: 7.5rem !important;
+    padding: 0.8em 0 0.8em 0;
+    letter-spacing: -2px;
+    /* border-bottom: solid; */
+}
+.row-cs-true {
+    border: solid;
+    border-radius: 5px;
+}
+.p-cs-true {
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+.copy-cs-true {
+    font-size: 1.5rem;
+    font-weight: bold;
+}

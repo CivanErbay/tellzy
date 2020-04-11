@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import firebase from "./../config/firebaseConfig";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 export default class CreatingStory extends Component {
     constructor(props) {
@@ -13,15 +14,16 @@ export default class CreatingStory extends Component {
             participantsEmails: "",
             storyTitle: "",
             storyText: "",
-            submitSuccess: false,
-            nextLink: "",
+            submitSuccess: true,
+            nextLink: "this is the link",
+            isUnfold: false,
         };
     }
 
     handleChange(event) {
         let fieldName = event.target.name;
         let fleldVal = event.target.value;
-        this.setState({ form: { ...this.state, [fieldName]: fleldVal } });
+        this.setState({ ...this.state, [fieldName]: fleldVal });
     }
 
     handleSubmit = async (event) => {
@@ -33,11 +35,13 @@ export default class CreatingStory extends Component {
             storyText,
             participantsEmails,
         } = this.state;
+
         const firstPart = {
             author: creatorEmail,
             timestamp: new Date(),
             text: storyText,
         };
+
         let participants = participantsEmails.split(/,\s*/g).map((email) => {
             return {
                 email,
@@ -52,7 +56,7 @@ export default class CreatingStory extends Component {
             isSubmitted: true,
             submittedOn: new Date(),
         });
-        console.log(participants);
+
         const newStory = {
             creatorEmail,
             storyTitle,
@@ -71,7 +75,7 @@ export default class CreatingStory extends Component {
         console.log("Document written with ID: ", docRef.id);
         this.setState({
             nextLink: `www.tellzy.web.app/story/${docRef.id}`,
-            showModal: true,
+            submitSuccess: true,
         });
     };
 
@@ -93,22 +97,42 @@ export default class CreatingStory extends Component {
     }
 
     render() {
-        const { submitSuccess, nextLink } = this.state;
+        const { submitSuccess, nextLink, isUnfold } = this.state;
         return (
             <Container className="create-story">
                 <Row className="my-5">
                     <Col sm={2}></Col>
                     <Col sm={8} className="h-100">
                         {submitSuccess ? (
-                            <div className="d-flex flex-column justify-content-center align-items-center">
-                                <p>Thank you!</p>
-                                <a
-                                    rel="noopener noreferrer"
-                                    href={nextLink}
-                                    target="_blank"
+                            <div className="d-flex flex-column justify-content-center align-items-center mt-3">
+                                <h1 className="h1-cs-true">Thank you!</h1>
+
+                                <CopyToClipboard
+                                    className="clipboard"
+                                    text={nextLink}
+                                    onCopy={() =>
+                                        this.setState({ isUnfold: true })
+                                    }
                                 >
-                                    {nextLink}
-                                </a>
+                                    <span>
+                                        <Row className="row-cs-true p-3">
+                                            <p className="mr-5 my-auto copy-cs-true">
+                                                Copy Link
+                                            </p>
+                                            <img src="assets/images/copy.png" />
+                                        </Row>
+                                    </span>
+                                </CopyToClipboard>
+                                <p className="p-5 p-cs-true text-center">
+                                    Copy link and send it to the next
+                                    participant. Soon you'll get the whole
+                                    story!
+                                </p>
+                                {isUnfold && (
+                                    <>
+                                        <p>copied!</p>
+                                    </>
+                                )}
                             </div>
                         ) : (
                             <>
@@ -172,7 +196,14 @@ export default class CreatingStory extends Component {
                                         />
                                     </Form.Group>
 
-                                    <Button type="submit">Submit story</Button>
+                                    <Row className="d-flex justify-content-between p-3">
+                                        <Button type="submit">Go</Button>
+                                        <Link to="/">
+                                            <Button className="button-back">
+                                                Back
+                                            </Button>
+                                        </Link>
+                                    </Row>
                                 </Form>
                             </>
                         )}
