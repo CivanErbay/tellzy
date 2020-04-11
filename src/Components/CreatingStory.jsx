@@ -3,48 +3,77 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import firebase from "./../config/firebaseConfig";
 import { Row, Col, Container } from "react-bootstrap";
+import Modal from "react-bootstrap/Modal";
 
 export default class CreatingStory extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      form: {},
+      creatorEmail: "",
+      participantsEmails: "",
+      storyTitle: "",
+      storyText: "",
+      showModal: false,
+      nextLink: "",
     };
   }
 
   handleChange(event) {
     let fieldName = event.target.name;
     let fleldVal = event.target.value;
-    this.setState({ form: { ...this.state.form, [fieldName]: fleldVal } });
+    this.setState({ form: { ...this.state, [fieldName]: fleldVal } });
   }
 
-  handleSubmit = (event) => {
-    const { creatorEmail, storyTitle, storyText } = this.state.form;
+  handleSubmit = async (event) => {
+    event.preventDefault();
+
+    const { creatorEmail, storyTitle, storyText, participantsEmails } = this.state;
     const firstPart = {
       author: creatorEmail,
       timestamp: new Date(),
       text: storyText,
     };
-    event.preventDefault();
+    let participants = participantsEmails.split(/,\s*/g).map((email) => {
+      return { email, secret: this.makeid(8), isSubmitted: false, submittedOn: null };
+    });
+
+    participants.push({ email: creatorEmail, isSubmitted: true, submittedOn: new Date() });
+    console.log(participants);
     const newStory = {
       creatorEmail,
       storyTitle,
-      participants: [creatorEmail, "placeholder@web.de", "anotherPLace@fad.com"],
+      participants,
       storyParts: [firstPart],
     };
-    console.log("Submit me!");
-    // save form as new story
 
     var db = firebase.firestore();
-    db.collection("stories")
+    let docRef = await db
+      .collection("stories")
       .add(newStory)
-      .then(function (docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
       .catch(function (error) {
         console.error("Error adding document: ", error);
       });
+
+    console.log("Document written with ID: ", docRef.id);
+    this.setState({
+      nextLink: `www.tellzy.web.app/story/${docRef.id}`,
+      showModal: true,
+    });
   };
+
+  makeid(length) {
+    var result = "";
+    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var charactersLength = characters.length;
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+  handleClose() {
+    this.setState({ showModal: false });
+  }
 
   render() {
     return (
@@ -71,7 +100,7 @@ export default class CreatingStory extends Component {
                   required
                   as="textarea"
                   rows="2"
-                  name="participantEmails"
+                  name="participantsEmails"
                   onChange={this.handleChange.bind(this)}
                 />
               </Form.Group>
@@ -93,6 +122,7 @@ export default class CreatingStory extends Component {
                 <Form.Control
                   required
                   as="textarea"
+                  placeholder="Once upon a time..."
                   rows="10"
                   name="storyText"
                   onChange={this.handleChange.bind(this)}
@@ -104,6 +134,29 @@ export default class CreatingStory extends Component {
           </Col>
           <Col sm={2}></Col>
         </Row>
+
+        {this.state.showModal && (
+          <Modal show={this.state.showModal} onHide={this.handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Success!</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Share this link with your friends!
+              <br />
+              <a rel="noopener noreferrer" href={this.state.nextLink} target="_blank">
+                {this.state.nextLink}
+              </a>
+              {this.state.participantsEmails.split(/,\s*/g).map((email) => (
+                <p>{email}</p>
+              ))}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={this.handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        )}
       </Container>
     );
   }
