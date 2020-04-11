@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import Navbarr from "./Components/Navbar";
+import Navbar from "./Components/Navbar";
 import Landing from "./Components/Landing";
 import CreatingStory from "./Components/CreatingStory";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -10,9 +10,9 @@ import EditStory from "./Components/EditStory";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Navbarr></Navbarr>
-      </header>
+      {/* <header className="App-header">
+        <Navbar></Navbar>
+      </header> */}
       <Router>
         <Switch>
           <Route exact path="/">
