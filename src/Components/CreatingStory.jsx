@@ -12,6 +12,7 @@ export default class CreatingStory extends Component {
         this.state = {
             creatorEmail: "",
             participantsEmails: "",
+            nextParticipant: {},
             storyTitle: "",
             storyText: "",
             submitSuccess: false,
@@ -74,6 +75,7 @@ export default class CreatingStory extends Component {
         this.setState({
             nextLink: `www.tellzy.web.app/story/${docRef.id}?secret=${nextParticipant.secret}`,
             submitSuccess: true,
+            nextParticipant,
         });
     };
 
@@ -91,7 +93,12 @@ export default class CreatingStory extends Component {
     }
 
     render() {
-        const { submitSuccess, nextLink, isUnfold } = this.state;
+        const {
+            submitSuccess,
+            nextLink,
+            isUnfold,
+            nextParticipant,
+        } = this.state;
         return (
             <div className="create-story">
                 <Row className="my-5">
@@ -126,9 +133,9 @@ export default class CreatingStory extends Component {
                                     </span>
                                 </CopyToClipboard>
                                 <p className="p-5 p-cs-true text-center">
-                                    Copy link and send it to the next
-                                    participant. Soon you'll get the whole
-                                    story!
+                                    Copy link and send it to{" "}
+                                    <strong>{nextParticipant}</strong>. Soon
+                                    you'll get the whole story!
                                 </p>
                             </div>
                         ) : (
