@@ -46,6 +46,7 @@ export default class CreatingStory extends Component {
     });
     participants.push({
       email: creatorEmail,
+      secret: this.makeid(8),
       isSubmitted: true,
       submittedOn: new Date(),
     });
@@ -68,7 +69,7 @@ export default class CreatingStory extends Component {
     const nextParticipant = participants[0];
 
     this.setState({
-      nextLink: `www.tellzy.web.app/story/${docRef.id}?secret=${nextParticipant.secret}`,
+      nextLink: `www.tellzy.web.app/story/${docRef.id}/${nextParticipant.secret}`,
       submitSuccess: true,
       nextParticipant,
     });

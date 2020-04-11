@@ -18,6 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/story" component={CreatingStory} />
+          <Route path="/story/:storyId/:secret" component={EditStory} />
           <Route path="/story/:storyId" component={EditStory} />
         </Switch>
       </Router>
