@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import firebase from "./../config/firebaseConfig";
+import { db } from "./../config/firebaseConfig";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -36,33 +36,39 @@ export default class CreatingStory extends Component {
             participantsEmails,
         } = this.state;
 
-        const firstPart = {
-            author: creatorEmail,
-            timestamp: new Date(),
-            text: storyText,
-        };
+    const { creatorEmail, storyTitle, storyText, participantsEmails } = this.state;
+    const firstPart = {
+      author: creatorEmail,
+      timestamp: new Date(),
+      text: storyText,
+    };
+    let participants = participantsEmails.split(/,\s*/g).map((email) => {
+      return { email, secret: this.makeid(8), isSubmitted: false, submittedOn: null };
+    });
+    participants.push({ email: creatorEmail, isSubmitted: true, submittedOn: new Date() });
 
-        let participants = participantsEmails.split(/,\s*/g).map((email) => {
-            return {
-                email,
-                secret: this.makeid(8),
-                isSubmitted: false,
-                submittedOn: null,
-            };
-        });
+    const newStory = {
+      creatorEmail,
+      storyTitle,
+      participants,
+      storyParts: [firstPart],
+    };
 
-        participants.push({
-            email: creatorEmail,
-            isSubmitted: true,
-            submittedOn: new Date(),
-        });
+    let docRef = await db
+      .collection("stories")
+      .add(newStory)
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+        return;
+      });
 
-        const newStory = {
-            creatorEmail,
-            storyTitle,
-            participants,
-            storyParts: [firstPart],
-        };
+    const nextParticipant = participants[0];
+
+    this.setState({
+      nextLink: `www.tellzy.web.app/story/${docRef.id}?secret=${nextParticipant.secret}`,
+      submitSuccess: true,
+    });
+  };
 
         var db = firebase.firestore();
         let docRef = await db
@@ -92,18 +98,14 @@ export default class CreatingStory extends Component {
         return result;
     }
 
-    handleClose() {
-        this.setState({ showModal: false });
-    }
-
-    render() {
-        const { submitSuccess, nextLink, isUnfold } = this.state;
-        return (
-            <div className="create-story">
-                <Row className="my-5">
-                    <Col sm={2}></Col>
-                    <Col sm={8} className="h-100">
-                        {submitSuccess ? (
+  render() {
+    const { submitSuccess, nextLink } = this.state;
+    return (
+      <Container className="create-story">
+        <Row className="my-5">
+          <Col sm={2}></Col>
+          <Col sm={8} className="h-100">
+            {submitSuccess ? (
                             <div className="d-flex flex-column justify-content-center align-items-center mt-3">
                                 <h1 className="h1-cs-true">Thank you!</h1>
                                 {isUnfold && (
@@ -134,37 +136,30 @@ export default class CreatingStory extends Component {
                                 </p>
                             </div>
                         ) : (
-                            <>
-                                <h2>Creating new story</h2>
-                                <Form onSubmit={this.handleSubmit}>
-                                    <Form.Group>
-                                        <Form.Label>Email address</Form.Label>
-                                        <Form.Control
-                                            required
-                                            type="email"
-                                            placeholder="name@example.com"
-                                            name="creatorEmail"
-                                            onChange={this.handleChange.bind(
-                                                this
-                                            )}
-                                        />
-                                    </Form.Group>
-                                    {/* Participants */}
-                                    <Form.Group>
-                                        <Form.Label>
-                                            Participants emails
-                                        </Form.Label>
-                                        <Form.Control
-                                            required
-                                            as="textarea"
-                                            rows="2"
-                                            name="participantsEmails"
-                                            onChange={this.handleChange.bind(
-                                                this
-                                            )}
-                                        />
-                                    </Form.Group>
-
+              <>
+                <h1>Creating new story</h1>
+                <Form onSubmit={this.handleSubmit}>
+                  <Form.Group>
+                    <Form.Label>Email address</Form.Label>
+                    <Form.Control
+                      required
+                      type="email"
+                      placeholder="name@example.com"
+                      name="creatorEmail"
+                      onChange={this.handleChange.bind(this)}
+                    />
+                  </Form.Group>
+                  {/* Participants */}
+                  <Form.Group>
+                    <Form.Label>Participants emails</Form.Label>
+                    <Form.Control
+                      required
+                      as="textarea"
+                      rows="2"
+                      name="participantsEmails"
+                      onChange={this.handleChange.bind(this)}
+                    />
+                  </Form.Group>
                                     {/* TITLE */}
                                     <Form.Group>
                                         <Form.Label>Story Title</Form.Label>
