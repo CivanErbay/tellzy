@@ -50,6 +50,10 @@ export default class EditStory extends Component {
     }
   }
 
+  checkSecret() {
+    // get secret param from URLs
+  }
+
   handleChange(event) {
     let fieldName = event.target.name;
     let fleldVal = event.target.value;
@@ -86,36 +90,40 @@ export default class EditStory extends Component {
         <Row className="my-5">
           <Col sm={2}></Col>
           <Col sm={8} className="h-100">
-            {isLoading && <p>Loading...</p>}
-
-            {submitSuccess ? (
-              <div className="d-flex flex-column justify-content-center align-items-center">
-                <p>Thank you!</p>
-                {nextLink}
-              </div>
+            {isLoading ? (
+              <p>Loading...</p>
             ) : (
               <>
-                <h2>{story.storyTitle}</h2>
-                {/* STAT STORY */}
-                <Form onSubmit={this.handleSubmit}>
-                  <Form.Group>
-                    <Form.Label>Previously on "{story.storyTitle}"</Form.Label>
-                    <Form.Control readOnly as="textarea" placeholder={hintText} rows="2" name="hintText" />
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Label>Continue your Story!</Form.Label>
-                    <Form.Control
-                      required
-                      as="textarea"
-                      placeholder="Once upon a time..."
-                      rows="10"
-                      name="storyText"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
+                {submitSuccess ? (
+                  <div className="d-flex flex-column justify-content-center align-items-center">
+                    <p>Thank you!</p>
+                    {nextLink}
+                  </div>
+                ) : (
+                  <>
+                    <h1>{story.storyTitle}</h1>
+                    {/* STAT STORY */}
+                    <Form onSubmit={this.handleSubmit}>
+                      <Form.Group>
+                        <Form.Label>Previously on "{story.storyTitle}"</Form.Label>
+                        <Form.Control readOnly as="textarea" value={hintText} rows="2" name="hintText" />
+                      </Form.Group>
+                      <Form.Group>
+                        <Form.Label>Continue your Story!</Form.Label>
+                        <Form.Control
+                          required
+                          as="textarea"
+                          placeholder="Once upon a time..."
+                          rows="10"
+                          name="storyText"
+                          onChange={this.handleChange.bind(this)}
+                        />
+                      </Form.Group>
 
-                  <Button type="submit">Submit story</Button>
-                </Form>
+                      <Button type="submit">Submit story</Button>
+                    </Form>
+                  </>
+                )}
               </>
             )}
           </Col>

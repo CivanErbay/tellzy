@@ -35,9 +35,8 @@ export default class CreatingStory extends Component {
     let participants = participantsEmails.split(/,\s*/g).map((email) => {
       return { email, secret: this.makeid(8), isSubmitted: false, submittedOn: null };
     });
-
     participants.push({ email: creatorEmail, isSubmitted: true, submittedOn: new Date() });
-    console.log(participants);
+
     const newStory = {
       creatorEmail,
       storyTitle,
@@ -53,9 +52,10 @@ export default class CreatingStory extends Component {
         return;
       });
 
-    console.log("Document written with ID: ", docRef.id);
+    const nextParticipant = participants[0];
+
     this.setState({
-      nextLink: `www.tellzy.web.app/story/${docRef.id}`,
+      nextLink: `www.tellzy.web.app/story/${docRef.id}?secret=${nextParticipant.secret}`,
       submitSuccess: true,
     });
   };
@@ -86,7 +86,7 @@ export default class CreatingStory extends Component {
               </div>
             ) : (
               <>
-                <h2>Creating new story</h2>
+                <h1>Creating new story</h1>
                 <Form onSubmit={this.handleSubmit}>
                   <Form.Group>
                     <Form.Label>Email address</Form.Label>
