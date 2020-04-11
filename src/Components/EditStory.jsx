@@ -105,7 +105,7 @@ export default class EditStory extends Component {
                     {/* STAT STORY */}
                     <Form onSubmit={this.handleSubmit}>
                       <Form.Group>
-                        <Form.Label>Previously on "{story.storyTitle}"</Form.Label>
+                        <Form.Label>Previously on "{story.storyTitle}"...</Form.Label>
                         <Form.Control readOnly as="textarea" value={hintText} rows="2" name="hintText" />
                       </Form.Group>
                       <Form.Group>
