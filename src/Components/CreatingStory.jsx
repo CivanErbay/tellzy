@@ -14,7 +14,7 @@ export default class CreatingStory extends Component {
             participantsEmails: "",
             storyTitle: "",
             storyText: "",
-            submitSuccess: true,
+            submitSuccess: false,
             nextLink: "",
             isUnfold: false,
         };
