@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import firebase from "./../config/firebaseConfig";
+import { db } from "./../config/firebaseConfig";
 import { Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -15,7 +15,7 @@ export default class CreatingStory extends Component {
             storyTitle: "",
             storyText: "",
             submitSuccess: false,
-            nextLink: "this is the link",
+            nextLink: "",
             isUnfold: false,
         };
     }
@@ -35,13 +35,11 @@ export default class CreatingStory extends Component {
             storyText,
             participantsEmails,
         } = this.state;
-
         const firstPart = {
             author: creatorEmail,
             timestamp: new Date(),
             text: storyText,
         };
-
         let participants = participantsEmails.split(/,\s*/g).map((email) => {
             return {
                 email,
@@ -50,7 +48,6 @@ export default class CreatingStory extends Component {
                 submittedOn: null,
             };
         });
-
         participants.push({
             email: creatorEmail,
             isSubmitted: true,
@@ -64,17 +61,18 @@ export default class CreatingStory extends Component {
             storyParts: [firstPart],
         };
 
-        var db = firebase.firestore();
         let docRef = await db
             .collection("stories")
             .add(newStory)
             .catch(function (error) {
                 console.error("Error adding document: ", error);
+                return;
             });
 
-        console.log("Document written with ID: ", docRef.id);
+        const nextParticipant = participants[0];
+
         this.setState({
-            nextLink: `www.tellzy.web.app/story/${docRef.id}`,
+            nextLink: `www.tellzy.web.app/story/${docRef.id}?secret=${nextParticipant.secret}`,
             submitSuccess: true,
         });
     };
@@ -92,22 +90,12 @@ export default class CreatingStory extends Component {
         return result;
     }
 
-    handleClose() {
-        this.setState({ showModal: false });
-    }
-
     render() {
         const { submitSuccess, nextLink, isUnfold } = this.state;
         return (
-            <div className="create-story">
+            <Container className="create-story">
                 <Row className="my-5">
-                    <Col sm={2}>
-                        <Link to="/">
-                            <Button className="p-3 ml-5 button-back">
-                                Home
-                            </Button>
-                        </Link>
-                    </Col>
+                    <Col sm={2}></Col>
                     <Col sm={8} className="h-100">
                         {submitSuccess ? (
                             <div className="d-flex flex-column justify-content-center align-items-center mt-3">
@@ -141,10 +129,10 @@ export default class CreatingStory extends Component {
                             </div>
                         ) : (
                             <>
-                                <h2>Creating new story</h2>
+                                <h1>Creating new story</h1>
                                 <Form onSubmit={this.handleSubmit}>
                                     <Form.Group>
-                                        <Form.Label>Email Address</Form.Label>
+                                        <Form.Label>Email address</Form.Label>
                                         <Form.Control
                                             required
                                             type="email"
@@ -158,7 +146,7 @@ export default class CreatingStory extends Component {
                                     {/* Participants */}
                                     <Form.Group>
                                         <Form.Label>
-                                            Participants Emails
+                                            Participants emails
                                         </Form.Label>
                                         <Form.Control
                                             required
@@ -170,7 +158,6 @@ export default class CreatingStory extends Component {
                                             )}
                                         />
                                     </Form.Group>
-
                                     {/* TITLE */}
                                     <Form.Group>
                                         <Form.Label>Story Title</Form.Label>
@@ -203,6 +190,11 @@ export default class CreatingStory extends Component {
 
                                     <Row className="d-flex justify-content-between p-3">
                                         <Button type="submit">Go</Button>
+                                        <Link to="/">
+                                            <Button className="button-back">
+                                                Back
+                                            </Button>
+                                        </Link>
                                     </Row>
                                 </Form>
                             </>
@@ -210,7 +202,7 @@ export default class CreatingStory extends Component {
                     </Col>
                     <Col sm={2}></Col>
                 </Row>
-            </div>
+            </Container>
         );
     }
 }
