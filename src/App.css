@@ -1,7 +1,7 @@
 .App {
     background-color: #282c34;
     min-height: 100vh;
-
+    font-family: "Merriweather", serif;
     color: white;
     overflow: hidden;
 }
@@ -19,16 +19,21 @@
 }
 
 .edit-story {
-  height: 100%;
+    height: 100%;
 }
 
 .edit-story textarea {
-  resize: none !important;
-  overflow: hidden;
+    resize: none !important;
+    overflow: hidden;
 }
 
+.new-story-btn {
+    font-size: 3rem !important;
+    padding: 1.5rem !important;
+    margin-top: 1.5rem !important;
+}
 .h1 {
-    font-size: 8.5rem !important;
+    font-size: 12.5rem !important;
 
     font-family: "Permanent Marker", cursive;
 }
@@ -46,6 +51,9 @@
     font-size: 3rem;
 }
 .button-back {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 2em;
 }
 
 .clipboard {
@@ -67,4 +75,10 @@
 .copy-cs-true {
     font-size: 1.5rem;
     font-weight: bold;
+}
+.btn-home {
+    font-size: 3rem !important;
+    padding: 1.5rem !important;
+    margin-top: 1.5rem !important;
+    margin-left: 3rem !important;
 }
