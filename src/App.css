@@ -1,91 +1,109 @@
 .App {
-  background-color: #282c34;
-  min-height: 100vh;
-  font-family: "Merriweather", serif;
-  color: white;
-  overflow: hidden;
+    background-color: #282c34;
+    min-height: 100vh;
+    font-family: "Merriweather", serif;
+    color: white;
+    overflow: hidden;
 }
 
 .first-row {
-  height: 20%;
+    height: 20%;
 }
 
 .create-story {
-  height: 100%;
+    height: 100%;
 }
 
 .edit-story {
-  height: 100%;
+    height: 100%;
 }
 
 textarea {
-  resize: none !important;
-  overflow: hidden;
+    resize: none !important;
+    overflow: hidden;
 }
 
 .new-story-btn {
-  font-size: 2rem !important;
-  padding: 1.5rem !important;
-  margin-top: 1.5rem !important;
+    font-size: 2rem !important;
+    padding: 1.5rem !important;
+    margin-top: 1.5rem !important;
 }
 .h1 {
-  font-size: 12.5rem !important;
+    font-size: 12.5rem !important;
 
-  font-family: "Permanent Marker", cursive;
+    font-family: "Permanent Marker", cursive;
 }
 
 .wrap {
-  font-size: 4rem !important;
+    font-size: 4rem !important;
 }
 
 .wrap h3 {
-  padding: 0.3rem;
+    padding: 0.3rem;
 }
 
 .h2-creator {
-  padding: 1.5em 1.5em 1em 0;
-  font-size: 3rem;
+    padding: 1.5em 1.5em 1em 0;
+    font-size: 3rem;
 }
 .button-back {
-  font-size: 2.5rem;
-  font-weight: bold;
-  padding: 2em;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 2em;
 }
 
 .clipboard {
-  cursor: pointer;
+    cursor: pointer;
 }
 .h1-cs-true {
-  font-size: 7.5rem !important;
-  padding: 0.8em 0 0.8em 0;
-  letter-spacing: -2px;
-  /* border-bottom: solid; */
+    font-size: 7.5rem !important;
+    padding: 0.8em 0 0.8em 0;
+    letter-spacing: -2px;
+    /* border-bottom: solid; */
 }
 .row-cs-true {
-  border: solid;
-  border-radius: 5px;
+    border: solid;
+    border-radius: 5px;
 }
 .p-cs-true {
-  font-size: 1.5rem;
+    font-size: 1.5rem;
 }
 .copy-cs-true {
-  font-size: 1.5rem;
-  font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 .btn-home {
-  font-size: 2rem !important;
-  padding: 1.5rem !important;
-  margin-top: 1.5rem !important;
-  margin-left: 3rem !important;
+    font-size: 2rem !important;
+    padding: 1.5rem !important;
+    margin-top: 1.5rem !important;
+    margin-left: 3rem !important;
 }
 .form-cs-false {
-  margin: 3rem 10rem 2rem 10rem;
+    margin: 3rem 10rem 2rem 10rem;
 }
 .h1-cs-false {
-  font-weight: bold;
-  font-size: 5rem;
+    font-weight: bold;
+    font-size: 5rem;
 }
 .go-btn-cs-false {
-  padding: 0.5em 2em 0.5em 2em !important;
-  font-size: 1.5rem !important;
+    padding: 0.5em 2em 0.5em 2em !important;
+    font-size: 1.5rem !important;
+}
+.form-es-false {
+    margin: 3rem 10rem 2rem 10rem;
+}
+.h1-es-false {
+    font-weight: bold !important;
+    font-size: 5rem !important;
+}
+.result-true-div {
+    height: 100%;
+}
+.result-true-text {
+    height: 60vh !important;
+}
+.h1-result-true {
+    font-weight: bold !important;
+    font-size: 5rem !important;
+    padding: 0.75em 0 0.3em 0;
 }
