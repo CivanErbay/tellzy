@@ -171,7 +171,9 @@ export default class CreatingStory extends Component {
                   </Form.Group>
 
                   <Row className="d-flex justify-content-between p-3">
-                    <Button type="submit">Go</Button>
+                    <Button className="go-btn-cs-false" type="submit">
+                      Start Journey
+                    </Button>
                   </Row>
                 </Form>
               </>

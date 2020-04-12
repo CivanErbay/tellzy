@@ -26,7 +26,7 @@ export default class Landing extends Component {
                         <div className="wrap">
                             <h3 className="h3">collective storytelling.</h3>
                             <h3>share your imagination.</h3>
-                            <h3>simple & easy.</h3>
+                            <h3>simple & exciting.</h3>
                         </div>
                     </Col>
                     <Col></Col>
