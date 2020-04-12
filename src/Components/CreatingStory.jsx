@@ -41,14 +41,16 @@ export default class CreatingStory extends Component {
             timestamp: new Date(),
             text: storyText,
         };
-        let participants = participantsEmails.split(/,\s*/g).map((email) => {
-            return {
-                email,
-                secret: this.makeid(8),
-                isSubmitted: false,
-                submittedOn: null,
-            };
-        });
+        let participants = participantsEmails
+            .split(/,[\s|\n]*/g)
+            .map((email) => {
+                return {
+                    email,
+                    secret: this.makeid(8),
+                    isSubmitted: false,
+                    submittedOn: null,
+                };
+            });
         participants.push({
             email: creatorEmail,
             secret: this.makeid(8),
