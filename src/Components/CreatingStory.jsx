@@ -15,7 +15,7 @@ export default class CreatingStory extends Component {
       nextParticipant: { email: "test" },
       storyTitle: "",
       storyText: "",
-      submitSuccess: true,
+      submitSuccess: false,
       nextLink: "",
       isUnfold: false,
     };
@@ -123,8 +123,8 @@ export default class CreatingStory extends Component {
               </div>
             ) : (
               <>
-                <h1>Create new story</h1>
-                <Form onSubmit={this.handleSubmit}>
+                <h1 className="h1-cs-false text-center">Create new story</h1>
+                <Form className="form-cs-false" onSubmit={this.handleSubmit}>
                   <Form.Group>
                     <Form.Label>Email address</Form.Label>
                     <Form.Control
@@ -164,7 +164,7 @@ export default class CreatingStory extends Component {
                       required
                       as="textarea"
                       placeholder="Once upon a time..."
-                      rows="10"
+                      rows="8"
                       name="storyText"
                       onChange={this.handleChange.bind(this)}
                     />
