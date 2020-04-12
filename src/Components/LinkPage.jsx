@@ -26,52 +26,56 @@ export default class ResultStory extends Component {
                         <>
                             <h1 className="h1-cs-true">Thank you!</h1>
                             <Row className="wrap-links-linkpage">
-                                <CopyToClipboard
-                                    className="clipboard"
-                                    text={nextLink}
-                                    onCopy={() =>
-                                        this.setState({ isUnfold: true })
-                                    }
-                                >
-                                    <span>
-                                        <Row className="row-cs-true p-3">
-                                            <p className="mr-3 my-auto copy-cs-true">
-                                                Copy Story Link
+                                <div className="d-flex flex-column justify-content-center align-items-center">
+                                    <CopyToClipboard
+                                        className="clipboard"
+                                        text={nextLink}
+                                        onCopy={() =>
+                                            this.setState({ isUnfold: true })
+                                        }
+                                    >
+                                        <span>
+                                            <Row className="row-cs-true p-3">
+                                                <p className="mr-3 my-auto copy-cs-true">
+                                                    Copy Story Link
+                                                </p>
+                                                <img src="assets/images/copy.png" />
+                                            </Row>
+                                        </span>
+                                    </CopyToClipboard>
+                                    {isUnfold && (
+                                        <>
+                                            <p className="mt-3">
+                                                Succesfully copied!
                                             </p>
-                                            <img src="assets/images/copy.png" />
-                                        </Row>
-                                    </span>
-                                </CopyToClipboard>
-                                {isUnfold && (
-                                    <>
-                                        <p className="mt-2">
-                                            Succesfully copied!
-                                        </p>
-                                    </>
-                                )}
-                                <CopyToClipboard
-                                    className="clipboard"
-                                    text={ResultStory}
-                                    onCopy={() =>
-                                        this.setState({ isUnfold2: true })
-                                    }
-                                >
-                                    <span>
-                                        <Row className="row-cs-true p-3 ml-5">
-                                            <p className="mr-3 my-auto copy-cs-true">
-                                                Copy Result Link
+                                        </>
+                                    )}
+                                </div>
+                                <div className="d-flex flex-column justify-content-center align-items-center">
+                                    <CopyToClipboard
+                                        className="clipboard"
+                                        text={ResultStory}
+                                        onCopy={() =>
+                                            this.setState({ isUnfold2: true })
+                                        }
+                                    >
+                                        <span>
+                                            <Row className="row-cs-true p-3 ml-5">
+                                                <p className="mr-3 my-auto copy-cs-true">
+                                                    Copy Result Link
+                                                </p>
+                                                <img src="assets/images/copy.png" />
+                                            </Row>
+                                        </span>
+                                    </CopyToClipboard>
+                                    {isUnfold2 && (
+                                        <>
+                                            <p className="mt-3">
+                                                Succesfully copied!
                                             </p>
-                                            <img src="assets/images/copy.png" />
-                                        </Row>
-                                    </span>
-                                </CopyToClipboard>
-                                {isUnfold2 && (
-                                    <>
-                                        <p className="mt-2">
-                                            Succesfully copied!
-                                        </p>
-                                    </>
-                                )}
+                                        </>
+                                    )}
+                                </div>
                             </Row>
                             <p className="p-5 p-cs-true text-center">
                                 <b>Important:</b> Copy the <u>Story Link</u> and
