@@ -51,10 +51,11 @@ export default class EditStory extends Component {
 
     if (storyRef.exists) {
       const story = storyRef.data();
-      // check that secret is valid
+      // check that secret is valid among participants
       const validParticipant = story.participants.filter(
         (participant) => participant.secret && this.state.secret === participant.secret
-      );
+      )[0];
+      // make hint text
       let hintText = "";
       if (validParticipant) {
         // get hint text to display
@@ -83,16 +84,24 @@ export default class EditStory extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const { storyId, story, storyText } = this.state;
+    const { storyId, story, storyText, validParticipant } = this.state;
     let storyRef = db.collection("stories").doc(storyId);
 
+    // add new story part
     const newStoryPart = {
-      // author: creatorEmail,
+      author: validParticipant.email,
       timestamp: new Date(),
       text: storyText,
     };
-
     story.storyParts.push(newStoryPart);
+
+    // set this participant to submitted
+    story.participants = story.participants.map((participant) => {
+      if (participant.secret === validParticipant.secret)
+        return { ...validParticipant, isSubmitted: true, submittedOn: new Date() };
+      else return participant;
+    });
+    console.log(story);
 
     await storyRef.set({ ...story }, { merge: true }).catch(function (error) {
       console.error("Error adding document: ", error);
@@ -117,7 +126,6 @@ export default class EditStory extends Component {
       story,
       isLoading,
       hintText,
-      secret,
       nextParticipant,
       nextLink,
       storyLink,
@@ -139,16 +147,17 @@ export default class EditStory extends Component {
                 <h1 className="h1-es-false text-center">{story.storyTitle}</h1>
                 {!isEmpty(validParticipant) ? (
                   <>
-                    {submitSuccess ? (
-                      <LinkPage
-                        nextLink={nextLink}
-                        nextParticipant={nextParticipant}
-                        storyLink={storyLink}
-                      ></LinkPage>
+                    {validParticipant.isSubmitted ? (
+                      <div>This story has already been edited by {validParticipant.email}</div>
                     ) : (
                       <>
-                        {/* STAT STORY */}
-                        {secret ? (
+                        {submitSuccess ? (
+                          <LinkPage
+                            nextLink={nextLink}
+                            nextParticipant={nextParticipant}
+                            storyLink={storyLink}
+                          ></LinkPage>
+                        ) : (
                           <Form className="form-es-false" onSubmit={this.handleSubmit}>
                             <Form.Group>
                               <Form.Label>Previously on "{story.storyTitle}"...</Form.Label>
@@ -161,7 +170,7 @@ export default class EditStory extends Component {
                               />
                             </Form.Group>
                             <Form.Group>
-                              <Form.Label>Continue your Story</Form.Label>
+                              <Form.Label>{validParticipant.email} can continue the story</Form.Label>
                               <Form.Control
                                 required
                                 as="textarea"
@@ -176,23 +185,14 @@ export default class EditStory extends Component {
                               Submit
                             </Button>
                           </Form>
-                        ) : (
-                          <div>
-                            <p>Here are the participants:</p>
-                            <ul>
-                              {story.participants.map((participant) => (
-                                <li key={participant.email}>
-                                  {participant.email} - {participant.isSubmitted ? "Submitted" : "Todo"}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
                         )}
                       </>
                     )}
                   </>
                 ) : (
-                  <div className="d-flex justify-content-center">Sorry, this edit link is not valid</div>
+                  <div className="d-flex justify-content-center">
+                    Sorry, the edit link for this story is unknown
+                  </div>
                 )}
               </>
             )}
