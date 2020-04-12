@@ -21,11 +21,7 @@ export default class ResultStory extends Component {
 
     const storyId = params.storyId;
     this.getStory(storyId);
-    if (secret) {
-      this.setState({ storyId });
-    } else {
-      this.setState({ storyId });
-    }
+    this.setState({ storyId });
   }
 
   async getStory(storyId) {
@@ -40,7 +36,8 @@ export default class ResultStory extends Component {
 
     if (storyRef.exists) {
       const story = storyRef.data();
-      this.setState({ story, isLoading: false });
+      const storyFinished = story.participants.every((participant) => participant.isSubmitted);
+      this.setState({ story, isLoading: false, storyFinished });
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");
@@ -50,7 +47,7 @@ export default class ResultStory extends Component {
 
   render() {
     // story = {storyTitle, participants: [{email, isSubmitted}], storyParts: [{author, text}]}
-    const { story, isLoading } = this.state;
+    const { story, isLoading, storyFinished } = this.state;
 
     return (
       <div>
@@ -58,6 +55,7 @@ export default class ResultStory extends Component {
           <p>Loading...</p>
         ) : (
           <div className="d-flex flex-column justify-content-center align-items-center mt-3">
+            <p>{storyFinished ? "The story is finished" : "Still waiting for a participant"}</p>
             <textarea className="w-50 h-50">
               {story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}
             </textarea>
