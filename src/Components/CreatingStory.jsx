@@ -15,7 +15,7 @@ export default class CreatingStory extends Component {
             nextParticipant: { email: "test@test.de" },
             storyTitle: "",
             storyText: "",
-            submitSuccess: false,
+            submitSuccess: true,
             nextLink: "",
             isUnfold: false,
         };

@@ -14,7 +14,7 @@ export default class ResultStory extends Component {
             story: {},
         };
     }
-
+    //TestProject Link-piece 5YEWZymvKZnI7T3EFekm/GExnTn9W
     componentDidMount() {
         const {
             match: { params },
@@ -54,7 +54,7 @@ export default class ResultStory extends Component {
 
         return (
             <div className="w-100">
-                <Row className="whatthefuck">
+                <Row>
                     <Col>
                         <Link to="/">
                             <Button className="btn-home">Home</Button>
