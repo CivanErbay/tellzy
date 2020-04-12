@@ -10,7 +10,6 @@ export default class ResultStory extends Component {
       isLoading: true,
       isError: false,
       story: {},
-      isUnfold: false,
     };
   }
 
@@ -41,13 +40,7 @@ export default class ResultStory extends Component {
 
     if (storyRef.exists) {
       const story = storyRef.data();
-      let hintText = story.storyParts.reduce((acc, part) => acc + part.text + " ", "");
-      if (hintText.length > 200) hintText = hintText.substring(hintText.length - 100, hintText.length - 1);
-      // check that secret is valid
-      const validParticipant = story.participants.filter(
-        (participant) => participant.secret && this.state.secret === participant.secret
-      );
-      this.setState({ story, isLoading: false, hintText, validParticipant });
+      this.setState({ story, isLoading: false });
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");
@@ -56,39 +49,19 @@ export default class ResultStory extends Component {
   }
 
   render() {
-    const { isUnfold } = this.state;
-    const { nextLink, nextParticipant } = this.props;
+    const { story, isLoading } = this.state;
 
     return (
       <div>
-        <div className="d-flex flex-column justify-content-center align-items-center mt-3">
-          {
-            <>
-              <h1 className="h1-cs-true">Thank you!</h1>
-              {isUnfold && (
-                <>
-                  <p>Succesfully copied!</p>
-                </>
-              )}
-              <CopyToClipboard
-                className="clipboard"
-                text={nextLink}
-                onCopy={() => this.setState({ isUnfold: true })}
-              >
-                <span>
-                  <Row className="row-cs-true p-3">
-                    <p className="mr-5 my-auto copy-cs-true">Copy Link</p>
-                    <img src="assets/images/copy.png" />
-                  </Row>
-                </span>
-              </CopyToClipboard>
-              <p className="p-5 p-cs-true text-center">
-                Copy link and send it to <strong>{nextParticipant.email}</strong>. Soon you'll get the whole
-                story!
-              </p>
-            </>
-          }
-        </div>
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="d-flex flex-column justify-content-center align-items-center mt-3">
+            <textarea className="w-50 h-50">
+              {story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}
+            </textarea>
+          </div>
+        )}
       </div>
     );
   }
