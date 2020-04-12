@@ -82,3 +82,14 @@
     margin-top: 1.5rem !important;
     margin-left: 3rem !important;
 }
+.form-cs-false {
+    margin: 3rem 10rem 2rem 10rem;
+}
+.h1-cs-false {
+    font-weight: bold;
+    font-size: 5rem;
+}
+.go-btn-cs-false {
+    padding: 0.5em 2em 0.5em 2em !important;
+    font-size: 1.5rem !important;
+}
