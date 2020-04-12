@@ -23,12 +23,13 @@ export default class ResultStory extends Component {
             <>
               <h1 className="h1-cs-true">Thank you!</h1>
               <Row className="wrap-links-linkpage">
-                <LinkWithCopy link={nextLink}></LinkWithCopy>
-                <LinkWithCopy link={storyLink}></LinkWithCopy>
+                <LinkWithCopy link={nextLink} text="Edit Story Link"></LinkWithCopy>
+                <LinkWithCopy link={storyLink} text="Result Story Link"></LinkWithCopy>
               </Row>
               <p className="p-5 p-cs-true text-center">
-                <b>Important:</b> Copy the <u>Story Link</u> and send it to{" "}
-                <strong>{nextParticipant.email}</strong>. <br></br> Soon you'll get the whole story!
+                Copy the <u>Edit Story Link</u> and send it to <strong>{nextParticipant.email}</strong>.{" "}
+                <br /> Soon you'll get the whole story! <br />
+                In the meantime, track the status on the <u>Result Story Link</u>
               </p>
             </>
           }
@@ -39,7 +40,7 @@ export default class ResultStory extends Component {
 }
 
 function LinkWithCopy(props) {
-  const { link } = props;
+  const { link, text } = props;
   const [isUnfold, setUnfold] = useState(false);
 
   return (
@@ -47,7 +48,7 @@ function LinkWithCopy(props) {
       <CopyToClipboard className="clipboard" text={link} onCopy={() => setUnfold(true)}>
         <span>
           <Row className="row-cs-true p-3">
-            <p className="mr-3 my-auto copy-cs-true">Copy Story Link</p>
+            <p className="mr-3 my-auto copy-cs-true">{text}</p>
             <img src="assets/images/copy.png" />
           </Row>
         </span>
