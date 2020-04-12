@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { db } from "./../config/firebaseConfig";
+import LinkPage from "./LinkPage";
 import { Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
 
@@ -90,16 +91,17 @@ export default class EditStory extends Component {
       return;
     });
     // TODO look for next participant to show their email and generate secret link
-    const nextParticipant = {};
+    const nextParticipant = { email: "dummy!" };
     // TODO consider end of story
     this.setState({
       nextLink: `www.tellzy.web.app/story/${storyId}/${nextParticipant.secret}`,
       submitSuccess: true,
+      nextParticipant,
     });
   };
 
   render() {
-    const { nextLink, submitSuccess, story, isLoading, hintText, secret } = this.state;
+    const { nextLink, submitSuccess, story, isLoading, hintText, secret, nextParticipant } = this.state;
 
     return (
       <Container className="edit-story">
@@ -115,10 +117,7 @@ export default class EditStory extends Component {
             ) : (
               <>
                 {submitSuccess ? (
-                  <div className="d-flex flex-column justify-content-center align-items-center">
-                    <p>Thank you!</p>
-                    {nextLink}
-                  </div>
+                  <LinkPage nextLink={nextLink} nextParticipant={nextParticipant}></LinkPage>
                 ) : (
                   <>
                     <h1>{story.storyTitle}</h1>

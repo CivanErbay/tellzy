@@ -14,47 +14,6 @@ export default class ResultStory extends Component {
     };
   }
 
-  componentDidMount() {
-    const {
-      match: { params },
-    } = this.props;
-
-    const storyId = params.storyId;
-    const secret = params.secret;
-    this.getStory(storyId);
-    if (secret) {
-      this.setState({ storyId, secret });
-    } else {
-      this.setState({ storyId });
-    }
-  }
-
-  async getStory(storyId) {
-    let storyRef = await db
-      .collection("stories")
-      .doc(storyId)
-      .get()
-      .catch(function (error) {
-        console.log("Error getting document:", error);
-        this.setState({ error: true });
-      });
-
-    if (storyRef.exists) {
-      const story = storyRef.data();
-      let hintText = story.storyParts.reduce((acc, part) => acc + part.text + " ", "");
-      if (hintText.length > 200) hintText = hintText.substring(hintText.length - 100, hintText.length - 1);
-      // check that secret is valid
-      const validParticipant = story.participants.filter(
-        (participant) => participant.secret && this.state.secret === participant.secret
-      );
-      this.setState({ story, isLoading: false, hintText, validParticipant });
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-      this.setState({ error: true });
-    }
-  }
-
   render() {
     const { isUnfold } = this.state;
     const { nextLink, nextParticipant } = this.props;

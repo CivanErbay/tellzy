@@ -4,6 +4,7 @@ import "./App.css";
 import Navbar from "./Components/Navbar";
 import Landing from "./Components/Landing";
 import CreatingStory from "./Components/CreatingStory";
+import ResultStory from "./Components/ResultStory";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import EditStory from "./Components/EditStory";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -19,7 +20,7 @@ function App() {
           <Route exact path="/" component={Landing} />
           <Route exact path="/story" component={CreatingStory} />
           <Route path="/story/:storyId/:secret" component={EditStory} />
-          <Route path="/story/:storyId" component={EditStory} />
+          <Route path="/story/:storyId" component={ResultStory} />
         </Switch>
       </Router>
     </div>
