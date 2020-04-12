@@ -9,6 +9,7 @@ export default class ResultStory extends Component {
     this.state = {
       isLoading: true,
       isError: false,
+      storyFinished: false,
       story: {},
     };
   }
@@ -19,10 +20,9 @@ export default class ResultStory extends Component {
     } = this.props;
 
     const storyId = params.storyId;
-    const secret = params.secret;
     this.getStory(storyId);
     if (secret) {
-      this.setState({ storyId, secret });
+      this.setState({ storyId });
     } else {
       this.setState({ storyId });
     }
@@ -49,6 +49,7 @@ export default class ResultStory extends Component {
   }
 
   render() {
+    // story = {storyTitle, participants: [{email, isSubmitted}], storyParts: [{author, text}]}
     const { story, isLoading } = this.state;
 
     return (

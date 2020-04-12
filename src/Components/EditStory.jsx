@@ -95,13 +95,23 @@ export default class EditStory extends Component {
     // TODO consider end of story
     this.setState({
       nextLink: `www.tellzy.web.app/story/${storyId}/${nextParticipant.secret}`,
+      storyLink: `www.tellzy.web.app/story/${storyId}`,
       submitSuccess: true,
       nextParticipant,
     });
   };
 
   render() {
-    const { nextLink, submitSuccess, story, isLoading, hintText, secret, nextParticipant } = this.state;
+    const {
+      nextLink,
+      submitSuccess,
+      story,
+      isLoading,
+      hintText,
+      secret,
+      nextParticipant,
+      storyLink,
+    } = this.state;
 
     return (
       <Container className="edit-story">
@@ -117,7 +127,11 @@ export default class EditStory extends Component {
             ) : (
               <>
                 {submitSuccess ? (
-                  <LinkPage nextLink={nextLink} nextParticipant={nextParticipant}></LinkPage>
+                  <LinkPage
+                    nextLink={nextLink}
+                    nextParticipant={nextParticipant}
+                    storyLink={storyLink}
+                  ></LinkPage>
                 ) : (
                   <>
                     <h1>{story.storyTitle}</h1>
