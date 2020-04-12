@@ -12,10 +12,10 @@ export default class CreatingStory extends Component {
     this.state = {
       creatorEmail: "",
       participantsEmails: "",
-      nextParticipant: {},
+      nextParticipant: { email: "test" },
       storyTitle: "",
       storyText: "",
-      submitSuccess: false,
+      submitSuccess: true,
       nextLink: "",
       isUnfold: false,
     };
@@ -117,7 +117,7 @@ export default class CreatingStory extends Component {
                   </span>
                 </CopyToClipboard>
                 <p className="p-5 p-cs-true text-center">
-                  Copy link and send it to <strong>{nextParticipant}</strong>. Soon you'll get the whole
+                  Copy link and send it to <strong>{nextParticipant.email}</strong>. Soon you'll get the whole
                   story!
                 </p>
               </div>
