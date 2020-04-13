@@ -126,6 +126,7 @@ export default class EditStory extends Component {
       hintText,
       nextParticipant,
     } = this.state;
+
     const storyLink = `www.tellzy.web.app/story/${storyId}`;
 
     return (
@@ -154,6 +155,7 @@ export default class EditStory extends Component {
                         <a rel="noopener noreferrer" href={storyLink} target="_blank">
                           {storyLink}
                         </a>
+                        <LinkPage story={story} storyId={storyId}></LinkPage>
                       </div>
                     ) : (
                       <>

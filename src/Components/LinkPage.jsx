@@ -17,7 +17,8 @@ export default class ResultStory extends Component {
     const { story, storyId, nextParticipant } = this.props;
 
     const storyLink = `www.tellzy.web.app/story/${storyId}`;
-    const nextLink = `www.tellzy.web.app/story/${storyId}/${nextParticipant.secret}`;
+    let nextLink = null;
+    if (nextParticipant) nextLink = `www.tellzy.web.app/story/${storyId}/${nextParticipant.secret}`;
 
     return (
       <div>
@@ -26,14 +27,19 @@ export default class ResultStory extends Component {
             <>
               {/* <h1 className="h1-cs-true">Thank you!</h1> */}
               <Row className="wrap-links-linkpage">
-                <LinkWithCopy link={nextLink} text="Edit Story Link"></LinkWithCopy>
                 <LinkWithCopy link={storyLink} text="Result Story Link"></LinkWithCopy>
+                {nextParticipant && (
+                  <>
+                    <LinkWithCopy link={nextLink} text="Edit Story Link"></LinkWithCopy>
+
+                    <p className="p-5 p-cs-true text-center">
+                      Copy the <u>Edit Story Link</u> and send it to <strong>{nextParticipant.email}</strong>.{" "}
+                      <br /> Soon you'll get the whole story! <br />
+                      In the meantime, track the status on the <u>Result Story Link</u>
+                    </p>
+                  </>
+                )}
               </Row>
-              <p className="p-5 p-cs-true text-center">
-                Copy the <u>Edit Story Link</u> and send it to <strong>{nextParticipant.email}</strong>.{" "}
-                <br /> Soon you'll get the whole story! <br />
-                In the meantime, track the status on the <u>Result Story Link</u>
-              </p>
             </>
           }
         </div>
