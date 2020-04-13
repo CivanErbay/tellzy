@@ -10,16 +10,33 @@ export default class ResultStory extends Component {
       isLoading: true,
       isError: false,
       story: {},
+      nextUnfold: false,
+      storyUnfold: false,
     };
+
+    this.nextSetUnfold = this.nextSetUnfold.bind(this);
+    this.storySetUnfold = this.storySetUnfold.bind(this);
+  }
+
+  nextSetUnfold() {
+    if (!this.state.nextUnfold) this.setState({ nextUnfold: true });
+
+    if (this.state.storyUnfold) this.setState({ storyUnfold: false });
+  }
+
+  storySetUnfold() {
+    if (!this.state.storyUnfold) this.setState({ storyUnfold: true });
+
+    if (this.state.nextUnfold) this.setState({ nextUnfold: false });
   }
 
   render() {
     const { story, storyId, nextParticipant } = this.props;
+    const { nextUnfold, storyUnfold } = this.state;
 
     const storyLink = `tellzy.web.app/story/${storyId}`;
     let nextLink = null;
     if (nextParticipant) nextLink = `tellzy.web.app/story/${storyId}/${nextParticipant.secret}`;
-
     return (
       <div>
         <div className="d-flex flex-column justify-content-center align-items-center mt-3">
@@ -28,8 +45,18 @@ export default class ResultStory extends Component {
               {nextParticipant ? (
                 <>
                   <Row className="wrap-links-linkpage d-flex justify-content-center align-items-center">
-                    <LinkWithCopy link={nextLink} text="Edit Link"></LinkWithCopy>
-                    <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy>
+                    <LinkWithCopy
+                      link={nextLink}
+                      text="Edit Link"
+                      isUnfold={nextUnfold}
+                      setUnfold={this.nextSetUnfold}
+                    ></LinkWithCopy>
+                    <LinkWithCopy
+                      link={storyLink}
+                      text="Result Link"
+                      isUnfold={storyUnfold}
+                      setUnfold={this.storySetUnfold}
+                    ></LinkWithCopy>
                   </Row>
                   <p className="p-cs-true text-center mt-5">
                     Copy the
@@ -61,12 +88,11 @@ export default class ResultStory extends Component {
 }
 
 function LinkWithCopy(props) {
-  const { link, text } = props;
-  const [isUnfold, setUnfold] = useState(false);
+  const { link, text, isUnfold, setUnfold } = props;
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center m-4">
-      <CopyToClipboard className="clipboard" text={link} onCopy={() => setUnfold(true)}>
+      <CopyToClipboard className="clipboard" text={link} onCopy={setUnfold}>
         <span>
           <Row className="row-cs-true p-3">
             <p className="mr-3 my-auto copy-cs-true">{text}</p>
