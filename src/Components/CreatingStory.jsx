@@ -107,7 +107,7 @@ export default class CreatingStory extends Component {
           <Col sm={8} className="h-100">
             {submitSuccess ? (
               <>
-                <h1 className="h1-es-false text-center text-capitalize">
+                <h1 className="h1-es-false text-center text-capitalize mb-3">
                   <u>{story.storyTitle}.</u>
                 </h1>
                 <h2 className=" text-center ">Thank You!</h2>
