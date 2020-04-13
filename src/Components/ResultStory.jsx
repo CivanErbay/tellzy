@@ -52,7 +52,7 @@ export default class ResultStory extends Component {
 
     return (
       <div className="w-100">
-        <Row className="whatthefuck">
+        <Row>
           <Col>
             <Link to="/">
               <Button className="btn-home">Home</Button>
