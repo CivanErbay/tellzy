@@ -154,7 +154,7 @@ textarea {
 
 .form-es-false {
   /* margin: 3rem 10rem 2rem 10rem; */
-  margin: 4rem 12rem;
+  margin: 4rem 15rem;
   /* width: 80%; */
 }
 .h1-es-false {
@@ -307,6 +307,10 @@ textarea {
 
   .sm {
     display: none !important;
+  }
+
+  .hint-text {
+    height: 155px !important;
   }
 }
 

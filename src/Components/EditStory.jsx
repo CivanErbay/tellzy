@@ -154,7 +154,7 @@ export default class EditStory extends Component {
               <p>Loading...</p>
             ) : (
               <>
-                <h1 className="h1-es-false text-center text-capitalize">
+                <h1 className="h1-es-false text-center text-capitalize mb-3">
                   <u>{story.storyTitle}.</u>
                 </h1>
                 {!isEmpty(validParticipant) ? (
@@ -185,21 +185,23 @@ export default class EditStory extends Component {
                       </div>
                     ) : (
                       <>
-                        <h1 className="h1-cs-true">
-                          <u>Thank you!</u>
-                        </h1>
                         {submitSuccess ? (
-                          <LinkPage
-                            story={story}
-                            storyId={storyId}
-                            nextParticipant={nextParticipant}
-                          ></LinkPage>
+                          <>
+                            <h1 className="h1-cs-true">
+                              <u>Thank you!</u>
+                            </h1>
+                            <LinkPage
+                              story={story}
+                              storyId={storyId}
+                              nextParticipant={nextParticipant}
+                            ></LinkPage>
+                          </>
                         ) : (
                           <>
                             <h3 className="text-center">
                               You are the{" "}
                               {story.participants.reduce((acc, curr) => (acc += curr.isSubmitted ? 1 : 0), 1)}
-                              /{story.participants.length} editor
+                              /{story.participants.length} author
                             </h3>
 
                             <Form className="form-es-false" onSubmit={this.handleSubmit}>
@@ -212,10 +214,10 @@ export default class EditStory extends Component {
                                   </span>
                                 </Form.Label>
                                 <Form.Control
-                                  readOnly
+                                  className="hint-text"
+                                  sreadOnly
                                   as="textarea"
                                   value={hintText}
-                                  rows="2"
                                   name="hintText"
                                 />
                               </Form.Group>
