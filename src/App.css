@@ -64,7 +64,7 @@ textarea {
 }
 .h1-cs-true {
     font-size: 7.5rem !important;
-    padding: 0.8em 0 0.8em 0;
+    padding: 0.7em 0 0.5em 0;
     letter-spacing: -2px;
     /* border-bottom: solid; */
 }
@@ -75,9 +75,11 @@ textarea {
 .p-cs-true {
     font-size: 1.5rem;
 }
+.p-cs-true2 {
+    font-size: 1rem;
+}
 .copy-cs-true {
     font-size: 1.5rem;
-    font-weight: bold;
 }
 .btn-home {
     font-size: 2rem !important;
@@ -119,7 +121,16 @@ textarea {
     height: 100%;
 }
 .result-true-text {
-    height: 60vh !important;
+    line-height: 2;
+    background-image: url(/assets/images/paper2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: black;
+    filter: brightness(1.5);
+    margin: 0 10% 0 10%;
+    border-radius: 5px;
+    padding: 3em;
 }
 .h1-result-true {
     font-weight: bold !important;
