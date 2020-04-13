@@ -180,8 +180,7 @@ export default class EditStory extends Component {
                           <>
                             <h3 className="text-center">
                               You are the{" "}
-                              {1 +
-                                story.participants.reduce((acc, curr) => (acc + curr.isSubmitted ? 1 : 0), 0)}
+                              {story.participants.reduce((acc, curr) => (acc += curr.isSubmitted ? 1 : 0), 1)}
                               /{story.participants.length} editor
                             </h3>
 
