@@ -154,7 +154,9 @@ export default class EditStory extends Component {
               <p>Loading...</p>
             ) : (
               <>
-                <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}</h1>
+                <h1 className="h1-es-false text-center text-capitalize">
+                  <u>{story.storyTitle}.</u>
+                </h1>
                 {!isEmpty(validParticipant) ? (
                   <>
                     {validParticipant.isSubmitted ? (
