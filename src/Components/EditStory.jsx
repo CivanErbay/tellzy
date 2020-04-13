@@ -154,14 +154,12 @@ export default class EditStory extends Component {
               <p>Loading...</p>
             ) : (
               <>
-                <h1 className="h1-es-false text-center text-capitalize">
-                  <u>{story.storyTitle}.</u>
-                </h1>
+                <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}</h1>
                 {!isEmpty(validParticipant) ? (
                   <>
                     {validParticipant.isSubmitted ? (
                       <div>
-                        {nextParticipant ? (
+                        {nextParticipant && (
                           <p className="text-center mt-5">
                             {" "}
                             This story has already been edited by <br />
@@ -174,10 +172,9 @@ export default class EditStory extends Component {
                             by checking the <b>Result Link</b>.
                             <br />
                           </p>
-                        ) : (
-                          <h2>Thank You</h2>
                         )}
 
+                        <h2>Thank You</h2>
                         <LinkPage
                           story={story}
                           storyId={storyId}
