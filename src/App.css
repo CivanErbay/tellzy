@@ -141,7 +141,13 @@ textarea {
 }
 .h1-es-false {
     font-weight: bold !important;
-    font-size: 5rem !important;
+    font-size: 8rem !important;
+    margin: 4rem;
+}
+.h2-cs-false {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    font-size: 3rem;
 }
 .result-true-div {
     height: 100%;
@@ -253,6 +259,18 @@ textarea {
         font-weight: bold;
         font-size: 3rem;
         font-weight: bold;
+    }
+    .h1-es-false {
+        font-weight: bold !important;
+        font-size: 4rem !important;
+        margin: 0 auto !important;
+        margin-top: 3rem !important;
+    }
+    .p2-cs-true2 {
+        margin: 1.5rem;
+    }
+    .p-cs-true {
+        fonts-size: 1.5rem !important;
     }
 }
 
