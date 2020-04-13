@@ -19,8 +19,8 @@ function App() {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/story" component={CreatingStory} />
+          <Route exact path="/story/:storyId" component={ResultStory} />
           <Route path="/story/:storyId/:secret" component={EditStory} />
-          <Route path="/story/:storyId" component={ResultStory} />
         </Switch>
       </Router>
     </div>

@@ -14,14 +14,17 @@ export default class ResultStory extends Component {
   }
 
   render() {
-    const { nextLink, nextParticipant, storyLink } = this.props;
+    const { story, storyId, nextParticipant } = this.props;
+
+    const storyLink = `www.tellzy.web.app/story/${storyId}`;
+    const nextLink = `www.tellzy.web.app/story/${storyId}/${nextParticipant.secret}`;
 
     return (
       <div>
         <div className="d-flex flex-column justify-content-center align-items-center mt-3">
           {
             <>
-              <h1 className="h1-cs-true">Thank you!</h1>
+              {/* <h1 className="h1-cs-true">Thank you!</h1> */}
               <Row className="wrap-links-linkpage">
                 <LinkWithCopy link={nextLink} text="Edit Story Link"></LinkWithCopy>
                 <LinkWithCopy link={storyLink} text="Result Story Link"></LinkWithCopy>

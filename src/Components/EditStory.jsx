@@ -19,8 +19,7 @@ export default class EditStory extends Component {
       secret: "",
       story: {},
       submitSuccess: false,
-      nextLink: "",
-      nextParticipant: {},
+      nextParticipant: null,
     };
   }
 
@@ -101,7 +100,6 @@ export default class EditStory extends Component {
         return { ...validParticipant, isSubmitted: true, submittedOn: new Date() };
       else return participant;
     });
-    console.log(story);
 
     await storyRef.set({ ...story }, { merge: true }).catch(function (error) {
       console.error("Error adding document: ", error);
@@ -109,11 +107,10 @@ export default class EditStory extends Component {
       return;
     });
     // TODO look for next participant to show their email and generate secret link
-    const nextParticipant = { email: "dummy!" };
+    let nextParticipant = story.participants.filter((participant) => !participant.isSubmitted);
+    if (nextParticipant.length > 0) nextParticipant = nextParticipant[0];
     // TODO consider end of story
     this.setState({
-      nextLink: `www.tellzy.web.app/story/${storyId}/${nextParticipant.secret}`,
-      storyLink: `www.tellzy.web.app/story/${storyId}`,
       submitSuccess: true,
       nextParticipant,
     });
@@ -124,12 +121,12 @@ export default class EditStory extends Component {
       submitSuccess,
       validParticipant,
       story,
+      storyId,
       isLoading,
       hintText,
       nextParticipant,
-      nextLink,
-      storyLink,
     } = this.state;
+    const storyLink = `www.tellzy.web.app/story/${storyId}`;
 
     return (
       <div className="edit-story">
@@ -144,47 +141,68 @@ export default class EditStory extends Component {
               <p>Loading...</p>
             ) : (
               <>
-                <h1 className="h1-es-false text-center">{story.storyTitle}</h1>
+                <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}</h1>
                 {!isEmpty(validParticipant) ? (
                   <>
                     {validParticipant.isSubmitted ? (
-                      <div>This story has already been edited by {validParticipant.email}</div>
+                      <div>
+                        This story has already been edited by <br />
+                        {validParticipant.email}
+                        <br />
+                        This link not valid any more, but you can check the progress of{" "}
+                        <span className="text-capitalize">"{story.storyTitle}"</span> at <br />
+                        <a rel="noopener noreferrer" href={storyLink} target="_blank">
+                          {storyLink}
+                        </a>
+                      </div>
                     ) : (
                       <>
                         {submitSuccess ? (
                           <LinkPage
-                            nextLink={nextLink}
+                            story={story}
+                            storyId={storyId}
                             nextParticipant={nextParticipant}
-                            storyLink={storyLink}
                           ></LinkPage>
                         ) : (
-                          <Form className="form-es-false" onSubmit={this.handleSubmit}>
-                            <Form.Group>
-                              <Form.Label>Previously on "{story.storyTitle}"...</Form.Label>
-                              <Form.Control
-                                readOnly
-                                as="textarea"
-                                value={hintText}
-                                rows="2"
-                                name="hintText"
-                              />
-                            </Form.Group>
-                            <Form.Group>
-                              <Form.Label>{validParticipant.email} can continue the story</Form.Label>
-                              <Form.Control
-                                required
-                                as="textarea"
-                                placeholder="Continue the adventure..."
-                                rows="10"
-                                name="storyText"
-                                onChange={this.handleChange.bind(this)}
-                              />
-                            </Form.Group>
+                          <>
+                            <h3 className="text-center">
+                              You are the{" "}
+                              {1 +
+                                story.participants.reduce((acc, curr) => (acc + curr.isSubmitted ? 1 : 0), 0)}
+                              /{story.participants.length} editor
+                            </h3>
 
-                            <Button className="go-btn-cs-false" type="submit">
-                              Submit
-                            </Button>
-                          </Form>
+                            <Form className="form-es-false" onSubmit={this.handleSubmit}>
+                              <Form.Group>
+                                <Form.Label>
+                                  Previously on{" "}
+                                  <span className="text-capitalize">"{story.storyTitle}"...</span>
+                                </Form.Label>
+                                <Form.Control
+                                  readOnly
+                                  as="textarea"
+                                  value={hintText}
+                                  rows="2"
+                                  name="hintText"
+                                />
+                              </Form.Group>
+                              <Form.Group>
+                                <Form.Label>{validParticipant.email} can continue the story</Form.Label>
+                                <Form.Control
+                                  required
+                                  as="textarea"
+                                  placeholder="Continue the adventure..."
+                                  rows="10"
+                                  name="storyText"
+                                  onChange={this.handleChange.bind(this)}
+                                />
+                              </Form.Group>
+
+                              <Button className="go-btn-cs-false" type="submit">
+                                Submit
+                              </Button>
+                            </Form>
+                          </>
                         )}
                       </>
                     )}

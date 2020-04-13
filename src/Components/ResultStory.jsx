@@ -64,10 +64,19 @@ export default class ResultStory extends Component {
             ) : (
               <div className="d-flex flex-column justify-content-center align-items-center result-true-div">
                 <h1 className="h1-result-true">Result</h1>
-                <p>{storyFinished ? "The story is finished" : "Still waiting for a participant"}</p>
-                <textarea className="w-75 result-true-text">
-                  {story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}
-                </textarea>
+                <p>
+                  {storyFinished ? (
+                    <div>
+                      <h2>"The story is finished!"</h2>
+                      <textarea className="w-75 result-true-text">
+                        {story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}
+                      </textarea>
+                    </div>
+                  ) : (
+                    "Still waiting for a participant..."
+                  )}
+                </p>
+
                 <div>
                   <p>Here are the participants:</p>
                   <ul>

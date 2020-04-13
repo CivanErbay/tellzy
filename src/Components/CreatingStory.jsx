@@ -10,13 +10,9 @@ export default class CreatingStory extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      creatorEmail: "",
-      participantsEmails: "",
-      nextParticipant: { email: "test@test.de" },
-      storyTitle: "",
-      storyText: "",
-      submitSuccess: true,
-      nextLink: "",
+      story: {},
+      storyId: "",
+      submitSuccess: false,
       isUnfold: false,
     };
   }
@@ -24,19 +20,22 @@ export default class CreatingStory extends Component {
   handleChange(event) {
     let fieldName = event.target.name;
     let fleldVal = event.target.value;
-    this.setState({ ...this.state, [fieldName]: fleldVal });
+    this.setState({ ...this.state, story: { ...this.state.story, [fieldName]: fleldVal } });
   }
 
   handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { creatorEmail, storyTitle, storyText, participantsEmails } = this.state;
+    const {
+      story: { creatorEmail, storyTitle, storyText, participantsEmails },
+    } = this.state;
+
     const firstPart = {
       author: creatorEmail,
       timestamp: new Date(),
       text: storyText,
     };
-    let participants = participantsEmails.split(/,[\s|\n]*/g).map((email) => {
+    let participants = participantsEmails.split(/[,|\s|\n]+/g).map((email) => {
       return {
         email,
         secret: this.makeid(8),
@@ -44,6 +43,7 @@ export default class CreatingStory extends Component {
         submittedOn: null,
       };
     });
+
     participants.push({
       email: creatorEmail,
       secret: this.makeid(8),
@@ -69,10 +69,9 @@ export default class CreatingStory extends Component {
     const nextParticipant = participants[0];
 
     this.setState({
-      nextLink: `www.tellzy.web.app/story/${docRef.id}/${nextParticipant.secret}`,
-      storyLink: `www.tellzy.web.app/story/${docRef.id}`,
       submitSuccess: true,
       nextParticipant,
+      storyId: docRef.id,
     });
   };
 
@@ -87,7 +86,7 @@ export default class CreatingStory extends Component {
   }
 
   render() {
-    const { submitSuccess, nextLink, nextParticipant, storyLink } = this.state;
+    const { submitSuccess, nextParticipant, story, storyId } = this.state;
 
     return (
       <div className="create-story">
@@ -99,11 +98,7 @@ export default class CreatingStory extends Component {
           </Col>
           <Col sm={8} className="h-100">
             {submitSuccess ? (
-              <LinkPage
-                nextLink={nextLink}
-                nextParticipant={nextParticipant}
-                storyLink={storyLink}
-              ></LinkPage>
+              <LinkPage story={story} storyId={storyId} nextParticipant={nextParticipant}></LinkPage>
             ) : (
               <>
                 <h1 className="h1-cs-false text-center">Create new story</h1>
