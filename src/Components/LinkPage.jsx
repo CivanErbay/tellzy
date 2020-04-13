@@ -27,17 +27,14 @@ export default class ResultStory extends Component {
             <>
               {nextParticipant ? (
                 <>
-                  <h1 className="h1-cs-true">
-                    <u>Thank you!</u>
-                  </h1>
                   <Row className="wrap-links-linkpage d-flex justify-content-center align-items-center">
                     <LinkWithCopy link={nextLink} text="Edit Link"></LinkWithCopy>
                     <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy>
                   </Row>
                   <p className="p-cs-true text-center mt-5">
                     Copy the
-                    <span className="highlight"> Edit </span>
-                    Link and send it to
+                    <span className="highlight"> Edit Link </span>
+                    and send it to
                     <span className="highlight"> {nextParticipant.email}</span>
                   </p>
 
@@ -73,15 +70,11 @@ function LinkWithCopy(props) {
         <span>
           <Row className="row-cs-true p-3">
             <p className="mr-3 my-auto copy-cs-true">{text}</p>
-            <img src="assets/images/copy.png" />
+            {isUnfold ? <i className="fas fa-check fa-3x"></i> : <i className="far fa-copy fa-3x"></i>}
+            {/* <img src="assets/images/copy.png" /> */}
           </Row>
         </span>
       </CopyToClipboard>
-      {isUnfold && (
-        <>
-          <p className="mt-3">Succesfully copied!</p>
-        </>
-      )}
     </div>
   );
 }

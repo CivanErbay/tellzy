@@ -182,6 +182,9 @@ export default class EditStory extends Component {
                       </div>
                     ) : (
                       <>
+                        <h1 className="h1-cs-true">
+                          <u>Thank you!</u>
+                        </h1>
                         {submitSuccess ? (
                           <LinkPage
                             story={story}
