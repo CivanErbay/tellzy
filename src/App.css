@@ -151,40 +151,45 @@ textarea {
     position: relative;
     opacity: 0;
 }
-@-webkit-keyframes soft-blink {
+/* @-webkit-keyframes soft-blink {
     0% {
-        opacity: 0;
-    }
-    /* 50% {
         opacity: 0.5;
-    } */
+    }
+    50% {
+        opacity: 0.5;
+    }
     100% {
         opacity: 1;
+        transform: translateY(15px);
     }
-}
+} */
 @keyframes soft-blink {
     0% {
-        opacity: 0;
+        opacity: 1;
     }
-    /* 50% {
-        opacity: 0.5;
-    } */
+    50% {
+        transform: translateY(12px);
+    }
+    75% {
+        transform: translateY(0);
+    }
     100% {
         opacity: 1;
+        transform: translateY(12px);
     }
 }
 .arrow:after {
     content: "";
     position: absolute;
     bottom: 0;
-    left: -7.5px;
+    left: -7.1px;
     border-bottom: 6px solid white;
     border-right: 6px solid white;
     border-top: 6px solid transparent;
     border-left: 6px solid transparent;
-    border-radius: 4px;
-    width: 20px;
-    height: 20px;
+    border-radius: 2.5px;
+    width: 21px;
+    height: 21px;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }

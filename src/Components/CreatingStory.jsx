@@ -7,159 +7,191 @@ import { Link } from "react-router-dom";
 import LinkPage from "./LinkPage";
 
 export default class CreatingStory extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      story: {},
-      storyId: "",
-      submitSuccess: false,
-      isUnfold: false,
-    };
-  }
-
-  handleChange(event) {
-    let fieldName = event.target.name;
-    let fleldVal = event.target.value;
-    this.setState({ ...this.state, story: { ...this.state.story, [fieldName]: fleldVal } });
-  }
-
-  handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const {
-      story: { creatorEmail, storyTitle, storyText, participantsEmails },
-    } = this.state;
-
-    const firstPart = {
-      author: creatorEmail,
-      timestamp: new Date(),
-      text: storyText,
-    };
-    let participants = participantsEmails.split(/[,|\s|\n]+/g).map((email) => {
-      return {
-        email,
-        secret: this.makeid(8),
-        isSubmitted: false,
-        submittedOn: null,
-      };
-    });
-
-    participants.push({
-      email: creatorEmail,
-      secret: this.makeid(8),
-      isSubmitted: true,
-      submittedOn: new Date(),
-    });
-
-    const newStory = {
-      creatorEmail,
-      storyTitle,
-      participants,
-      storyParts: [firstPart],
-    };
-
-    let docRef = await db
-      .collection("stories")
-      .add(newStory)
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
-        return;
-      });
-
-    const nextParticipant = participants[0];
-
-    this.setState({
-      submitSuccess: true,
-      nextParticipant,
-      storyId: docRef.id,
-    });
-  };
-
-  makeid(length) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    constructor(props) {
+        super(props);
+        this.state = {
+            story: {},
+            storyId: "",
+            submitSuccess: false,
+            isUnfold: false,
+        };
     }
-    return result;
-  }
 
-  render() {
-    const { submitSuccess, nextParticipant, story, storyId } = this.state;
+    handleChange(event) {
+        let fieldName = event.target.name;
+        let fleldVal = event.target.value;
+        this.setState({
+            ...this.state,
+            story: { ...this.state.story, [fieldName]: fleldVal },
+        });
+    }
 
-    return (
-      <div className="create-story">
-        <Row className="my-5">
-          <Col sm={2}>
-            <Link to="/">
-              <Button className="btn-home">Home</Button>
-            </Link>
-          </Col>
-          <Col sm={8} className="h-100">
-            {submitSuccess ? (
-              <LinkPage story={story} storyId={storyId} nextParticipant={nextParticipant}></LinkPage>
-            ) : (
-              <>
-                <h1 className="h1-cs-false text-center">Create new story</h1>
-                <Form className="form-cs-false" onSubmit={this.handleSubmit}>
-                  <Form.Group>
-                    <Form.Label>Email Address</Form.Label>
-                    <Form.Control
-                      required
-                      type="email"
-                      placeholder="name@example.com"
-                      name="creatorEmail"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
-                  {/* Participants */}
-                  <Form.Group>
-                    <Form.Label>Participants Emails</Form.Label>
-                    <Form.Control
-                      required
-                      as="textarea"
-                      rows="2"
-                      name="participantsEmails"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
-                  {/* TITLE */}
-                  <Form.Group>
-                    <Form.Label>Story Title</Form.Label>
-                    <Form.Control
-                      required
-                      as="textarea"
-                      rows="1"
-                      name="storyTitle"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
-                  {/* STAT STORY */}
-                  <Form.Group>
-                    <Form.Label>Start your Story!</Form.Label>
-                    <Form.Control
-                      required
-                      as="textarea"
-                      placeholder="Once upon a time..."
-                      rows="5"
-                      name="storyText"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
+    handleSubmit = async (event) => {
+        event.preventDefault();
 
-                  <Row className="d-flex justify-content-between p-3">
-                    <Button className="go-btn-cs-false" type="submit">
-                      Start Journey
-                    </Button>
-                  </Row>
-                </Form>
-              </>
-            )}
-          </Col>
-          <Col sm={2}></Col>
-        </Row>
-      </div>
-    );
-  }
+        const {
+            story: { creatorEmail, storyTitle, storyText, participantsEmails },
+        } = this.state;
+
+        const firstPart = {
+            author: creatorEmail,
+            timestamp: new Date(),
+            text: storyText,
+        };
+        let participants = participantsEmails
+            .split(/[,|\s|\n]+/g)
+            .map((email) => {
+                return {
+                    email,
+                    secret: this.makeid(8),
+                    isSubmitted: false,
+                    submittedOn: null,
+                };
+            });
+
+        participants.push({
+            email: creatorEmail,
+            secret: this.makeid(8),
+            isSubmitted: true,
+            submittedOn: new Date(),
+        });
+
+        const newStory = {
+            creatorEmail,
+            storyTitle,
+            participants,
+            storyParts: [firstPart],
+        };
+
+        let docRef = await db
+            .collection("stories")
+            .add(newStory)
+            .catch(function (error) {
+                console.error("Error adding document: ", error);
+                return;
+            });
+
+        const nextParticipant = participants[0];
+
+        this.setState({
+            submitSuccess: true,
+            nextParticipant,
+            storyId: docRef.id,
+        });
+    };
+
+    makeid(length) {
+        var result = "";
+        var characters =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var charactersLength = characters.length;
+        for (var i = 0; i < length; i++) {
+            result += characters.charAt(
+                Math.floor(Math.random() * charactersLength)
+            );
+        }
+        return result;
+    }
+
+    render() {
+        const { submitSuccess, nextParticipant, story, storyId } = this.state;
+
+        return (
+            <div className="create-story">
+                <Row className="my-5">
+                    <Col sm={2}>
+                        <Link to="/">
+                            <Button className="btn-home">Home</Button>
+                        </Link>
+                    </Col>
+                    <Col sm={8} className="h-100">
+                        {submitSuccess ? (
+                            <LinkPage
+                                story={story}
+                                storyId={storyId}
+                                nextParticipant={nextParticipant}
+                            ></LinkPage>
+                        ) : (
+                            <>
+                                <h1 className="h1-cs-false text-center">
+                                    Create new story
+                                </h1>
+                                <Form
+                                    className="form-cs-false"
+                                    onSubmit={this.handleSubmit}
+                                >
+                                    <Form.Group>
+                                        <Form.Label>Email Address</Form.Label>
+                                        <Form.Control
+                                            required
+                                            type="email"
+                                            placeholder="name@example.com"
+                                            name="creatorEmail"
+                                            onChange={this.handleChange.bind(
+                                                this
+                                            )}
+                                        />
+                                    </Form.Group>
+                                    {/* Participants */}
+                                    <Form.Group>
+                                        <Form.Label>
+                                            Participants Emails
+                                        </Form.Label>
+                                        <Form.Control
+                                            required
+                                            as="textarea"
+                                            rows="2"
+                                            name="participantsEmails"
+                                            onChange={this.handleChange.bind(
+                                                this
+                                            )}
+                                        />
+                                    </Form.Group>
+                                    {/* TITLE */}
+                                    <Form.Group>
+                                        <Form.Label>Story Title</Form.Label>
+                                        <Form.Control
+                                            required
+                                            as="textarea"
+                                            rows="1"
+                                            name="storyTitle"
+                                            onChange={this.handleChange.bind(
+                                                this
+                                            )}
+                                        />
+                                    </Form.Group>
+                                    {/* STAT STORY */}
+                                    <Form.Group>
+                                        <Form.Label>
+                                            Start your Story!
+                                        </Form.Label>
+                                        <Form.Control
+                                            required
+                                            as="textarea"
+                                            placeholder="Once upon a time..."
+                                            rows="5"
+                                            name="storyText"
+                                            onChange={this.handleChange.bind(
+                                                this
+                                            )}
+                                        />
+                                    </Form.Group>
+
+                                    <Row className="d-flex justify-content-between p-3">
+                                        <Button
+                                            className="go-btn-cs-false"
+                                            type="submit"
+                                        >
+                                            Start Journey
+                                        </Button>
+                                    </Row>
+                                </Form>
+                            </>
+                        )}
+                    </Col>
+                    <Col sm={2}></Col>
+                </Row>
+            </div>
+        );
+    }
 }
