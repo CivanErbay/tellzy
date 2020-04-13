@@ -34,11 +34,13 @@ export default class ResultStory extends Component {
 
                     <p className="p-5 p-cs-true text-center">
                       Copy the <u>Edit Story Link</u> and send it to <strong>{nextParticipant.email}</strong>.{" "}
-                      <br /> Soon you'll get the whole story! <br />
-                      In the meantime, track the status on the <u>Result Story Link</u>
                     </p>
                   </>
                 )}
+                <p className="p-5 p-cs-true text-center">
+                  Soon you'll get the whole story! <br />
+                  In the meantime, track the status on the <u>Result Story Link</u>
+                </p>
               </Row>
             </>
           }
