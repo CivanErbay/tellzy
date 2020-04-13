@@ -53,13 +53,11 @@ export default class Landing extends Component {
                                 <b>How to</b>
                             </h1>
                             <div className="wrap text-left">
-                                <h3 className="mt-4">
+                                <h3 className="mt-4 mb-4">
                                     1. Creator initiates a new story
                                 </h3>
-                                <h3 className="mt-4">
-                                    2. Authors continue one after another
-                                </h3>
-                                <h3 className="mt-4">
+                                <h3>2. Authors continue one after another</h3>
+                                <h3 className="mt-4 mb-4">
                                     3. Everybody get the finished story provided
                                 </h3>
                             </div>
