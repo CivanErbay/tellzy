@@ -161,7 +161,7 @@ export default class EditStory extends Component {
                   <>
                     {validParticipant.isSubmitted ? (
                       <div>
-                        {nextParticipant && (
+                        {nextParticipant ? (
                           <p className="text-center mt-5">
                             {" "}
                             This story has already been edited by <br />
@@ -174,6 +174,8 @@ export default class EditStory extends Component {
                             by checking the <b>Result Link</b>.
                             <br />
                           </p>
+                        ) : (
+                          <h2>Thank You</h2>
                         )}
 
                         <LinkPage
