@@ -128,6 +128,7 @@ textarea {
 .h1-landing-part2 {
     font-size: 5rem;
     border-right: solid;
+    border-bottom: solid;
     padding: 0.6em;
     border-width: 0.1em;
 }
