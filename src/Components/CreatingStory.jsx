@@ -119,7 +119,7 @@ export default class CreatingStory extends Component {
                         ) : (
                             <>
                                 <h1 className="h1-cs-false text-center">
-                                    Create new story
+                                    Create new story.
                                 </h1>
                                 <Form
                                     className="form-cs-false"
