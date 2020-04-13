@@ -59,6 +59,9 @@ export default class ResultStory extends Component {
                                 </>
                             ) : (
                                 <>
+                                    <h1 className="h1-es-false text-center text-capitalize">
+                                        {story.storyTitle}
+                                    </h1>
                                     <p className="p-5 p-cs-true text-center">
                                         Congratulations!<br></br> You were the
                                         last author, which means your collective

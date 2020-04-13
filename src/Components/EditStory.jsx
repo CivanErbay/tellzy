@@ -290,9 +290,9 @@ export default class EditStory extends Component {
                                         )}
                                     </>
                                 ) : (
-                                    <div className="d-flex justify-content-center">
+                                    <div className="d-flex justify-content-center p-deadlink-true">
                                         Sorry, the edit link for this story is
-                                        unknown
+                                        not valid.
                                     </div>
                                 )}
                             </>
