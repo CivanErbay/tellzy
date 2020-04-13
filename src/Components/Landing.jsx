@@ -17,18 +17,20 @@ export default class Landing extends Component {
             <Col></Col>
             <Col className="text-center d-flex align-items-center justify-content-center">
               <Link to="/story">
-                <Button className="new-story-btn">New Story</Button>
+                <Button className="new-story-btn sm">New Story</Button>
               </Link>
             </Col>
           </Row>
           <Row className="second-row">
             <Col></Col>
             <Col>
-              <h1 className="h1 my-4">Tellzy</h1>
-              <div className="wrap">
-                <h3 className="h3">collective storytelling.</h3>
-                <h3>share your imagination.</h3>
-                <h3>simple & exciting.</h3>
+              <div className="d-flex flex-wrap">
+                <h1 className="h1 my-4">Tellzy</h1>
+                <div className="wrap">
+                  <h3 className="h3">collective storytelling.</h3>
+                  <h3>share your imagination.</h3>
+                  <h3>simple & exciting.</h3>
+                </div>
               </div>
             </Col>
             <Col></Col>
@@ -42,25 +44,36 @@ export default class Landing extends Component {
           <Row className="row-landing-part2">
             <Col className="d-flex flex-column justify-content-end" sm={2}></Col>
             <Col sm={8} className="text-center d-flex align-items-center justify-content-center">
-              <h1 className="h1-landing-part2 mr-5">
-                <b>How to</b>
-              </h1>
-              <div className="wrap text-left">
-                <h3 className="mt-4 mb-4">1. Start a New Story and invite some friends</h3>
-                <h3>2. Share the Edit Link to your next buddy</h3>
-                <h3 className="mt-4 mb-4">3. Check out your mad adventure at your Story Link!</h3>
+              <div className="d-flex flex-wrap">
+                <div>
+                  <h1 className="h1-landing-part2 mr-5">
+                    <b>How to</b>
+                  </h1>
+                </div>
+                <div className="wrap text-left m-4">
+                  <h3 className="mt-4 mb-4">1. Start a New Story and invite some friends</h3>
+                  <h3>2. Share the Edit Link to your next buddy</h3>
+                  <h3 className="mt-4 mb-4">3. Check out your mad adventure at your Story Link!</h3>
+                </div>
               </div>
             </Col>
-            <Col sm={2}>
+            <Col sm={2}></Col>
+          </Row>
+
+          <Row className="first-row">
+            <Col className="text-center d-flex align-items-center justify-content-center">
+              <Button className="btn-up sm" onClick={() => scroll.scrollToTop()}>
+                <b>Up</b>
+              </Button>
+            </Col>
+            <Col></Col>
+            <Col></Col>
+            <Col className="text-center d-flex align-items-center justify-content-center">
               <Link to="/story">
                 <Button className="new-story-btn">New Story</Button>
               </Link>
             </Col>
           </Row>
-
-          <Button className="btn-up" onClick={() => scroll.scrollToTop()}>
-            <b>Up</b>
-          </Button>
         </div>
       </>
     );
