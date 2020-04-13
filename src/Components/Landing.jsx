@@ -4,6 +4,7 @@ import { Col } from "react-bootstrap";
 import { Container } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { animateScroll as scroll } from "react-scroll";
 
 export default class Landing extends Component {
     render() {
@@ -64,11 +65,13 @@ export default class Landing extends Component {
                         </Col>
                         <Col sm={2}></Col>
                     </Row>
-                    <Link to="#">
-                        <Button className="btn-up">
-                            <b>Up</b>
-                        </Button>
-                    </Link>
+
+                    <Button
+                        className="btn-up"
+                        onClick={() => scroll.scrollToTop()}
+                    >
+                        <b>Up</b>
+                    </Button>
                 </div>
             </>
         );

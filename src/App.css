@@ -4,6 +4,7 @@
     font-family: "Merriweather", serif;
     color: white;
     overflow: hidden;
+    scroll-behavior: smooth !important;
 }
 
 .first-row {
