@@ -38,7 +38,17 @@ export default class CreatingStory extends Component {
             timestamp: new Date(),
             text: storyText,
         };
-        let participants = participantsEmails
+
+        let participants = [
+            {
+                email: creatorEmail,
+                secret: this.makeid(8),
+                isSubmitted: true,
+                submittedOn: new Date(),
+            },
+        ];
+
+        const otherParticipants = participantsEmails
             .split(/[,|\s|\n]+/g)
             .map((email) => {
                 return {
@@ -49,12 +59,9 @@ export default class CreatingStory extends Component {
                 };
             });
 
-        participants.push({
-            email: creatorEmail,
-            secret: this.makeid(8),
-            isSubmitted: true,
-            submittedOn: new Date(),
-        });
+        const nextParticipant = otherParticipants[0];
+        // add all participants in one array
+        participants = participants.concat(otherParticipants);
 
         const newStory = {
             creatorEmail,
@@ -70,8 +77,6 @@ export default class CreatingStory extends Component {
                 console.error("Error adding document: ", error);
                 return;
             });
-
-        const nextParticipant = participants[0];
 
         this.setState({
             submitSuccess: true,
