@@ -13,6 +13,9 @@ export default class ResultStory extends Component {
       nextUnfold: false,
       storyUnfold: false,
     };
+
+    this.nextSetUnfold = this.nextSetUnfold.bind(this);
+    this.storySetUnfold = this.storySetUnfold.bind(this);
   }
 
   nextSetUnfold() {
@@ -28,12 +31,12 @@ export default class ResultStory extends Component {
   }
 
   render() {
-    const { story, storyId, nextParticipant, nextUnfold, storyUnfold } = this.props;
+    const { story, storyId, nextParticipant } = this.props;
+    const { nextUnfold, storyUnfold } = this.state;
 
     const storyLink = `tellzy.web.app/story/${storyId}`;
     let nextLink = null;
     if (nextParticipant) nextLink = `tellzy.web.app/story/${storyId}/${nextParticipant.secret}`;
-
     return (
       <div>
         <div className="d-flex flex-column justify-content-center align-items-center mt-3">
