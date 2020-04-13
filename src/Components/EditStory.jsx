@@ -5,7 +5,6 @@ import { db } from "./../config/firebaseConfig";
 import LinkPage from "./LinkPage";
 import { Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
-import { isCompositeComponentWithType } from "react-dom/test-utils";
 import { isEmpty } from "lodash";
 
 export default class EditStory extends Component {
@@ -106,15 +105,23 @@ export default class EditStory extends Component {
       this.setState({ error: true });
       return;
     });
-    // TODO look for next participant to show their email and generate secret link
-    let nextParticipant = story.participants.filter((participant) => !participant.isSubmitted);
-    if (nextParticipant.length > 0) nextParticipant = nextParticipant[0];
-    // TODO consider end of story
+
+    const nextParticipant = this.getNextParticipant();
     this.setState({
       submitSuccess: true,
       nextParticipant,
     });
   };
+
+  getNextParticipant() {
+    const { story } = this.state;
+
+    let nextParticipant = null;
+    let unsubmitted = story.participants.filter((participant) => !participant.isSubmitted);
+    if (unsubmitted.length > 0) nextParticipant = unsubmitted[0];
+
+    return nextParticipant;
+  }
 
   render() {
     const {
@@ -155,7 +162,11 @@ export default class EditStory extends Component {
                         <a rel="noopener noreferrer" href={storyLink} target="_blank">
                           {storyLink}
                         </a>
-                        <LinkPage story={story} storyId={storyId}></LinkPage>
+                        <LinkPage
+                          story={story}
+                          storyId={storyId}
+                          nextParticipant={this.getNextParticipant()}
+                        ></LinkPage>
                       </div>
                     ) : (
                       <>
