@@ -63,7 +63,7 @@ export default class ResultStory extends Component {
               <p>Loading...</p>
             ) : (
               <div className="d-flex flex-column justify-content-center align-items-center result-true-div">
-                <h1 className="h1-result-true">Result</h1>
+                <h1 className="h1-result-true text-capitalize">{story.storyTitle} </h1>
                 <p>
                   {storyFinished ? (
                     <div>
@@ -78,7 +78,7 @@ export default class ResultStory extends Component {
                 </p>
 
                 <div>
-                  <p>Here are the participants:</p>
+                  <p>Participant statistics:</p>
                   <ul>
                     {story.participants.map((participant) => (
                       <li key={participant.email}>
