@@ -73,7 +73,7 @@ export default class ResultStory extends Component {
                       </textarea>
                     </div>
                   ) : (
-                    "Still waiting for a participant..."
+                    "Still waiting for participants to finish..."
                   )}
                 </p>
 
