@@ -78,7 +78,7 @@ textarea {
 }
 .button-back {
     font-size: 2.5rem;
-    font-weight: bold;
+    /* font-weight: bold; */
     padding: 2em;
     background-color: #b1c5d4 !important;
     border-color: #b1c5d4 !important;
@@ -138,9 +138,9 @@ textarea {
     margin-top: 3rem;
     margin-bottom: 4rem;
     text-decoration: underline;
-    font-weight: bold;
+    /* font-weight: bold;
 
-    font-weight: bold;
+    font-weight: bold; */
 }
 .go-btn-cs-false {
     padding: 0.5em 2em 0.5em 2em !important;
@@ -158,7 +158,7 @@ textarea {
     /* width: 80%; */
 }
 .h1-es-false {
-    font-weight: bold !important;
+    /* font-weight: bold !important; */
     font-size: 8rem !important;
     margin: 4rem;
 }
@@ -183,7 +183,7 @@ textarea {
     padding: 3em;
 }
 .h1-result-true {
-    font-weight: bold !important;
+    /* font-weight: bold !important; */
     font-size: 5rem !important;
     padding: 0.75em 0 0.3em 0;
 }
@@ -274,12 +274,10 @@ textarea {
         margin-top: 2rem;
         margin-bottom: 2rem;
         text-decoration: underline;
-        font-weight: bold;
+
         font-size: 3rem;
-        font-weight: bold;
     }
     .h1-es-false {
-        font-weight: bold !important;
         font-size: 4rem !important;
         margin: 0 auto !important;
         margin-top: 3rem !important;
@@ -289,6 +287,12 @@ textarea {
     }
     .p-cs-true {
         fonts-size: 1.5rem !important;
+    }
+    .new-story-btn {
+        font-size: 2rem !important;
+        padding: 1.5rem !important;
+        margin-top: 1.5rem !important;
+        margin-right: 5.5rem !important;
     }
 }
 
