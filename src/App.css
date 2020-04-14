@@ -112,7 +112,9 @@ textarea {
 .copy-cs-true {
     font-size: 1.5rem;
 }
-
+.big-font {
+    font-size: 4.5rem;
+}
 .btn-home {
     font-size: 2rem !important;
     padding: 1.5rem !important;
@@ -135,6 +137,7 @@ textarea {
     /* margin: 3rem 10rem 2rem 10rem; */
     margin: 1rem;
 }
+
 .h1-cs-false {
     font-size: 5rem;
     margin-top: 3rem;
@@ -169,11 +172,9 @@ textarea {
     margin-bottom: 3rem;
     font-size: 3rem;
 }
-.result-true-div {
-    height: 100%;
-}
+
 .result-true-text {
-    line-height: 2;
+    line-height: 1.5;
     background-image: url(/assets/images/paper2.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -183,11 +184,17 @@ textarea {
     margin: 0 10% 0 10%;
     border-radius: 5px;
     padding: 3em;
+    font-size: 1.5rem;
+    font-family: "Gochi Hand", cursive;
 }
-.h1-result-true {
+.result-true-div .h1-result-true {
     /* font-weight: bold !important; */
     font-size: 5rem !important;
     padding: 0.75em 0 0.3em 0;
+    height: 100%;
+}
+.result-true-page {
+    margin-top: 5rem;
 }
 .h1-landing-part2 {
     font-size: 5rem;
@@ -215,18 +222,27 @@ textarea {
     position: relative;
     opacity: 0;
 }
-/* @-webkit-keyframes soft-blink {
+.centered {
+    margin: 0 auto !important;
+}
+.social:hover {
+    color: #b1c5d4;
+}
+@-webkit-keyframes soft-blink {
     0% {
-        opacity: 0.5;
+        opacity: 1;
     }
     50% {
-        opacity: 0.5;
+        transform: translateY(12px);
+    }
+    75% {
+        transform: translateY(0);
     }
     100% {
         opacity: 1;
-        transform: translateY(15px);
+        transform: translateY(12px);
     }
-} */
+}
 @keyframes soft-blink {
     0% {
         opacity: 1;
@@ -278,8 +294,8 @@ textarea {
     }
     .btn-home {
         font-size: 2rem !important;
-        padding: 1.5rem !important;
-        margin-top: -1.5rem !important;
+        padding: 1rem !important;
+        margin-top: !important;
 
         /* margin-left: 3rem !important;
         background-color: #b1c5d4 !important;
@@ -311,6 +327,13 @@ textarea {
 
     .hint-text {
         height: 155px !important;
+    }
+    .result-true-text {
+        margin: 0 !important;
+        padding: 1rem;
+    }
+    .story-result-true {
+        padding: 0 !important;
     }
 }
 
