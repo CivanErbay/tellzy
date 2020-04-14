@@ -38,21 +38,21 @@ export default class Landing extends Component {
                                     <h3 className="h3-landing">
                                         simple & exciting.
                                     </h3>
+                                    <p className="landing-quote">
+                                        <i>
+                                            {" "}
+                                            “There is no greater agony than
+                                            bearing an untold story inside you.”{" "}
+                                        </i>{" "}
+                                        <b>Maya Angelou</b>
+                                    </p>
                                 </div>
                             </div>
                         </Col>
-                        <Col> </Col>
+                        <Col className="negative-z-index"> </Col>
                     </Row>
 
                     <Row className="landing-third-row d-flex flex-column align-items-center justify-content-center ">
-                        <p className="landing-quote">
-                            <i>
-                                {" "}
-                                “There is no greater agony than bearing an
-                                untold story inside you.”{" "}
-                            </i>{" "}
-                            ― <b>Maya Angelou</b>
-                        </p>
                         <div className="arrow display-none"></div>
                     </Row>
                 </div>

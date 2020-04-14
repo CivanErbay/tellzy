@@ -7,7 +7,8 @@
 
 .App {
     /* background-color: #282c34; */
-    background-color: #4897d8;
+    /* background-color: #4897d8; */
+    background-color: #217ca3;
     min-height: 100vh;
 
     font-family: "Patrick Hand SC", cursive;
@@ -41,7 +42,7 @@ textarea {
     overflow: hidden;
 }
 .second-row {
-    margin-top: -5rem;
+    margin-top: -8rem;
 }
 
 .highlight {
@@ -52,7 +53,6 @@ textarea {
 
 .btn {
     box-shadow: var(--box-shadow);
-    /* margin: 1rem 3rem !important; */
 }
 
 .new-story-btn {
@@ -62,6 +62,7 @@ textarea {
     background-color: #ffdb5c !important;
     border-color: #ffdb5c !important;
     color: black !important;
+    z-index: 5 !important;
 }
 .h1 {
     font-size: 12.5rem !important;
@@ -69,6 +70,9 @@ textarea {
     font-family: "Permanent Marker", cursive;
 }
 
+.negative-z-index {
+    z-index: -5 !important;
+}
 .wrap {
     font-size: 4rem !important;
 }
@@ -220,6 +224,7 @@ textarea {
     background-color: #f8a055;
     color: black;
 }
+
 .arrow {
     display: inline;
     width: 6px;
@@ -244,9 +249,13 @@ textarea {
 }
 .landing-third-row {
     padding: 1.4rem;
-    margin-top: 4rem;
     font-size: 1.5rem;
 }
+.landing-quote {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
 @-webkit-keyframes soft-blink {
     0% {
         opacity: 1;
@@ -377,7 +386,7 @@ textarea {
     }
     .landing-third-row {
         padding: 3rem;
-        margin-top: 6rem;
+        margin-top: 3rem;
         font-size: 1rem;
     }
 
