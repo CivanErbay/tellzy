@@ -48,6 +48,7 @@ textarea {
 
 .btn {
     box-shadow: var(--box-shadow);
+    margin: 1rem 3rem !important;
 }
 
 .new-story-btn {
@@ -111,6 +112,7 @@ textarea {
 .copy-cs-true {
     font-size: 1.5rem;
 }
+
 .btn-home {
     font-size: 2rem !important;
     padding: 1.5rem !important;
@@ -154,7 +156,7 @@ textarea {
 
 .form-es-false {
     /* margin: 3rem 10rem 2rem 10rem; */
-    margin: 4rem 12rem;
+    margin: 4rem 15rem;
     /* width: 80%; */
 }
 .h1-es-false {
@@ -260,6 +262,20 @@ textarea {
     .form-es-false {
         margin: 2rem 3rem;
     }
+    .h1 {
+        font-size: 6rem !important;
+        margin: 2rem 0 !important;
+    }
+    .btn {
+        font-size: 1.5rem !important;
+        width: 150px;
+        padding: 0.5rem 1rem !important;
+        margin: 1rem !important;
+    }
+    .h1-landing-part2 {
+        font-size: 3rem;
+        border-right: none;
+    }
     .btn-home {
         font-size: 2rem !important;
         padding: 1.5rem !important;
@@ -274,8 +290,8 @@ textarea {
         margin-top: 2rem;
         margin-bottom: 2rem;
         text-decoration: underline;
-
         font-size: 3rem;
+        /* font-weight: bold; */
     }
     .h1-es-false {
         font-size: 4rem !important;
@@ -288,11 +304,13 @@ textarea {
     .p-cs-true {
         font-size: 1.5rem !important;
     }
-    .new-story-btn {
-        font-size: 2rem !important;
-        padding: 1.5rem !important;
-        margin-top: 1.5rem !important;
-        margin-right: 5.5rem !important;
+
+    .sm {
+        display: none !important;
+    }
+
+    .hint-text {
+        height: 155px !important;
     }
 }
 
