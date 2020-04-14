@@ -26,24 +26,34 @@ export default class Landing extends Component {
                     <Row className="second-row">
                         <Col></Col>
                         <Col>
-                            <div className="d-flex flex-wrap small-padding">
+                            <div className="small-padding d-flex flex-wrap">
                                 <h1 className="h1 my-4">Tellzy</h1>
                                 <div className="wrap">
-                                    <h3 className="h3">
+                                    <h3 className="h3-landing">
                                         collective storytelling.
                                     </h3>
-                                    <h3 className="h3">
+                                    <h3 className="h3-landing">
                                         share your imagination.
                                     </h3>
-                                    <h3 className="h3">simple & exciting.</h3>
+                                    <h3 className="h3-landing">
+                                        simple & exciting.
+                                    </h3>
                                 </div>
                             </div>
                         </Col>
-                        <Col></Col>
+                        <Col> </Col>
                     </Row>
-                    <Row className="landing-third-row">
-                        {" "}
-                        <div className="arrow"></div>
+
+                    <Row className="landing-third-row d-flex flex-column align-items-center justify-content-center ">
+                        <p className="landing-quote">
+                            <i>
+                                {" "}
+                                “There is no greater agony than bearing an
+                                untold story inside you.”{" "}
+                            </i>{" "}
+                            ― <b>Maya Angelou</b>
+                        </p>
+                        <div className="arrow display-none"></div>
                     </Row>
                 </div>
                 <div className="vh-100 w-100 div-landing-part2">

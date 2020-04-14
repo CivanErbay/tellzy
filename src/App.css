@@ -6,10 +6,10 @@
 }
 
 .App {
-    background-color: #282c34;
+    /* background-color: #282c34; */
+    background-color: #4897d8;
     min-height: 100vh;
 
-    /* font-family: "Nunito", sans-serif; */
     font-family: "Patrick Hand SC", cursive;
     font-size: larger;
     color: white;
@@ -40,6 +40,9 @@ textarea {
     resize: none !important;
     overflow: hidden;
 }
+.second-row {
+    margin-top: -5rem;
+}
 
 .highlight {
     font-size: 3rem !important;
@@ -49,15 +52,15 @@ textarea {
 
 .btn {
     box-shadow: var(--box-shadow);
-    margin: 1rem 3rem !important;
+    /* margin: 1rem 3rem !important; */
 }
 
 .new-story-btn {
     font-size: 2rem !important;
     padding: 1.5rem !important;
     margin-top: 1.5rem !important;
-    background-color: #b1c5d4 !important;
-    border-color: #b1c5d4 !important;
+    background-color: #ffdb5c !important;
+    border-color: #ffdb5c !important;
     color: black !important;
 }
 .h1 {
@@ -73,7 +76,9 @@ textarea {
 .wrap h3 {
     padding: 0.3rem;
 }
-
+.h3-landing {
+    font-size: 2rem;
+}
 .h2-creator {
     padding: 1.5em 1.5em 1em 0;
     font-size: 3rem;
@@ -82,8 +87,8 @@ textarea {
     font-size: 2.5rem;
     /* font-weight: bold; */
     padding: 2em;
-    background-color: #b1c5d4 !important;
-    border-color: #b1c5d4 !important;
+    background-color: #ffdb5c !important;
+    border-color: #ffdb5c !important;
     color: black !important;
 }
 
@@ -117,15 +122,15 @@ textarea {
     font-size: 4.5rem !important;
 }
 .small-font {
-    font-size: 1.3rem;
+    font-size: 2rem;
 }
 .btn-home {
     font-size: 2rem !important;
     padding: 1.5rem !important;
     margin-top: 1.5rem !important;
     margin-left: 3rem !important;
-    background-color: #b1c5d4 !important;
-    border-color: #b1c5d4 !important;
+    background-color: #ffdb5c !important;
+    border-color: #ffdb5c !important;
     color: black !important;
 }
 .btn-up {
@@ -133,20 +138,20 @@ textarea {
     padding: 1rem 2rem 1rem 2rem !important;
     margin-top: 1.5rem !important;
     margin-left: 3rem !important;
-    background-color: #b1c5d4 !important;
-    border-color: #b1c5d4 !important;
+    background-color: #ffdb5c !important;
+    border-color: #ffdb5c !important;
     color: black !important;
 }
 .form-cs-false {
-    /* margin: 3rem 10rem 2rem 10rem; */
-    margin: 1rem;
+    margin: 3rem 15rem 2rem 15rem;
+    /* margin: 1rem; */
 }
 
 .h1-cs-false {
     font-size: 5rem;
     margin-top: 3rem;
     margin-bottom: 4rem;
-    text-decoration: underline;
+    /* text-decoration: underline; */
     /* font-weight: bold;
 
     font-weight: bold; */
@@ -156,8 +161,8 @@ textarea {
     font-size: 1.5rem !important;
     margin-top: 1.5rem !important;
 
-    background-color: #b1c5d4 !important;
-    border-color: #b1c5d4 !important;
+    background-color: #ffdb5c !important;
+    border-color: #ffdb5c !important;
     color: black !important;
 }
 
@@ -200,6 +205,7 @@ textarea {
 .result-true-page {
     margin-top: 5rem;
 }
+
 .h1-landing-part2 {
     font-size: 5rem;
     border-right: solid;
@@ -211,10 +217,11 @@ textarea {
     height: 80vh;
 }
 .div-landing-part2 {
-    background-color: #d6d7dc;
+    background-color: #f8a055;
     color: black;
 }
 .arrow {
+    display: inline;
     width: 6px;
     height: 80px;
     margin: 5% auto;
@@ -230,7 +237,15 @@ textarea {
     margin: 0 auto !important;
 }
 .social:hover {
-    color: #b1c5d4;
+    color: blueviolet;
+}
+.social2:hover {
+    color: blueviolet;
+}
+.landing-third-row {
+    padding: 1.4rem;
+    margin-top: 4rem;
+    font-size: 1.5rem;
 }
 @-webkit-keyframes soft-blink {
     0% {
@@ -283,7 +298,7 @@ textarea {
         margin: 2rem 3rem;
     }
     .h1 {
-        font-size: 6rem !important;
+        font-size: 4.5rem !important;
         margin: 2rem 0 !important;
     }
     .btn {
@@ -291,6 +306,9 @@ textarea {
         width: 150px;
         padding: 0.5rem 1rem !important;
         margin: 1rem !important;
+    }
+    .display-none {
+        display: none !important;
     }
     .h1-landing-part2 {
         margin-top: 2rem;
@@ -300,19 +318,13 @@ textarea {
     .btn-home {
         font-size: 2rem !important;
         padding: 1rem !important;
-        margin-top: !important;
-
-        /* margin-left: 3rem !important;
-        background-color: #b1c5d4 !important;
-        border-color: #b1c5d4 !important;
-        color: black !important; */
+        margin-left: 2rem !important;
     }
     .h1-cs-false {
         margin-top: 2rem;
         margin-bottom: 2rem;
         text-decoration: underline;
         font-size: 3rem;
-        /* font-weight: bold; */
     }
     .h1-es-false {
         font-size: 4rem !important;
@@ -328,8 +340,14 @@ textarea {
     .small-padding {
         padding: 0.6rem !important;
     }
+    .small-font {
+        font-size: 1.25rem;
+    }
     .sm {
         display: none !important;
+    }
+    .responsive-result-progress {
+        padding: 0 5rem;
     }
     .h3 {
         font-size: 1.5rem !important;
@@ -348,13 +366,31 @@ textarea {
     .second-row {
         margin-top: -5rem;
     }
-    /* .mobile-vh {
-        height: 80vh !important;
-    } */
+    .h3-landing {
+        font-size: 1.5rem;
+    }
+    .social2 {
+        margin-top: 1.5rem;
+    }
+    .mobile-vh {
+        max-height: 100vh;
+    }
+    .landing-third-row {
+        padding: 3rem;
+        margin-top: 6rem;
+        font-size: 1rem;
+    }
+
+    .big-font {
+        font-size: 2.5rem !important;
+    }
 }
 
 @media all and (max-width: 1200px) {
-    .form-es-false {
-        margin: 4rem 2rem;
+    .h1-cs-false {
+        font-size: 2em !important;
+    }
+    .form-cs-false {
+        margin: 2rem;
     }
 }

@@ -61,7 +61,7 @@ export default class ResultStory extends Component {
                         </Link>
                     </Col>
                     <Col sm={8} className="h-100 m-0">
-                        <div className="d-flex flex-wrap">
+                        <div>
                             {isLoading ? (
                                 <p>Loading...</p>
                             ) : (
@@ -94,13 +94,13 @@ export default class ResultStory extends Component {
                                                         <i className="fab fa-whatsapp fa-2x mx-3 mb-3 social"></i>
                                                         <i className="fab fa-telegram-plane fa-2x mx-3 mb-3 social"></i>
                                                         <i className="fab fa-facebook-f fa-2x mx-3 mb-3 social"></i>
-                                                        <i className="fab fa-instagram fa-2x mx-3 mb-3 social"></i>
+                                                        <i className="fas fa-download fa-2x mx-3 mb-3 social"></i>
                                                         <i className="far fa-envelope fa-2x mx-3 mb-3 social"></i>
                                                     </Row>
                                                 </div>
                                             </>
                                         ) : (
-                                            <div>
+                                            <div className="responsive-result-progress">
                                                 <h1 className="h1-result-true text-capitalize mt-4 mb-5">
                                                     Story in progress...{" "}
                                                 </h1>
