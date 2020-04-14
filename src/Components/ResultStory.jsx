@@ -91,11 +91,11 @@ export default class ResultStory extends Component {
                                                         </u>
                                                     </h3>
                                                     <Row className="d-flex justify-content-center align-items-center">
-                                                        <i class="fab fa-whatsapp fa-2x mx-3 mb-3 social"></i>
-                                                        <i class="fab fa-telegram-plane fa-2x mx-3 mb-3 social"></i>
-                                                        <i class="fab fa-facebook-f fa-2x mx-3 mb-3 social"></i>
-                                                        <i class="fab fa-instagram fa-2x mx-3 mb-3 social"></i>
-                                                        <i class="far fa-envelope fa-2x mx-3 mb-3 social"></i>
+                                                        <i className="fab fa-whatsapp fa-2x mx-3 mb-3 social"></i>
+                                                        <i className="fab fa-telegram-plane fa-2x mx-3 mb-3 social"></i>
+                                                        <i className="fab fa-facebook-f fa-2x mx-3 mb-3 social"></i>
+                                                        <i className="fab fa-instagram fa-2x mx-3 mb-3 social"></i>
+                                                        <i className="far fa-envelope fa-2x mx-3 mb-3 social"></i>
                                                     </Row>
                                                 </div>
                                             </>

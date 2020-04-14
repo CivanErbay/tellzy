@@ -8,8 +8,9 @@
 .App {
     background-color: #282c34;
     min-height: 100vh;
-    /* font-family: "Merriweather", serif; */
-    font-family: "Nunito", sans-serif;
+
+    /* font-family: "Nunito", sans-serif; */
+    font-family: "Patrick Hand SC", cursive;
     font-size: larger;
     color: white;
     overflow: hidden;
@@ -113,7 +114,10 @@ textarea {
     font-size: 1.5rem;
 }
 .big-font {
-    font-size: 4.5rem;
+    font-size: 4.5rem !important;
+}
+.small-font {
+    font-size: 1.3rem;
 }
 .btn-home {
     font-size: 2rem !important;
@@ -289,7 +293,8 @@ textarea {
         margin: 1rem !important;
     }
     .h1-landing-part2 {
-        font-size: 3rem;
+        margin-top: 2rem;
+        font-size: 3.5rem;
         border-right: none;
     }
     .btn-home {
@@ -320,9 +325,14 @@ textarea {
     .p-cs-true {
         font-size: 1.5rem !important;
     }
-
+    .small-padding {
+        padding: 0.6rem !important;
+    }
     .sm {
         display: none !important;
+    }
+    .h3 {
+        font-size: 1.5rem !important;
     }
 
     .hint-text {
@@ -335,6 +345,12 @@ textarea {
     .story-result-true {
         padding: 0 !important;
     }
+    .second-row {
+        margin-top: -5rem;
+    }
+    /* .mobile-vh {
+        height: 80vh !important;
+    } */
 }
 
 @media all and (max-width: 1200px) {
