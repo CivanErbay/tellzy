@@ -1,0 +1,3 @@
+-Skala from 0 randomness (clear name, fixed lengths, everybody can see the whole text etc.) to 100% randomness (anonymus, you have no idea where you are, only some characters ) - and all the things between
+- 2 Languagemode also in german, very important!!
+- Social-share function (send edit-link via share-button on phone on whatsapp, telegram, instagram or facebook-messenger) 

@@ -132,7 +132,7 @@ export default class CreatingStory extends Component {
                                     onSubmit={this.handleSubmit}
                                 >
                                     <Form.Group>
-                                        <Form.Label>Email Address</Form.Label>
+                                        <Form.Label>Your E-Mail</Form.Label>
                                         <Form.Control
                                             required
                                             type="email"
@@ -145,15 +145,13 @@ export default class CreatingStory extends Component {
                                     </Form.Group>
                                     {/* Participants */}
                                     <Form.Group>
-                                        <Form.Label>
-                                            Participants Emails or Names
-                                        </Form.Label>
+                                        <Form.Label>Authors</Form.Label>
                                         <Form.Control
                                             required
                                             as="textarea"
                                             rows="2"
                                             name="participantsEmails"
-                                            placeholder="You can repeat them! e.g. Pikachu, spiderman@italian.com"
+                                            placeholder="You can repeat them for a longer story!"
                                             onChange={this.handleChange.bind(
                                                 this
                                             )}
