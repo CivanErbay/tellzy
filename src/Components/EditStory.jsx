@@ -58,7 +58,7 @@ export default class EditStory extends Component {
       if (validParticipant) {
         // get hint text to display
         hintText = story.storyParts.reduce((acc, part) => acc + part.text + " ", "");
-        if (hintText.length > 200) hintText = hintText.substring(hintText.length - 100, hintText.length - 1);
+        if (hintText.length > 400) hintText = hintText.substring(hintText.length - 200, hintText.length - 1);
       }
 
       this.setState({
@@ -176,7 +176,6 @@ export default class EditStory extends Component {
                           </p>
                         )}
 
-                        <h2>Thank You</h2>
                         <LinkPage
                           story={story}
                           storyId={storyId}
@@ -187,9 +186,6 @@ export default class EditStory extends Component {
                       <>
                         {submitSuccess ? (
                           <>
-                            <h1 className="h1-cs-true">
-                              <u>Thank you!</u>
-                            </h1>
                             <LinkPage
                               story={story}
                               storyId={storyId}

@@ -1,0 +1,22 @@
+Ordered in Priority
+
+BIG THINGS
+- Social-share function (send edit-link via share-button on phone on whatsapp, telegram, instagram or facebook-messenger) 
+- 2 Languagemode also in german, very important!!
+- Skala from 0 randomness (clear name, fixed lengths, everybody can see the whole text etc.) to 100% randomness (anonymus, you have no idea where you are, only some characters ) - and all the things between
+- Instead of visible last Characters other approaches: Random Sentences, more or less, Keywoards (provided by Creator, or even authors in between?) 
+
+SMALL THINGS
++ privacy statement compliance. E G https://blog.logrocket.com/how-to-improve-social-engagement-with-the-web-share-api/
+- implement FavIcon 
+- //DONE// Store Icons and Fonts on our Server - No more CDN's, because of slow loading time --> https://google-webfonts-helper.herokuapp.com/
+- visible Links + Copy to Clipboard
+- implement Preview function on Link
+- Impressum & Datenschutz
+- make Links personal (e.g. Linda's Link, Paco's Link etc.) 
+
+LONG TERM CHANGES
+-Rework of "HOW TO"-Section (with Pictures and Examples to make it easier to understand what we our App is actually Doing!) 
+	--> "Dont think too much, just write", Rewarding experiences
+-Final Text Export and Share Function
+-Illustrations 

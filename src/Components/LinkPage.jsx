@@ -75,10 +75,19 @@ export default class ResultStory extends Component {
               ) : (
                 <>
                   <p className="p-5 p-cs-true text-center">
-                    Congratulations!<br></br> You were the last author, which means your collective story is
-                    ready to read!
+                    <b>
+                      {" "}
+                      <span className="big-font">Congratulations!</span>
+                    </b>
+                    <br></br> You have been the last author, which means your collective story is ready to
+                    read!
                   </p>
-                  <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy>
+                  <LinkWithCopy
+                    link={storyLink}
+                    text="Result Link"
+                    isUnfold={storyUnfold}
+                    setUnfold={this.storySetUnfold}
+                  ></LinkWithCopy>
                 </>
               )}
             </>

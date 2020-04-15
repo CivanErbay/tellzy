@@ -118,7 +118,7 @@ export default class CreatingStory extends Component {
                 <h1 className="h1-cs-false text-center">Create new story.</h1>
                 <Form className="form-cs-false" onSubmit={this.handleSubmit}>
                   <Form.Group>
-                    <Form.Label>Email Address</Form.Label>
+                    <Form.Label>Your E-Mail</Form.Label>
                     <Form.Control
                       required
                       type="email"
@@ -129,13 +129,13 @@ export default class CreatingStory extends Component {
                   </Form.Group>
                   {/* Participants */}
                   <Form.Group>
-                    <Form.Label>Participants Emails or Names</Form.Label>
+                    <Form.Label>Authors</Form.Label>
                     <Form.Control
                       required
                       as="textarea"
                       rows="2"
                       name="participantsEmails"
-                      placeholder="You can repeat them! e.g. Pikachu, spiderman@italian.com"
+                      placeholder="Write down the name of your buddies. Repeat them if you like."
                       onChange={this.handleChange.bind(this)}
                     />
                   </Form.Group>
@@ -146,6 +146,7 @@ export default class CreatingStory extends Component {
                       required
                       as="textarea"
                       rows="1"
+                      placeholder="Something memorable but descriptive"
                       name="storyTitle"
                       onChange={this.handleChange.bind(this)}
                     />
