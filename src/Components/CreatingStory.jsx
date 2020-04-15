@@ -151,7 +151,7 @@ export default class CreatingStory extends Component {
                                             as="textarea"
                                             rows="2"
                                             name="participantsEmails"
-                                            placeholder="You can repeat them for a longer story!"
+                                            placeholder="Space seperated. You can repeat names them for a longer story!"
                                             onChange={this.handleChange.bind(
                                                 this
                                             )}

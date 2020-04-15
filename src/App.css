@@ -4,7 +4,89 @@
         0 22.3px 17.9px rgba(0, 0, 0, 0.072),
         0 41.8px 33.4px rgba(0, 0, 0, 0.048), 0 100px 80px rgba(0, 0, 0, 0.12);
 }
-
+/* patrick-hand-regular - latin */
+@font-face {
+    font-family: "Patrick Hand";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/patrick-hand-v13-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Patrick Hand"), local("PatrickHand-Regular"),
+        url("/assets/fonts/patrick-hand-v13-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */ url("/assets/fonts/patrick-hand-v13-latin-regular.woff2")
+            format("woff2"),
+        /* Super Modern Browsers */
+            url("/assets/fonts/patrick-hand-v13-latin-regular.woff")
+            format("woff"),
+        /* Modern Browsers */
+            url("/assets/fonts/patrick-hand-v13-latin-regular.ttf")
+            format("truetype"),
+        /* Safari, Android, iOS */
+            url("/assets/fonts/patrick-hand-v13-latin-regular.svg#PatrickHand")
+            format("svg"); /* Legacy iOS */
+}
+/* patrick-hand-sc-regular - latin */
+@font-face {
+    font-family: "Patrick Hand SC";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/patrick-hand-sc-v7-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Patrick Hand SC"), local("PatrickHandSC-Regular"),
+        url("/assets/fonts/patrick-hand-sc-v7-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */
+            url("/assets/fonts/patrick-hand-sc-v7-latin-regular.woff2")
+            format("woff2"),
+        /* Super Modern Browsers */
+            url("/assets/fonts/patrick-hand-sc-v7-latin-regular.woff")
+            format("woff"),
+        /* Modern Browsers */
+            url("/assets/fonts/patrick-hand-sc-v7-latin-regular.ttf")
+            format("truetype"),
+        /* Safari, Android, iOS */
+            url("/assets/fonts/patrick-hand-sc-v7-latin-regular.svg#PatrickHandSC")
+            format("svg"); /* Legacy iOS */
+}
+/* permanent-marker-regular - latin */
+@font-face {
+    font-family: "Permanent Marker";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/permanent-marker-v9-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Permanent Marker Regular"), local("PermanentMarker-Regular"),
+        url("/assets/fonts/permanent-marker-v9-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */
+            url("/assets/fonts/permanent-marker-v9-latin-regular.woff2")
+            format("woff2"),
+        /* Super Modern Browsers */
+            url("/assets/fonts/permanent-marker-v9-latin-regular.woff")
+            format("woff"),
+        /* Modern Browsers */
+            url("/assets/fonts/permanent-marker-v9-latin-regular.ttf")
+            format("truetype"),
+        /* Safari, Android, iOS */
+            url("/assets/fonts/permanent-marker-v9-latin-regular.svg#PermanentMarker")
+            format("svg"); /* Legacy iOS */
+}
+/* gaegu-regular - latin */
+@font-face {
+    font-family: "Gaegu";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/gaegu-v8-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Gaegu Regular"), local("Gaegu-Regular"),
+        url("/assets/fonts/gaegu-v8-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */ url("/assets/fonts/gaegu-v8-latin-regular.woff2")
+            format("woff2"),
+        /* Super Modern Browsers */
+            url("/assets/fonts/gaegu-v8-latin-regular.woff") format("woff"),
+        /* Modern Browsers */ url("/assets/fonts/gaegu-v8-latin-regular.ttf")
+            format("truetype"),
+        /* Safari, Android, iOS */
+            url("/assets/fonts/gaegu-v8-latin-regular.svg#Gaegu") format("svg"); /* Legacy iOS */
+}
 .App {
     /* background-color: #282c34; */
     /* background-color: #4897d8; */
@@ -198,7 +280,7 @@ textarea {
     border-radius: 5px;
     padding: 3em;
     font-size: 1.5rem;
-    font-family: "Gochi Hand", cursive;
+    font-family: "Gaegu", cursive;
 }
 .result-true-div .h1-result-true {
     /* font-weight: bold !important; */
