@@ -13,11 +13,20 @@ export default class ResultStory extends Component {
       story: {},
       nextUnfold: false,
       storyUnfold: false,
+      isDesktop: false, //This is where I am having problems
     };
 
     this.nextSetUnfold = this.nextSetUnfold.bind(this);
     this.storySetUnfold = this.storySetUnfold.bind(this);
   }
+
+  componentDidMount = () => {
+    window.addEventListener("resize", this.updatePredicate);
+  };
+
+  updatePredicate = () => {
+    this.setState({ isDesktop: window.innerWidth > 700 });
+  };
 
   nextSetUnfold() {
     if (!this.state.nextUnfold) this.setState({ nextUnfold: true });
@@ -33,7 +42,7 @@ export default class ResultStory extends Component {
 
   render() {
     const { story, storyId, nextParticipant } = this.props;
-    const { nextUnfold, storyUnfold } = this.state;
+    const { nextUnfold, storyUnfold, isDesktop } = this.state;
 
     const storyLink = `tellzy.web.app/story/${storyId}`;
     let nextLink = null;
@@ -46,19 +55,28 @@ export default class ResultStory extends Component {
               {nextParticipant ? (
                 <>
                   <Row className="wrap-links-linkpage d-flex justify-content-center align-items-center">
-                    <ShareButton title="<Edit Link>" text="A really great page" url={nextLink} />
-                    {/* <LinkWithCopy
-                                            link={nextLink}
-                                            text="Edit Link"
-                                            isUnfold={nextUnfold}
-                                            setUnfold={this.nextSetUnfold}
-                                        ></LinkWithCopy>
-                                        <LinkWithCopy
-                                            link={storyLink}
-                                            text="Result Link"
-                                            isUnfold={storyUnfold}
-                                            setUnfold={this.storySetUnfold}
-                                        ></LinkWithCopy> */}
+                    {!isDesktop ? (
+                      <ShareButton
+                        title="My Great Page"
+                        text="A really great page"
+                        url="http://www.greatpage.com"
+                      />
+                    ) : (
+                      <>
+                        <LinkWithCopy
+                          link={nextLink}
+                          text="Edit Link"
+                          isUnfold={nextUnfold}
+                          setUnfold={this.nextSetUnfold}
+                        ></LinkWithCopy>
+                        <LinkWithCopy
+                          link={storyLink}
+                          text="Result Link"
+                          isUnfold={storyUnfold}
+                          setUnfold={this.storySetUnfold}
+                        ></LinkWithCopy>
+                      </>
+                    )}
                   </Row>
                   <p className="p-cs-true text-center mt-5">
                     Copy the
@@ -75,19 +93,10 @@ export default class ResultStory extends Component {
               ) : (
                 <>
                   <p className="p-5 p-cs-true text-center">
-                    <b>
-                      {" "}
-                      <span className="big-font">Congratulations!</span>
-                    </b>
-                    <br></br> You have been the last author, which means your collective story is ready to
-                    read!
+                    Congratulations!<br></br> You were the last author, which means your collective story is
+                    ready to read!
                   </p>
-                  <LinkWithCopy
-                    link={storyLink}
-                    text="Result Link"
-                    isUnfold={storyUnfold}
-                    setUnfold={this.storySetUnfold}
-                  ></LinkWithCopy>
+                  <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy>
                 </>
               )}
             </>
