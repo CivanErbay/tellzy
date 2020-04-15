@@ -56,19 +56,34 @@ export default class ResultStory extends Component {
                 <>
                   <Row className="wrap-links-linkpage d-flex justify-content-center align-items-center">
                     {!isDesktop ? (
-                      <ShareButton
-                        title="My Great Page"
-                        text="A really great page"
-                        url="http://www.greatpage.com"
-                      />
-                    ) : (
                       <>
                         <LinkWithCopy
                           link={nextLink}
                           text="Edit Link"
                           isUnfold={nextUnfold}
                           setUnfold={this.nextSetUnfold}
-                        ></LinkWithCopy>
+                        >
+                          <ShareButton
+                            url="http://www.greatpage.com"
+                            text={`How's ${nextParticipant.email}`}
+                            title={`Tellzy is awesome`}
+                          ></ShareButton>
+                        </LinkWithCopy>
+                      </>
+                    ) : (
+                      <>
+                        <ShareButton
+                          title="My Great Page"
+                          text="A really great page"
+                          url="http://www.greatpage.com"
+                        >
+                          <LinkWithCopy
+                            link={nextLink}
+                            text="Edit Link"
+                            isUnfold={nextUnfold}
+                            setUnfold={this.nextSetUnfold}
+                          ></LinkWithCopy>
+                        </ShareButton>
                         <LinkWithCopy
                           link={storyLink}
                           text="Result Link"
@@ -118,6 +133,7 @@ function LinkWithCopy(props) {
             <p className="mr-3 my-auto copy-cs-true">{text}</p>
             {isUnfold ? <i className="fas fa-check fa-3x"></i> : <i className="far fa-copy fa-3x"></i>}
             {/* <img src="assets/images/copy.png" /> */}
+            {props.children}
           </Row>
         </span>
       </CopyToClipboard>
