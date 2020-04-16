@@ -487,4 +487,9 @@ textarea {
   .form-cs-false {
     margin: 2rem;
   }
+
+  .result-true-text {
+    margin: 0 !important;
+    padding: 2rem;
+  }
 }

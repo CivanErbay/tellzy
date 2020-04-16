@@ -64,43 +64,41 @@ export default class ResultStory extends Component {
                 <p>Loading...</p>
               ) : (
                 <div className="d-flex flex-column justify-content-center align-items-center result-true-div">
-                  <p>
-                    {storyFinished ? (
-                      <>
-                        <div className="result-true-page">
-                          <div className="result-true-text">
-                            <h2 className="text-center mt-3 mb-5 text-capitalize big-font">
-                              {story.storyTitle}
-                            </h2>{" "}
-                            <p className="">
-                              {story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}
-                            </p>
-                            <br />
-                            <p className="text-right">
-                              {story.storyParts.reduce((acc, curr) => acc + curr.author + "\n", "")}
-                            </p>
-                          </div>
+                  {storyFinished ? (
+                    <>
+                      <div className="result-true-page">
+                        <div className="result-true-text">
+                          <h2 className="text-center mt-3 mb-5 text-capitalize big-font">
+                            {story.storyTitle}
+                          </h2>{" "}
+                          <p className="">
+                            {story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}
+                          </p>
+                          <br />
+                          <p className="text-right">
+                            {story.storyParts.reduce((acc, curr) => acc + curr.author + "\n", "")}
+                          </p>
                         </div>
-                      </>
-                    ) : (
-                      <div className="responsive-result-progress">
-                        <h1 className="h1-result-true text-capitalize mt-4 mb-5">Story in progress... </h1>
-                        <h3>{story.storyTitle}</h3>
-                        <p>Participant statistics:</p>
-                        <p>
-                          {story.participants.reduce((acc, curr) => (acc += curr.isSubmitted ? 1 : 0), 0)}/
-                          {story.participants.length} are submitted
-                        </p>
-                        <ul>
-                          {story.participants.map((participant) => (
-                            <li key={participant.email}>
-                              {participant.email} - {participant.isSubmitted ? "Submitted" : "Incomplete"}
-                            </li>
-                          ))}
-                        </ul>
                       </div>
-                    )}
-                  </p>
+                    </>
+                  ) : (
+                    <div className="responsive-result-progress">
+                      <h1 className="h1-result-true text-capitalize mt-4 mb-5">Story in progress... </h1>
+                      <h3>{story.storyTitle}</h3>
+                      <p>Participant statistics:</p>
+                      <p>
+                        {story.participants.reduce((acc, curr) => (acc += curr.isSubmitted ? 1 : 0), 0)}/
+                        {story.participants.length} are submitted
+                      </p>
+                      <ul>
+                        {story.participants.map((participant) => (
+                          <li key={participant.email}>
+                            {participant.email} - {participant.isSubmitted ? "Submitted" : "Incomplete"}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
