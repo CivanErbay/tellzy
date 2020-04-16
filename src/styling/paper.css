@@ -27,6 +27,7 @@ h2 {
 }
 
 .signature {
+  font-size: 2.5rem !important;
   text-align: right;
   text-transform: capitalize;
 }
