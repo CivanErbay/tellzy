@@ -30,12 +30,12 @@ export default class Landing extends Component {
                   <h3 className="h3-landing">collective storytelling.</h3>
                   <h3 className="h3-landing">share your imagination.</h3>
                   <h3 className="h3-landing">simple & exciting.</h3>
-                  <p className="landing-quote">
+                  <div className="landing-quote">
                     <i> “There is no greater agony than bearing an untold story inside you.” </i> <br />
-                    <div className="text-right">
+                    <p className="text-right">
                       <b> - Maya Angelou</b>
-                    </div>
-                  </p>
+                    </p>
+                  </div>
                 </div>
               </div>
             </Col>

@@ -146,7 +146,7 @@ export default class EditStory extends Component {
 
     return (
       <div className="edit-story">
-        <Row className="my-5">
+        <Row className="">
           <Col sm={2}>
             <Link to="/">
               <Button className="btn-home sm">Home</Button>
@@ -251,6 +251,7 @@ export default class EditStory extends Component {
           </Col>
           <Col sm={2}></Col>
         </Row>
+        <Row className="my-4"></Row>
       </div>
     );
   }
