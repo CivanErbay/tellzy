@@ -57,33 +57,20 @@ export default class ResultStory extends Component {
                   <Row className="wrap-links-linkpage d-flex justify-content-center align-items-center">
                     {!isDesktop ? (
                       <>
+                        <ShareButton
+                          url="http://www.greatpage.com"
+                          text={`How's ${nextParticipant.email}`}
+                          title={`Tellzy is awesome`}
+                        ></ShareButton>
+                      </>
+                    ) : (
+                      <>
                         <LinkWithCopy
                           link={nextLink}
                           text="Edit Link"
                           isUnfold={nextUnfold}
                           setUnfold={this.nextSetUnfold}
-                        >
-                          <ShareButton
-                            url="http://www.greatpage.com"
-                            text={`How's ${nextParticipant.email}`}
-                            title={`Tellzy is awesome`}
-                          ></ShareButton>
-                        </LinkWithCopy>
-                      </>
-                    ) : (
-                      <>
-                        <ShareButton
-                          title="My Great Page"
-                          text="A really great page"
-                          url="http://www.greatpage.com"
-                        >
-                          <LinkWithCopy
-                            link={nextLink}
-                            text="Edit Link"
-                            isUnfold={nextUnfold}
-                            setUnfold={this.nextSetUnfold}
-                          ></LinkWithCopy>
-                        </ShareButton>
+                        ></LinkWithCopy>
                         <LinkWithCopy
                           link={storyLink}
                           text="Result Link"
