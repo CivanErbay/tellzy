@@ -163,16 +163,9 @@ export default class EditStory extends Component {
                       <div>
                         {nextParticipant && (
                           <p className="text-center mt-5">
-                            {" "}
-                            This story has already been edited by <br />
-                            {validParticipant.email}
+                            <b>{validParticipant.email}</b> has already edited the story with this link
                             <br />
-                            This link not valid any more, but you can check the progress of{" "}
-                            <span className="text-capitalize">
-                              <b>{story.storyTitle}</b>
-                            </span>{" "}
-                            by checking the <b>Result Link</b>.
-                            <br />
+                            Check the progress of the story in the <b>Result Link</b>
                           </p>
                         )}
 

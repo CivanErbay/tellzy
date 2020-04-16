@@ -13,7 +13,7 @@ export default class ResultStory extends Component {
       story: {},
       nextUnfold: false,
       storyUnfold: false,
-      isDesktop: false, //This is where I am having problems
+      isDesktop: window.innerWidth > 700,
     };
 
     this.nextSetUnfold = this.nextSetUnfold.bind(this);
@@ -22,6 +22,10 @@ export default class ResultStory extends Component {
 
   componentDidMount = () => {
     window.addEventListener("resize", this.updatePredicate);
+  };
+
+  componentWillUnmount = () => {
+    window.removeEventListener("resize", this.updatePredicate);
   };
 
   updatePredicate = () => {
@@ -49,17 +53,23 @@ export default class ResultStory extends Component {
     if (nextParticipant) nextLink = `tellzy.web.app/story/${storyId}/${nextParticipant.secret}`;
     return (
       <div>
-        <div className="d-flex flex-column justify-content-center align-items-center mt-3">
+        <div className="d-flex flex-column justify-content-center align-items-center">
           {
             <>
               {nextParticipant ? (
                 <>
+                  <p className="p-cs-true text-center mt-3">
+                    Send
+                    <span className="highlight"> {nextParticipant.email} </span>
+                    this
+                    <span className="highlight"> Edit Link </span>
+                  </p>
                   <Row className="wrap-links-linkpage d-flex justify-content-center align-items-center">
                     {!isDesktop ? (
                       <>
                         <ShareButton
-                          url="http://www.greatpage.com"
-                          text={`How's ${nextParticipant.email}`}
+                          url={nextLink}
+                          text={`How's ${nextParticipant.email} doing?`}
                           title={`Tellzy is awesome`}
                         ></ShareButton>
                       </>
@@ -71,34 +81,34 @@ export default class ResultStory extends Component {
                           isUnfold={nextUnfold}
                           setUnfold={this.nextSetUnfold}
                         ></LinkWithCopy>
-                        <LinkWithCopy
-                          link={storyLink}
-                          text="Result Link"
-                          isUnfold={storyUnfold}
-                          setUnfold={this.storySetUnfold}
-                        ></LinkWithCopy>
                       </>
                     )}
                   </Row>
-                  <p className="p-cs-true text-center mt-5">
-                    Copy the
-                    <span className="highlight"> Edit Link </span>
-                    and send it to
-                    <span className="highlight"> {nextParticipant.email}</span>
-                  </p>
 
                   <p className="p2-cs-true2 text-center">
                     Soon you'll get the whole story! <br />
-                    In the meantime, track the status on the <b>Result</b> Link
+                    In the meantime, track the status on this <b>Result</b> Link
                   </p>
+                  <LinkWithCopy
+                    link={storyLink}
+                    text="Result Link"
+                    isUnfold={storyUnfold}
+                    setUnfold={this.storySetUnfold}
+                  ></LinkWithCopy>
                 </>
               ) : (
                 <>
                   <p className="p-5 p-cs-true text-center">
-                    Congratulations!<br></br> You were the last author, which means your collective story is
-                    ready to read!
+                    Your Tellzy story is complete! Now you can share it with your buddies:{" "}
+                    {story.participants.map((participant) => participant.email).join(", ")}
                   </p>
-                  <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy>
+
+                  <ShareButton
+                    url={storyLink}
+                    text={`"${story.storyTitle}" is finished!`}
+                    title={`Tellzy is awesome`}
+                  ></ShareButton>
+                  {/* <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy> */}
                 </>
               )}
             </>
@@ -117,7 +127,10 @@ function LinkWithCopy(props) {
       <CopyToClipboard className="clipboard" text={link} onCopy={setUnfold}>
         <span>
           <Row className="row-cs-true p-3">
-            <p className="mr-3 my-auto copy-cs-true">{text}</p>
+            <div className="d-flex flex-column align-items-center">
+              <p className="mr-3 my-auto copy-cs-true">{text}</p>
+              {isUnfold ? <>Copied!</> : <>Copy me</>}
+            </div>
             {isUnfold ? <i className="fas fa-check fa-3x"></i> : <i className="far fa-copy fa-3x"></i>}
             {/* <img src="assets/images/copy.png" /> */}
             {props.children}
