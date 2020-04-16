@@ -3,6 +3,7 @@ Ordered in Priority
 BIG THINGS
 - //DONE//Social-share function (send edit-link via share-button on phone on whatsapp, telegram, instagram or facebook-messenger) 
 - 2 Languagemode also in german, very important!!
+- Add Names into a Box which is able to do Drag&Drop
 - Skala from 0 randomness (clear name, fixed lengths, everybody can see the whole text etc.) to 100% randomness (anonymus, you have no idea where you are, only some characters ) - and all the things between
 - Instead of visible last Characters other approaches: Random Sentences, more or less, Keywoards (provided by Creator, or even authors in between?) 
 - show whole text for next author, but blurred! and just some of the last lines visible!!
