@@ -137,6 +137,11 @@ textarea {
   font-family: "Permanent Marker", cursive;
 }
 
+.signature {
+  /* font-family: "Great Vibes", cursive; */
+  font-size: 2rem !important;
+}
+
 .negative-z-index {
   z-index: -5 !important;
 }

@@ -75,7 +75,7 @@ export default class ResultStory extends Component {
                             {story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}
                           </p>
                           <br />
-                          <p className="text-right">
+                          <p className="text-right signature">
                             {story.storyParts.reduce((acc, curr) => acc + curr.author + "\n", "")}
                           </p>
                         </div>
