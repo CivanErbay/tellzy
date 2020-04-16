@@ -60,8 +60,8 @@ export default class EditStory extends Component {
       // let hintText = "";
       if (validParticipant) {
         // get hint text to display
-        if (hintTextArray.length > 50)
-          hintText = hintTextArray.slice(hintTextSplit.length - 25, hintTextSplit.length).join(" ");
+        if (hintTextArray.length > 40)
+          hintText = hintTextArray.slice(hintTextArray.length - 38, hintTextArray.length).join(" ");
       }
 
       this.setState({
