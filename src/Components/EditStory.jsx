@@ -53,12 +53,15 @@ export default class EditStory extends Component {
       const validParticipant = story.participants.filter(
         (participant) => participant.secret && this.state.secret === participant.secret
       )[0];
+
       // make hint text
-      let hintText = "";
+      let hintText = story.storyParts.map((part) => part.text).join(" "); // join all parts
+      const hintTextArray = hintText.split(" "); // split for every word
+      // let hintText = "";
       if (validParticipant) {
         // get hint text to display
-        hintText = story.storyParts.reduce((acc, part) => acc + part.text + " ", "");
-        if (hintText.length > 400) hintText = hintText.substring(hintText.length - 200, hintText.length - 1);
+        if (hintTextArray.length > 50)
+          hintText = hintTextArray.slice(hintTextSplit.length - 25, hintTextSplit.length).join(" ");
       }
 
       this.setState({
