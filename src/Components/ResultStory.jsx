@@ -80,28 +80,28 @@ export default class ResultStory extends Component {
                 <p>Loading...</p>
               ) : (
                 <div className="paper-story">
+                  <h2>{story.storyTitle}</h2>
                   {storyFinished ? (
                     <>
-                      <h2 className="text-center mt-3 mb-5 text-capitalize big-font">{story.storyTitle}</h2>{" "}
-                      <p className="">{story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}</p>
+                      <p>{story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}</p>
                       <br />
-                      <p className="text-right signature text-capitalize">
-                        {story.storyParts.reduce((acc, curr) => acc + curr.author + "\n", "")}
-                      </p>
+                      <div className="signature ml-auto">
+                        <p>{story.storyParts.reduce((acc, curr) => acc + curr.author + "\n", "")}</p>
+                      </div>
                     </>
                   ) : (
-                    <div className="responsive-result-progress">
-                      <h1 className="h1-result-true text-capitalize mt-4 mb-5">Story in progress... </h1>
-                      <h3>{story.storyTitle}</h3>
-                      <p>Participant statistics:</p>
+                    <div>
+                      <p>Story in progress... </p>
+                      <br />
+                      <p>What the heck is going on?</p>
                       <p>
                         {story.participants.reduce((acc, curr) => (acc += curr.isSubmitted ? 1 : 0), 0)}/
-                        {story.participants.length} are submitted
+                        {story.participants.length} have submitted
                       </p>
                       <ul>
                         {story.participants.map((participant) => (
                           <li key={participant.email}>
-                            {participant.email} - {participant.isSubmitted ? "Submitted" : "Incomplete"}
+                            {participant.email} - {participant.isSubmitted ? "Submitted" : "Come on..."}
                           </li>
                         ))}
                       </ul>
