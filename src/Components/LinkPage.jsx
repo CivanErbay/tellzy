@@ -1,8 +1,8 @@
 import React, { Component, useState } from "react";
 import { Row, Col, Container } from "react-bootstrap";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import { db } from "./../config/firebaseConfig";
 import ShareButton from "react-web-share-button";
+import LinkWithCopy from "./Reusable/LinkWithCopy";
 
 export default class ResultStory extends Component {
   constructor(props) {
@@ -161,26 +161,4 @@ export default class ResultStory extends Component {
       </div>
     );
   }
-}
-
-function LinkWithCopy(props) {
-  const { link, text, isUnfold, setUnfold } = props;
-
-  return (
-    <div className="d-flex flex-column justify-content-center align-items-center my-2">
-      <CopyToClipboard className="clipboard" text={link} onCopy={setUnfold}>
-        <span>
-          <Row className="row-cs-true p-3">
-            <div className="d-flex flex-column align-items-center">
-              <p className="mr-3 my-auto copy-cs-true">{text}</p>
-              {isUnfold ? <>Copied!</> : <>Copy me</>}
-            </div>
-            {isUnfold ? <i className="fas fa-check fa-3x"></i> : <i className="far fa-copy fa-3x"></i>}
-            {/* <img src="assets/images/copy.png" /> */}
-            {props.children}
-          </Row>
-        </span>
-      </CopyToClipboard>
-    </div>
-  );
 }
