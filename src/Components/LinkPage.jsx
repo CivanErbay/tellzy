@@ -51,6 +51,7 @@ export default class ResultStory extends Component {
     const storyLink = `tellzy.web.app/story/${storyId}`;
     let nextLink = null;
     if (nextParticipant) nextLink = `tellzy.web.app/story/${storyId}/${nextParticipant.secret}`;
+
     return (
       <div>
         <div className="d-flex flex-column justify-content-center align-items-center">
@@ -69,8 +70,8 @@ export default class ResultStory extends Component {
                       <>
                         <ShareButton
                           url={nextLink}
-                          text={`"${story.storyTitle.email}"`}
-                          buttonText="Send"
+                          text={`"${story.storyTitle}" continues...`}
+                          buttonText="Share"
                           buttonStyle={{
                             backgroundColor: "#f8a055",
                             borderColor: "#f8a055",
@@ -122,6 +123,21 @@ export default class ResultStory extends Component {
                   <ShareButton
                     url={storyLink}
                     text={`"${story.storyTitle}" is finished!`}
+                    buttonText="Share"
+                    buttonStyle={{
+                      backgroundColor: "#f8a055",
+                      borderColor: "#f8a055",
+                      borderRadius: "5px",
+                      fontSize: "2rem",
+                      padding: ".8rem",
+                      shadowColor: "#000",
+                      shadowOffset: {
+                        width: 0,
+                        height: 10,
+                      },
+                      shadowOpacity: 0.51,
+                      shadowRadius: 13.16,
+                    }}
                     title={`Tellzy is awesome`}
                   ></ShareButton>
                   {/* <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy> */}
