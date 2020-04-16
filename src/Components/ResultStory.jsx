@@ -74,17 +74,11 @@ export default class ResultStory extends Component {
                           <p className="">
                             {story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}
                           </p>
+                          <br />
+                          <p className="text-right">
+                            {story.storyParts.reduce((acc, curr) => acc + curr.author + "\n", "")}
+                          </p>
                         </div>
-                        <h3 className="text-capitalize mt-5 mb-4 text-center">
-                          <u>Share it with your friends!</u>
-                        </h3>
-                        <Row className="d-flex justify-content-center align-items-center">
-                          <i className="fab fa-whatsapp fa-2x mx-3 mb-3 social"></i>
-                          <i className="fab fa-telegram-plane fa-2x mx-3 mb-3 social"></i>
-                          <i className="fab fa-facebook-f fa-2x mx-3 mb-3 social"></i>
-                          <i className="fas fa-download fa-2x mx-3 mb-3 social"></i>
-                          <i className="far fa-envelope fa-2x mx-3 mb-3 social"></i>
-                        </Row>
                       </div>
                     </>
                   ) : (
@@ -110,6 +104,19 @@ export default class ResultStory extends Component {
             </div>
           </Col>
           <Col></Col>
+        </Row>
+        <Row className="d-flex flex-column align-items-center">
+          <h1 className="h1">Tellzy</h1>
+          <h3 className="text-capitalize mt-5 mb-4 text-center">
+            <u>Share it with your friends!</u>
+          </h3>
+        </Row>
+        <Row className="d-flex justify-content-center align-items-center mb-5">
+          <i className="fab fa-whatsapp fa-2x mx-3 mb-3 social"></i>
+          <i className="fab fa-telegram-plane fa-2x mx-3 mb-3 social"></i>
+          <i className="fab fa-facebook-f fa-2x mx-3 mb-3 social"></i>
+          <i className="fas fa-download fa-2x mx-3 mb-3 social"></i>
+          <i className="far fa-envelope fa-2x mx-3 mb-3 social"></i>
         </Row>
       </div>
     );

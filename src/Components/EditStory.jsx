@@ -47,7 +47,7 @@ export default class EditStory extends Component {
         this.setState({ error: true });
       });
 
-    if (storyRef.exists) {
+    if (storyRef && storyRef.exists) {
       const story = storyRef.data();
       // check that secret is valid among participants
       const validParticipant = story.participants.filter(
@@ -160,12 +160,12 @@ export default class EditStory extends Component {
                 {!isEmpty(validParticipant) ? (
                   <>
                     {validParticipant.isSubmitted ? (
-                      <div>
+                      <div className="d-flex flex-column align-items-center">
+                        <h1 className="h1">Tellzy</h1>
+
+                        <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                         {nextParticipant && (
                           <div className="d-flex flex-column align-items-center">
-                            <h1 className="h1">Tellzy</h1>
-
-                            <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                             <p className="text-center">
                               <b>{validParticipant.email}</b> has already edited the story with this link
                               <br />
@@ -210,10 +210,9 @@ export default class EditStory extends Component {
                                 </Form.Label>
                                 <Form.Control
                                   className="hint-text"
-                                  sreadOnly
+                                  readOnly
                                   as="textarea"
                                   value={hintText}
-                                  rows="3"
                                   name="hintText"
                                 />
                               </Form.Group>
