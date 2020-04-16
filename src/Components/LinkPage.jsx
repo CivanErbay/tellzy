@@ -48,9 +48,9 @@ export default class ResultStory extends Component {
     const { story, storyId, nextParticipant } = this.props;
     const { nextUnfold, storyUnfold, isDesktop } = this.state;
 
-    const storyLink = `tellzy.web.app/story/${storyId}`;
+    const storyLink = `https://tellzy.web.app/story/${storyId}`;
     let nextLink = null;
-    if (nextParticipant) nextLink = `tellzy.web.app/story/${storyId}/${nextParticipant.secret}`;
+    if (nextParticipant) nextLink = `https://tellzy.web.app/story/${storyId}/${nextParticipant.secret}`;
 
     return (
       <div>
@@ -70,7 +70,7 @@ export default class ResultStory extends Component {
                       <>
                         <ShareButton
                           url={nextLink}
-                          text={`"${story.storyTitle}" continues...`}
+                          text={`"${story.storyTitle}" continues...\n`}
                           buttonText="Share"
                           buttonStyle={{
                             backgroundColor: "#f8a055",
