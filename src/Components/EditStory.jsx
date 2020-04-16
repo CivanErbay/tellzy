@@ -37,17 +37,17 @@ export default class EditStory extends Component {
     }
   }
 
-  async getStory(storyId) {
+  getStory = async (storyId) => {
     let storyRef = await db
       .collection("stories")
       .doc(storyId)
       .get()
-      .catch(function (error) {
+      .catch((error) => {
         console.log("Error getting document:", error);
         this.setState({ error: true });
       });
 
-    if (storyRef.exists) {
+    if (storyRef && storyRef.exists) {
       const story = storyRef.data();
       // check that secret is valid among participants
       const validParticipant = story.participants.filter(
@@ -75,7 +75,7 @@ export default class EditStory extends Component {
       console.log("No such document!");
       this.setState({ error: true });
     }
-  }
+  };
 
   handleChange(event) {
     let fieldName = event.target.name;
@@ -146,10 +146,10 @@ export default class EditStory extends Component {
 
     return (
       <div className="edit-story">
-        <Row className="my-5">
+        <Row className="">
           <Col sm={2}>
             <Link to="/">
-              <Button className="btn-home">Home</Button>
+              <Button className="btn-home sm">Home</Button>
             </Link>
           </Col>
           <Col sm={8} className="h-100">
@@ -157,17 +157,21 @@ export default class EditStory extends Component {
               <p>Loading...</p>
             ) : (
               <>
-                <h1 className="h1-es-false text-center text-capitalize mb-3">{story.storyTitle}.</h1>
                 {!isEmpty(validParticipant) ? (
                   <>
                     {validParticipant.isSubmitted ? (
-                      <div>
+                      <div className="d-flex flex-column align-items-center">
+                        <h1 className="h1">Tellzy</h1>
+
+                        <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                         {nextParticipant && (
-                          <p className="text-center mt-5">
-                            <b>{validParticipant.email}</b> has already edited the story with this link
-                            <br />
-                            Check the progress of the story in the <b>Result Link</b>
-                          </p>
+                          <div className="d-flex flex-column align-items-center">
+                            <p className="text-center">
+                              <b>{validParticipant.email}</b> has already edited the story with this link
+                              <br />
+                              Check the progress of the story in the <b>Result Link</b>
+                            </p>
+                          </div>
                         )}
 
                         <LinkPage
@@ -178,6 +182,7 @@ export default class EditStory extends Component {
                       </div>
                     ) : (
                       <>
+                        <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                         {submitSuccess ? (
                           <>
                             <LinkPage
@@ -205,7 +210,7 @@ export default class EditStory extends Component {
                                 </Form.Label>
                                 <Form.Control
                                   className="hint-text"
-                                  sreadOnly
+                                  readOnly
                                   as="textarea"
                                   value={hintText}
                                   name="hintText"
@@ -237,6 +242,7 @@ export default class EditStory extends Component {
                   </>
                 ) : (
                   <div className="d-flex justify-content-center p-deadlink-true">
+                    <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                     Sorry, the edit link for this story is not valid.
                   </div>
                 )}
@@ -245,6 +251,7 @@ export default class EditStory extends Component {
           </Col>
           <Col sm={2}></Col>
         </Row>
+        <Row className="my-4"></Row>
       </div>
     );
   }
