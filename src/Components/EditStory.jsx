@@ -160,12 +160,12 @@ export default class EditStory extends Component {
                 {!isEmpty(validParticipant) ? (
                   <>
                     {validParticipant.isSubmitted ? (
-                      <div>
+                      <div className="d-flex flex-column align-items-center">
+                        <h1 className="h1">Tellzy</h1>
+
+                        <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                         {nextParticipant && (
                           <div className="d-flex flex-column align-items-center">
-                            <h1 className="h1">Tellzy</h1>
-
-                            <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                             <p className="text-center">
                               <b>{validParticipant.email}</b> has already edited the story with this link
                               <br />

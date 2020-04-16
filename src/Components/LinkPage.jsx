@@ -116,29 +116,40 @@ export default class ResultStory extends Component {
                 <>
                   <p className="p-5 p-cs-true text-center">
                     Your Tellzy story is complete! Now you can share it with your buddies:{" "}
-                    {story.participants.map((participant) => participant.email).join(", ")}
+                    <span className="highlight">
+                      {story.participants.map((participant) => participant.email).join(", ")}
+                    </span>
                   </p>
+                  {!isDesktop ? (
+                    <ShareButton
+                      url={storyLink}
+                      text={`"${story.storyTitle}" is finished!`}
+                      buttonText="Share"
+                      buttonStyle={{
+                        backgroundColor: "#f8a055",
+                        borderColor: "#f8a055",
+                        borderRadius: "5px",
+                        fontSize: "2rem",
+                        padding: ".8rem",
+                        shadowColor: "#000",
+                        shadowOffset: {
+                          width: 0,
+                          height: 10,
+                        },
+                        shadowOpacity: 0.51,
+                        shadowRadius: 13.16,
+                      }}
+                      title={`Tellzy is awesome`}
+                    ></ShareButton>
+                  ) : (
+                    <LinkWithCopy
+                      link={storyLink}
+                      text="Result Link"
+                      isUnfold={storyUnfold}
+                      setUnfold={this.storySetUnfold}
+                    ></LinkWithCopy>
+                  )}
 
-                  <ShareButton
-                    url={storyLink}
-                    text={`"${story.storyTitle}" is finished!`}
-                    buttonText="Share"
-                    buttonStyle={{
-                      backgroundColor: "#f8a055",
-                      borderColor: "#f8a055",
-                      borderRadius: "5px",
-                      fontSize: "2rem",
-                      padding: ".8rem",
-                      shadowColor: "#000",
-                      shadowOffset: {
-                        width: 0,
-                        height: 10,
-                      },
-                      shadowOpacity: 0.51,
-                      shadowRadius: 13.16,
-                    }}
-                    title={`Tellzy is awesome`}
-                  ></ShareButton>
                   {/* <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy> */}
                 </>
               )}
