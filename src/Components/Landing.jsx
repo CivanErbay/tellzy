@@ -72,14 +72,21 @@ export default class Landing extends Component {
             <Col sm={2}></Col>
           </Row>
 
-          <Row className="first-row">
-            <Col className="text-center d-flex align-items-center justify-content-center">
+          <Row className="first-row d-flex align-items-end justify-content-center">
+            <Col className="text-center ">
               <Button className="btn-up sm" onClick={() => scroll.scrollToTop()}>
                 <b>Up</b>
               </Button>
             </Col>
             <Col></Col>
-            <Col></Col>
+            <Col>
+              {" "}
+              <div className="footer d-flex align-items-center justify-content-center ">
+                <Link className="footer" to="/policy">
+                  Policy
+                </Link>
+              </div>
+            </Col>
             <Col className="text-center d-flex align-items-center justify-content-center">
               <Link to="/story">
                 <Button className="new-story-btn">New Story</Button>

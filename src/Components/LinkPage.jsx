@@ -60,9 +60,10 @@ export default class ResultStory extends Component {
               {nextParticipant ? (
                 <>
                   <p className="p-cs-true text-center mt-3">
-                    Send
-                    <span className="highlight"> {nextParticipant.email} </span>
-                    the Edit Link to continue the adventure!
+                    <u>Send</u> the
+                    <span className="highlight"> Edit Link </span>
+                    to
+                    <span className="highlight"> {nextParticipant.email} </span> to continue the adventure!
                   </p>
                   <Row className="d-flex justify-content-center align-items-center">
                     {!isDesktop ? (
