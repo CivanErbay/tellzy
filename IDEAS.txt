@@ -12,10 +12,10 @@ SMALL THINGS
 + privacy statement compliance. E G https://blog.logrocket.com/how-to-improve-social-engagement-with-the-web-share-api/
 - implement FavIcon 
 - //DONE// Store Icons and Fonts on our Server - No more CDN's, because of slow loading time --> https://google-webfonts-helper.herokuapp.com/
-- visible Links + Copy to Clipboard --> Paco
+- //DONE// visible Links + Copy to Clipboard --> Paco
 - implement Preview function on Link
 - Impressum & Datenschutz
-- make Links personal (e.g. Linda's Link, Paco's Link etc.) 
+(- make Links personal (e.g. Linda's Link, Paco's Link etc.))
 
 
 
@@ -24,3 +24,7 @@ LONG TERM CHANGES
 	--> "Dont think too much, just write", Rewarding experiences
 -Final Text Export and Share Function
 -Illustrations 
+
+
+OPEN TASKS 
+- (Headliner of EditStory.jsx & LinkPage.jsx) Story Title Header with the class .h1-es-false is set to display:none in MOBILE VIEW/media Query (because it sucks on LinkPage, but I didnt know how to ommit only there) 
