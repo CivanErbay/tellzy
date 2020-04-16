@@ -47,7 +47,7 @@ export default class EditStory extends Component {
         this.setState({ error: true });
       });
 
-    if (storyRef.exists) {
+    if (storyRef && storyRef.exists) {
       const story = storyRef.data();
       // check that secret is valid among participants
       const validParticipant = story.participants.filter(
@@ -210,10 +210,9 @@ export default class EditStory extends Component {
                                 </Form.Label>
                                 <Form.Control
                                   className="hint-text"
-                                  sreadOnly
+                                  readOnly
                                   as="textarea"
                                   value={hintText}
-                                  rows="3"
                                   name="hintText"
                                 />
                               </Form.Group>
