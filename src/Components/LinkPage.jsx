@@ -60,10 +60,9 @@ export default class ResultStory extends Component {
               {nextParticipant ? (
                 <>
                   <p className="p-cs-true text-center mt-3">
-                    <u>Send</u> the
-                    <span className="highlight"> Edit Link </span>
-                    to
-                    <span className="highlight"> {nextParticipant.email} </span> to continue the adventure!
+                    Send
+                    <span className="highlight"> {nextParticipant.email} </span>
+                    the Edit Link to continue the adventure!
                   </p>
                   <Row className="d-flex justify-content-center align-items-center">
                     {!isDesktop ? (
@@ -155,7 +154,7 @@ function LinkWithCopy(props) {
   const { link, text, isUnfold, setUnfold } = props;
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center m-4">
+    <div className="d-flex flex-column justify-content-center align-items-center my-2">
       <CopyToClipboard className="clipboard" text={link} onCopy={setUnfold}>
         <span>
           <Row className="row-cs-true p-3">

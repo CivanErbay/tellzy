@@ -37,7 +37,7 @@ export default class EditStory extends Component {
     }
   }
 
-  async getStory(storyId) {
+  getStory = async (storyId) => {
     let storyRef = await db
       .collection("stories")
       .doc(storyId)
@@ -75,7 +75,7 @@ export default class EditStory extends Component {
       console.log("No such document!");
       this.setState({ error: true });
     }
-  }
+  };
 
   handleChange(event) {
     let fieldName = event.target.name;
@@ -149,7 +149,7 @@ export default class EditStory extends Component {
         <Row className="my-5">
           <Col sm={2}>
             <Link to="/">
-              <Button className="btn-home">Home</Button>
+              <Button className="btn-home sm">Home</Button>
             </Link>
           </Col>
           <Col sm={8} className="h-100">
@@ -157,17 +157,21 @@ export default class EditStory extends Component {
               <p>Loading...</p>
             ) : (
               <>
-                <h1 className="h1-es-false text-center text-capitalize mb-3">{story.storyTitle}.</h1>
                 {!isEmpty(validParticipant) ? (
                   <>
                     {validParticipant.isSubmitted ? (
                       <div>
                         {nextParticipant && (
-                          <p className="text-center mt-5">
-                            <b>{validParticipant.email}</b> has already edited the story with this link
-                            <br />
-                            Check the progress of the story in the <b>Result Link</b>
-                          </p>
+                          <div className="d-flex flex-column align-items-center">
+                            <h1 className="h1">Tellzy</h1>
+
+                            <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
+                            <p className="text-center">
+                              <b>{validParticipant.email}</b> has already edited the story with this link
+                              <br />
+                              Check the progress of the story in the <b>Result Link</b>
+                            </p>
+                          </div>
                         )}
 
                         <LinkPage
@@ -178,6 +182,7 @@ export default class EditStory extends Component {
                       </div>
                     ) : (
                       <>
+                        <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                         {submitSuccess ? (
                           <>
                             <LinkPage
@@ -237,6 +242,7 @@ export default class EditStory extends Component {
                   </>
                 ) : (
                   <div className="d-flex justify-content-center p-deadlink-true">
+                    <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                     Sorry, the edit link for this story is not valid.
                   </div>
                 )}
