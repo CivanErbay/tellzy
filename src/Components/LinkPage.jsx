@@ -60,12 +60,7 @@ export default class ResultStory extends Component {
                             {nextParticipant ? (
                                 <>
                                     <p className="p-cs-true text-center mt-3">
-                                        <u>Send</u> the
-                                        <span className="highlight">
-                                            {" "}
-                                            Edit Link{" "}
-                                        </span>
-                                        to
+                                        <u>Send</u> the Edit Link to
                                         <span className="highlight">
                                             {" "}
                                             {nextParticipant.email}{" "}
