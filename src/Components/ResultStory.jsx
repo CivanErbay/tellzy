@@ -4,6 +4,11 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { db } from "./../config/firebaseConfig";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
+import LinkWithCopy from "./Reusable/LinkWithCopy";
+import "../styling/paper.css";
+
+import ShareButton from "react-web-share-button";
+
 export default class ResultStory extends Component {
   constructor(props) {
     super(props);
@@ -12,18 +17,28 @@ export default class ResultStory extends Component {
       isError: false,
       storyFinished: false,
       story: {},
+      storyId: null,
+      isDesktop: window.innerWidth > 700,
     };
   }
 
+  componentWillUnmount = () => {
+    window.removeEventListener("resize", this.updatePredicate);
+  };
   componentDidMount() {
     const {
       match: { params },
     } = this.props;
 
+    window.addEventListener("resize", this.updatePredicate);
     const storyId = params.storyId;
     this.getStory(storyId);
     this.setState({ storyId });
   }
+
+  updatePredicate = () => {
+    this.setState({ isDesktop: window.innerWidth > 700 }); //this has something toDo with the Screensize and the Sharebutton I guess?
+  };
 
   async getStory(storyId) {
     let storyRef = await db
@@ -48,8 +63,9 @@ export default class ResultStory extends Component {
 
   render() {
     // story = {storyTitle, participants: [{email, isSubmitted}], storyParts: [{author, text}]}
-    const { story, isLoading, storyFinished } = this.state;
+    const { story, isLoading, storyFinished, isDesktop, storyId } = this.state;
 
+    const storyLink = `https://tellzy.web.app/story/${storyId}`;
     return (
       <div className="w-100">
         <Row>
@@ -63,23 +79,15 @@ export default class ResultStory extends Component {
               {isLoading ? (
                 <p>Loading...</p>
               ) : (
-                <div className="d-flex flex-column justify-content-center align-items-center result-true-div">
+                <div className="paper-story">
                   {storyFinished ? (
                     <>
-                      <div className="result-true-page">
-                        <div className="result-true-text">
-                          <h2 className="text-center mt-3 mb-5 text-capitalize big-font">
-                            {story.storyTitle}
-                          </h2>{" "}
-                          <p className="">
-                            {story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}
-                          </p>
-                          <br />
-                          <p className="text-right signature">
-                            {story.storyParts.reduce((acc, curr) => acc + curr.author + "\n", "")}
-                          </p>
-                        </div>
-                      </div>
+                      <h2 className="text-center mt-3 mb-5 text-capitalize big-font">{story.storyTitle}</h2>{" "}
+                      <p className="">{story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}</p>
+                      <br />
+                      <p className="text-right signature text-capitalize">
+                        {story.storyParts.reduce((acc, curr) => acc + curr.author + "\n", "")}
+                      </p>
                     </>
                   ) : (
                     <div className="responsive-result-progress">
@@ -107,11 +115,40 @@ export default class ResultStory extends Component {
         </Row>
         <Row className="d-flex flex-column align-items-center">
           <h1 className="h1">Tellzy</h1>
-          <h3 className="text-capitalize mt-5 mb-4 text-center">
+          <h3 className="text-capitalize mt-3 mb-4 text-center">
             <u>Share it with your friends!</u>
           </h3>
+          {!isDesktop ? (
+            <ShareButton
+              url={storyLink}
+              text={`"${story.storyTitle}" is finished!`}
+              buttonText="Share"
+              buttonStyle={{
+                backgroundColor: "#f8a055",
+                borderColor: "#f8a055",
+                borderRadius: "5px",
+                fontSize: "2rem",
+                padding: ".8rem",
+                shadowColor: "#000",
+                shadowOffset: {
+                  width: 0,
+                  height: 10,
+                },
+                shadowOpacity: 0.51,
+                shadowRadius: 13.16,
+              }}
+              title={`Tellzy is awesome`}
+            ></ShareButton>
+          ) : (
+            <LinkWithCopy
+              link={storyLink}
+              text="Result Link"
+              isUnfold={""}
+              setUnfold={this.storySetUnfold}
+            ></LinkWithCopy>
+          )}
         </Row>
-        <Row className="d-flex justify-content-center align-items-center mb-5">
+        <Row className="d-flex justify-content-center align-items-center my-5">
           <i className="fab fa-whatsapp fa-2x mx-3 mb-3 social"></i>
           <i className="fab fa-telegram-plane fa-2x mx-3 mb-3 social"></i>
           <i className="fab fa-facebook-f fa-2x mx-3 mb-3 social"></i>
