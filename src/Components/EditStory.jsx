@@ -42,7 +42,7 @@ export default class EditStory extends Component {
       .collection("stories")
       .doc(storyId)
       .get()
-      .catch(function (error) {
+      .catch((error) => {
         console.log("Error getting document:", error);
         this.setState({ error: true });
       });
@@ -213,6 +213,7 @@ export default class EditStory extends Component {
                                   sreadOnly
                                   as="textarea"
                                   value={hintText}
+                                  rows="3"
                                   name="hintText"
                                 />
                               </Form.Group>
