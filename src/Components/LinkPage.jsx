@@ -60,10 +60,9 @@ export default class ResultStory extends Component {
               {nextParticipant ? (
                 <>
                   <p className="p-cs-true text-center mt-3">
-                    <u>Send</u> the
-                    <span className="highlight"> Edit Link </span>
-                    to
-                    <span className="highlight"> {nextParticipant.email} </span> to continue the adventure!
+                    Send
+                    <span className="highlight"> {nextParticipant.email} </span>
+                    the Edit Link to continue the adventure!
                   </p>
                   <Row className="d-flex justify-content-center align-items-center">
                     {!isDesktop ? (
@@ -116,61 +115,16 @@ export default class ResultStory extends Component {
               ) : (
                 <>
                   <p className="p-5 p-cs-true text-center">
-                    Your Tellzy story is complete! Now you can share it with your buddies:{" "}
-                    {story.participants.map((participant) => participant.email).join(", ")}
+                    Your Tellzy story is complete! Now you can share it with your buddies:
+                    <br />
+                    <span className="highlight">
+                      {story.participants.map((participant) => participant.email).join(", ")}
+                    </span>
                   </p>
-
-                  <ShareButton
-                    url={storyLink}
-                    text={`"${story.storyTitle}" is finished!`}
-                    buttonText="Share"
-                    buttonStyle={{
-                      backgroundColor: "#f8a055",
-                      borderColor: "#f8a055",
-                      borderRadius: "5px",
-                      fontSize: "2rem",
-                      padding: ".8rem",
-                      shadowColor: "#000",
-                      shadowOffset: {
-                        width: 0,
-                        height: 10,
-                      },
-                      shadowOpacity: 0.51,
-                      shadowRadius: 13.16,
-                    }}
-                    title={`Tellzy is awesome`}
-                  ></ShareButton>
-                  {/* <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy> */}
-                </>
-              )}
-            </>
-          }
-        </div>
-      </div>
-    );
-  }
-}
-
-function LinkWithCopy(props) {
-  const { link, text, isUnfold, setUnfold } = props;
-
-  return (
-    <div className="d-flex flex-column justify-content-center align-items-center">
-      {
-        <>
-          {nextParticipant ? (
-            <>
-              <p className="p-cs-true text-center mt-3">
-                Send
-                <span className="highlight"> {nextParticipant.email} </span>
-                the Edit Link to continue the adventure!
-              </p>
-              <Row className="d-flex justify-content-center align-items-center">
-                {!isDesktop ? (
-                  <>
+                  {!isDesktop ? (
                     <ShareButton
-                      url={nextLink}
-                      text={`"${story.storyTitle}" continues...\n`}
+                      url={storyLink}
+                      text={`"${story.storyTitle}" is finished!`}
                       buttonText="Share"
                       buttonStyle={{
                         backgroundColor: "#f8a055",
@@ -188,76 +142,24 @@ function LinkWithCopy(props) {
                       }}
                       title={`Tellzy is awesome`}
                     ></ShareButton>
-                  </>
-                ) : (
-                  <>
+                  ) : (
                     <LinkWithCopy
-                      link={nextLink}
-                      text="Edit Link"
-                      isUnfold={nextUnfold}
-                      setUnfold={this.nextSetUnfold}
+                      link={storyLink}
+                      text="Result Link"
+                      isUnfold={storyUnfold}
+                      setUnfold={this.storySetUnfold}
                     ></LinkWithCopy>
-                  </>
-                )}
-              </Row>
+                  )}
 
-              <p className="p2-cs-true2 text-center">
-                Soon you will get the whole story! <br />
-                In the meantime, track the status on this <b>Result</b> Link
-              </p>
-
-              <LinkWithCopy
-                link={storyLink}
-                text="Result Link"
-                isUnfold={storyUnfold}
-                setUnfold={this.storySetUnfold}
-              ></LinkWithCopy>
-            </>
-          ) : (
-            <>
-              <p className="p-5 p-cs-true text-center">
-                Your Tellzy story is complete! Now you can share it with your buddies:{" "}
-                <span className="highlight">
-                  {story.participants.map((participant) => participant.email).join(", ")}
-                </span>
-              </p>
-              {!isDesktop ? (
-                <ShareButton
-                  url={storyLink}
-                  text={`"${story.storyTitle}" is finished!`}
-                  buttonText="Share"
-                  buttonStyle={{
-                    backgroundColor: "#f8a055",
-                    borderColor: "#f8a055",
-                    borderRadius: "5px",
-                    fontSize: "2rem",
-                    padding: ".8rem",
-                    shadowColor: "#000",
-                    shadowOffset: {
-                      width: 0,
-                      height: 10,
-                    },
-                    shadowOpacity: 0.51,
-                    shadowRadius: 13.16,
-                  }}
-                  title={`Tellzy is awesome`}
-                ></ShareButton>
-              ) : (
-                <LinkWithCopy
-                  link={storyLink}
-                  text="Result Link"
-                  isUnfold={storyUnfold}
-                  setUnfold={this.storySetUnfold}
-                ></LinkWithCopy>
+                  {/* <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy> */}
+                </>
               )}
-
-              {/* <LinkWithCopy link={storyLink} text="Result Link"></LinkWithCopy> */}
             </>
-          )}
-        </>
-      }
-    </div>
-  );
+          }
+        </div>
+      </div>
+    );
+  }
 }
 
 function LinkWithCopy(props) {
