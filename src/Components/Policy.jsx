@@ -9,6 +9,11 @@ export default class Policy extends Component {
                 <Link to="/">
                     <Button className="btn-home2">Home</Button>
                 </Link>
+                <h1>Impressum</h1>
+                <p>Paco Muro, Moritz Michels, Max Jansen, Civan Erbay</p>
+                <p>Brüsseler Str. 37</p>
+                <p>50674 Cologne</p>
+                <p>Germany</p>
                 <h1>Acceptable use policy</h1>
                 <p>
                     These acceptable use policy (&quot;Acceptable Use
