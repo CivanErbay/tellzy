@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { signIn, signOut } from "../actions/auth";
 import { auth } from "../config/firebaseConfig";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 
 export default class Admin extends Component {
   constructor(props) {
