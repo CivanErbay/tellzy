@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { db } from "./../config/firebaseConfig";
 import LinkPage from "./LinkPage";
 import { Link } from "react-router-dom";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { isEmpty } from "lodash";
 
 export default class EditStory extends Component {
