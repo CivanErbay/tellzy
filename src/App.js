@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Policy from "./Components/Reusable/Policy";
 import Contact from "./Components/Contact";
+import Admin from "./Components/Admin";
 import Landing from "./Components/Landing";
 import CreatingStory from "./Components/CreatingStory";
 import ResultStory from "./Components/ResultStory";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/story/:storyId/:secret" component={EditStory} />
           <Route path="/policy" component={Policy} />
           <Route path="/contact" component={Contact} />
+          <Route path="/admin" component={Admin} />
         </Switch>
       </Router>
     </div>

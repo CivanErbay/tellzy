@@ -21,7 +21,6 @@ export default class CreatingStory extends Component {
     let fieldName = event.target.name;
     let fleldVal = event.target.value;
     this.setState({
-      ...this.state,
       story: { ...this.state.story, [fieldName]: fleldVal },
     });
   }
