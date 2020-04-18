@@ -47,7 +47,6 @@ export default class ResultStory extends Component {
       .get()
       .catch(function (error) {
         console.log("Error getting document:", error);
-        this.setState({ error: true });
       });
 
     if (storyRef.exists) {
@@ -85,7 +84,7 @@ export default class ResultStory extends Component {
                     <>
                       <p>{story.storyParts.reduce((acc, curr) => acc + curr.text + "\n", "")}</p>
                       <br />
-                      <div className="signature ml-auto">
+                      <div className="signature">
                         <p>{story.storyParts.reduce((acc, curr) => acc + curr.author + "\n", "")}</p>
                       </div>
                     </>

@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* .result-true-text */
+  min-width: 80%;
   line-height: 1.5;
   background-image: url(/assets/images/paper2-min.jpg);
   background-position: center;
@@ -31,6 +31,7 @@ h2 {
   text-align: right;
   text-transform: capitalize;
   width: 80%;
+  margin-left: auto;
 }
 
 @media all and (max-width: 700px) {

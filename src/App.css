@@ -114,6 +114,10 @@ textarea {
   box-shadow: var(--box-shadow);
 }
 
+.sm-hide {
+  display: none;
+}
+
 .new-story-btn {
   font-size: 2rem !important;
   padding: 1.5rem !important;
@@ -275,6 +279,7 @@ textarea {
   padding: 0.6em;
   border-width: 0.1em;
 }
+
 .row-landing-part2 {
   height: 80vh;
 }
@@ -323,9 +328,11 @@ textarea {
   padding: 1rem;
 }
 .footer {
+  margin-top: auto;
   color: #000000;
   text-decoration: none !important;
 }
+
 @-webkit-keyframes soft-blink {
   0% {
     opacity: 1;
@@ -373,6 +380,10 @@ textarea {
 }
 
 @media all and (max-width: 700px) {
+  .sm-hide {
+    display: none !important;
+  }
+
   .form-es-false {
     margin: 2rem 3rem;
   }
