@@ -135,6 +135,7 @@ export default class CreatingStory extends Component {
                                         <Form.Control
                                             required
                                             name="creatorEmail"
+                                            placeholder="Donald Duck"
                                             onChange={this.handleChange.bind(
                                                 this
                                             )}
