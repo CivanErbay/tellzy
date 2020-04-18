@@ -1,0 +1,21 @@
+.admin {
+  color: black;
+}
+
+.stories-list {
+  height: 700px !important;
+  overflow: auto;
+  -ms-overflow-style: none;
+  padding: 1rem;
+}
+
+.stats {
+  border: 2px solid blue;
+  width: 100%;
+  min-height: 200px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.stories-list::-webkit-scrollbar {
+  display: none;
+}

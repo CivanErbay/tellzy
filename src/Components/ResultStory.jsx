@@ -44,7 +44,6 @@ export default class ResultStory extends Component {
             .get()
             .catch(function (error) {
                 console.log("Error getting document:", error);
-                this.setState({ error: true });
             });
 
         if (storyRef.exists) {
