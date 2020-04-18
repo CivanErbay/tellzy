@@ -5,6 +5,7 @@ import { db } from "./../config/firebaseConfig";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LinkPage from "./LinkPage";
+import "../styling/creating.css";
 
 export default class CreatingStory extends Component {
   constructor(props) {
@@ -97,84 +98,80 @@ export default class CreatingStory extends Component {
     const { submitSuccess, nextParticipant, story, storyId } = this.state;
 
     return (
-      <div className="create-story">
-        <Row className="my-5">
-          <Col sm={2}>
-            <Link to="/">
-              <Button className="btn-home">Home</Button>
-            </Link>
-          </Col>
-          <Col sm={8} className="h-100">
-            {submitSuccess ? (
-              <>
-                <h1 className="h1-es-false text-center text-capitalize mb-3">
-                  <u>{story.storyTitle}.</u>
-                </h1>
-                <h2 className="text-center h2-cs-false"></h2>
-                <LinkPage story={story} storyId={storyId} nextParticipant={nextParticipant}></LinkPage>
-              </>
-            ) : (
-              <>
-                <h1 className="h1-cs-false text-center">Create new story.</h1>
-                <Form className="form-cs-false" onSubmit={this.handleSubmit}>
-                  <Form.Group>
-                    <Form.Label>Your Name</Form.Label>
-                    <Form.Control
-                      required
-                      name="creatorEmail"
-                      placeholder="Donald Duck"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
-                  {/* Participants */}
-                  <Form.Group>
-                    <Form.Label>Authors</Form.Label>
-                    <Form.Control
-                      required
-                      as="textarea"
-                      rows="2"
-                      name="participantsEmails"
-                      placeholder="Write down the name of your buddies. Repeat them if you like."
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
-                  {/* TITLE */}
-                  <Form.Group>
-                    <Form.Label>Story Title</Form.Label>
-                    <Form.Control
-                      required
-                      as="textarea"
-                      rows="1"
-                      placeholder="Something memorable but descriptive"
-                      name="storyTitle"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
-                  {/* STAT STORY */}
-                  <Form.Group>
-                    <Form.Label>Start your Story!</Form.Label>
-                    <Form.Control
-                      required
-                      as="textarea"
-                      placeholder="Once upon a time..."
-                      rows="5"
-                      name="storyText"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
+      <Row className="create-story my-5">
+        <Col md className="text-right m-3">
+          <Link to="/">
+            <Button>Home</Button>
+          </Link>
+        </Col>
+        <Col md={7} className="h-100">
+          {submitSuccess ? (
+            <>
+              <h1 className="h1-es-false text-center text-capitalize mb-3">
+                <u>{story.storyTitle}.</u>
+              </h1>
+              <h2 className="text-center h2-cs-false"></h2>
+              <LinkPage story={story} storyId={storyId} nextParticipant={nextParticipant}></LinkPage>
+            </>
+          ) : (
+            <>
+              <h1 className="h1-cs-false text-center">Create new story.</h1>
+              <Form className="create-form" onSubmit={this.handleSubmit}>
+                <Form.Group>
+                  <Form.Label>Your Name</Form.Label>
+                  <Form.Control
+                    required
+                    name="creatorEmail"
+                    placeholder="Donald Duck"
+                    onChange={this.handleChange.bind(this)}
+                  />
+                </Form.Group>
+                {/* Participants */}
+                <Form.Group>
+                  <Form.Label>Authors</Form.Label>
+                  <Form.Control
+                    required
+                    as="textarea"
+                    rows="2"
+                    name="participantsEmails"
+                    placeholder="Write down the name of your buddies. Repeat them if you like."
+                    onChange={this.handleChange.bind(this)}
+                  />
+                </Form.Group>
+                {/* TITLE */}
+                <Form.Group>
+                  <Form.Label>Story Title</Form.Label>
+                  <Form.Control
+                    required
+                    as="textarea"
+                    rows="1"
+                    placeholder="Something memorable but descriptive"
+                    name="storyTitle"
+                    onChange={this.handleChange.bind(this)}
+                  />
+                </Form.Group>
+                {/* STAT STORY */}
+                <Form.Group>
+                  <Form.Label>Start your Story!</Form.Label>
+                  <Form.Control
+                    required
+                    as="textarea"
+                    placeholder="Once upon a time..."
+                    rows="5"
+                    name="storyText"
+                    onChange={this.handleChange.bind(this)}
+                  />
+                </Form.Group>
 
-                  <Row className="d-flex justify-content-between p-3">
-                    <Button className="go-btn-cs-false" type="submit">
-                      Start Journey
-                    </Button>
-                  </Row>
-                </Form>
-              </>
-            )}
-          </Col>
-          <Col sm={2}></Col>
-        </Row>
-      </div>
+                <Button type="submit" className="w-50">
+                  Start Journey
+                </Button>
+              </Form>
+            </>
+          )}
+        </Col>
+        <Col md></Col>
+      </Row>
     );
   }
 }
