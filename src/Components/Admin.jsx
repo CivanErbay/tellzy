@@ -73,7 +73,7 @@ export default class Admin extends Component {
                         </ul>
                       </div>
                     </Col>
-                    <Col md={8} className="d-flex flex-column align-items-center">
+                    <Col md={8} className="d-flex flex-column align-items-center px-4">
                       <div
                         className="stats"
                         style={{ width: "100%", height: "200px", backgroundColor: "blue" }}
