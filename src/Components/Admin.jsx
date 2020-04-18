@@ -1,17 +1,22 @@
 import React, { Component } from "react";
-import { getStory } from "../actions/io";
+import { getStoryRef, queryAllStories, getStoryText, getStorySignature } from "../actions/io";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { signIn, signOut } from "../actions/auth";
+import { isEmpty } from "lodash";
 import { auth } from "../config/firebaseConfig";
 import { Row, Col } from "react-bootstrap";
+import ListGroup from "react-bootstrap/ListGroup";
+import "../styling/admin.css";
 
 export default class Admin extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedStory: null,
-      user: null,
+      selectedStoryId: "",
+      selectedStory: {},
+      querySrotyIds: [],
+      user: {},
       credentials: {
         email: "",
         password: "",
@@ -19,15 +24,22 @@ export default class Admin extends Component {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     auth.onAuthStateChanged((userAuth) => {
       this.setState({ user: userAuth });
     });
+
+    let querySrotyIds = await queryAllStories();
+    this.setState({ querySrotyIds });
   };
 
-  async getStory(storyId) {
-    let storyRef = getStory(storyId);
-  }
+  selectStory = async (selectedStoryId) => {
+    let storyRef = await getStoryRef(selectedStoryId);
+    if (storyRef.exists) {
+      let selectedStory = storyRef.data();
+      this.setState({ selectedStoryId, selectedStory });
+    }
+  };
 
   handleChange(event) {
     let fieldName = event.target.name;
@@ -41,61 +53,93 @@ export default class Admin extends Component {
   };
 
   render() {
-    const { selectedStory, user } = this.state;
+    const { selectedStoryId, selectedStory, user, querySrotyIds } = this.state;
 
     return (
-      <div className="admin my-5">
+      <div className="my-5">
         <Row className="w-100">
           <Col></Col>
           <Col md={8}>
             <div className="d-flex flex-column align-items-center">
               {user ? (
                 <>
-                  <h2> Admin page </h2>
-                  <Row className="w-100">
-                    <Col md={4} className="d-flex flex-column align-items-center">
-                      <div
-                        className="stories-list"
-                        style={{ width: "100%", height: "100%", backgroundColor: "blue" }}
-                      >
+                  <div className="d-flex justify-content-center w-100">
+                    <h2> Admin page </h2>
+                    <Button onClick={signOut} className="ml-auto h-50">
+                      Log Out
+                    </Button>
+                  </div>
+                  <Row className="admin w-100">
+                    <Col md={3} className="d-flex flex-column align-items-center">
+                      <div className="w-100" style={{ backgroundColor: "blue" }}>
                         <div
                           className="filter mx-auto"
-                          style={{ width: "80%", height: "100px", backgroundColor: "orange" }}
+                          style={{ width: "80%", height: "80px", backgroundColor: "orange" }}
                         >
-                          Filter settings
+                          <h3>Filter settings</h3>
                         </div>
-                        <h4>Stories List</h4>
-                        <ul className="p-5 mx-auto">
-                          <li> Story 1</li>
-                          <li> Story 2</li>
-                          <li> Story 3</li>
-                          <li> Story 4</li>
-                        </ul>
+                        <h3>Stories List</h3>
+                        <ListGroup className="stories-list">
+                          {querySrotyIds &&
+                            querySrotyIds.map((storyId) => (
+                              <ListGroup.Item
+                                className="mx-2"
+                                action
+                                active={storyId === selectedStoryId}
+                                key={storyId}
+                                onClick={() => this.selectStory(storyId)}
+                              >
+                                {storyId}
+                              </ListGroup.Item>
+                            ))}
+                        </ListGroup>
                       </div>
                     </Col>
-                    <Col md={8} className="d-flex flex-column align-items-center px-4">
-                      <div
-                        className="stats"
-                        style={{ width: "100%", height: "200px", backgroundColor: "blue" }}
-                      >
-                        Stats
-                        <div
-                          className="participants"
-                          style={{ width: "100%", height: "25%", backgroundColor: "orange" }}
-                        >
-                          Participants
-                        </div>
-                        <div
-                          className="actions mt-auto"
-                          style={{ width: "80%", height: "25%", backgroundColor: "pink" }}
-                        >
-                          Actions
-                        </div>
-                      </div>
-                      <div className="paper-story">
-                        <h2>My story title!</h2>
-                        <p>bla bla bla... dsaufbifb df sd fs df sd f sd fs dgf sd g sdg sd sdgsdgsdgsd gs</p>
-                      </div>
+                    <Col className="d-flex flex-column align-items-center px-4">
+                      {!isEmpty(selectedStory) && (
+                        <>
+                          <div className="stats">
+                            <h3 className="text-center">Stats</h3>
+                            <div
+                              className="participants"
+                              // style={{ width: "100%", height: "25%", backgroundColor: "orange" }}
+                            >
+                              <h4>Participants</h4>
+                              <ListGroup horizontal>
+                                {selectedStory.participants.map((participant) => (
+                                  <ListGroup.Item
+                                    key={participant.secret}
+                                    className="d-flex flex-column align-items-center"
+                                  >
+                                    <p>{participant.email}</p>
+                                    <p>
+                                      {participant.submittedOn
+                                        ? new Date(participant.submittedOn.seconds).toString()
+                                        : " - "}
+                                    </p>
+                                    {/* {Object.keys(participant).map((key) => (
+                                      <span>
+                                        {key}: {participant[key]}
+                                      </span>
+                                    ))} */}
+                                  </ListGroup.Item>
+                                ))}
+                              </ListGroup>
+                            </div>
+                            <div
+                              className="actions mt-auto"
+                              style={{ width: "80%", height: "25%", backgroundColor: "pink" }}
+                            >
+                              Actions
+                            </div>
+                          </div>
+                          <div className="paper-story">
+                            <h2>{selectedStory.storyTitle}</h2>
+                            <p>{getStoryText(selectedStory)}</p>
+                            <p className="signature">{getStorySignature(selectedStory)}</p>
+                          </div>
+                        </>
+                      )}
                     </Col>
                   </Row>
                 </>

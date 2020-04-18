@@ -44,7 +44,6 @@ export default class EditStory extends Component {
       .get()
       .catch((error) => {
         console.log("Error getting document:", error);
-        this.setState({ error: true });
       });
 
     if (storyRef && storyRef.exists) {
