@@ -129,8 +129,8 @@ textarea {
 }
 .h1 {
   font-size: 12.5rem !important;
-
   font-family: "Permanent Marker", cursive;
+  margin: 2rem 0 !important;
 }
 
 .signature {

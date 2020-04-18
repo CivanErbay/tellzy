@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import { Row, Col } from "react-bootstrap";
 import { db } from "./../config/firebaseConfig";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
@@ -14,8 +13,6 @@ import {
   WhatsappShareButton,
 } from "react-share"; // NEW SHARE BUTTON
 import { EmailIcon, FacebookIcon, TelegramIcon, TwitterIcon, WhatsappIcon } from "react-share";
-
-import ShareButton from "react-web-share-button";
 
 export default class ResultStory extends Component {
   constructor(props) {
@@ -120,7 +117,7 @@ export default class ResultStory extends Component {
           </Col>
           <Col></Col>
         </Row>
-        <Row className="d-flex flex-column align-items-center">
+        <Row className="d-flex flex-column align-items-center mb-5">
           <h1 className="h1">Tellzy</h1>
           <h3 className="text-capitalize mt-3 mb-4 text-center">
             <u>Share it with your friends!</u>

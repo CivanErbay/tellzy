@@ -15,7 +15,7 @@ export default class Landing extends Component {
           <Col md></Col>
           <Col md={7}>
             <div className="d-flex flex-column align-items-center justify-content-center">
-              <h1 className="h1 my-4">Tellzy</h1>
+              <h1 className="h1">Tellzy</h1>
               <div className="wrap">
                 <h3 className="h3-landing">collective storytelling.</h3>
                 <h3 className="h3-landing">share your imagination.</h3>

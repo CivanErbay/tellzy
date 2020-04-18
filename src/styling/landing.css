@@ -2,7 +2,10 @@
   min-height: 100vh;
   width: 100%;
   margin: 0 !important;
-  padding: 2rem 0 !important;
+  padding: 4rem 0 !important;
+}
+
+.first-part h1 {
 }
 
 .second-part {
