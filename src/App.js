@@ -9,6 +9,8 @@ import ResultStory from "./Components/ResultStory";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import EditStory from "./Components/EditStory";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./styling/general.css";
+import "./styling/fonts.css";
 
 function App() {
   return (

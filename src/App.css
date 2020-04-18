@@ -1,124 +1,42 @@
-:root {
+/* :root {
   --box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
     0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
     0 41.8px 33.4px rgba(0, 0, 0, 0.048), 0 100px 80px rgba(0, 0, 0, 0.12);
-}
+} */
 /* Deletes all initial margin and padding */
 * {
   margin: 0;
   padding: 0;
 }
 /* patrick-hand-regular - latin */
-@font-face {
-  font-family: "Patrick Hand";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/patrick-hand-v13-latin-regular.eot"); /* IE9 Compat Modes */
-  src: local("Patrick Hand"), local("PatrickHand-Regular"),
-    url("/assets/fonts/patrick-hand-v13-latin-regular.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("/assets/fonts/patrick-hand-v13-latin-regular.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/assets/fonts/patrick-hand-v13-latin-regular.woff") format("woff"),
-    /* Modern Browsers */ url("/assets/fonts/patrick-hand-v13-latin-regular.ttf") format("truetype"),
-    /* Safari, Android, iOS */ url("/assets/fonts/patrick-hand-v13-latin-regular.svg#PatrickHand")
-      format("svg"); /* Legacy iOS */
-}
-/* patrick-hand-sc-regular - latin */
-@font-face {
-  font-family: "Patrick Hand SC";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/patrick-hand-sc-v7-latin-regular.eot"); /* IE9 Compat Modes */
-  src: local("Patrick Hand SC"), local("PatrickHandSC-Regular"),
-    url("/assets/fonts/patrick-hand-sc-v7-latin-regular.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("/assets/fonts/patrick-hand-sc-v7-latin-regular.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/assets/fonts/patrick-hand-sc-v7-latin-regular.woff") format("woff"),
-    /* Modern Browsers */ url("/assets/fonts/patrick-hand-sc-v7-latin-regular.ttf") format("truetype"),
-    /* Safari, Android, iOS */ url("/assets/fonts/patrick-hand-sc-v7-latin-regular.svg#PatrickHandSC")
-      format("svg"); /* Legacy iOS */
-}
-/* permanent-marker-regular - latin */
-@font-face {
-  font-family: "Permanent Marker";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/permanent-marker-v9-latin-regular.eot"); /* IE9 Compat Modes */
-  src: local("Permanent Marker Regular"), local("PermanentMarker-Regular"),
-    url("/assets/fonts/permanent-marker-v9-latin-regular.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("/assets/fonts/permanent-marker-v9-latin-regular.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/assets/fonts/permanent-marker-v9-latin-regular.woff") format("woff"),
-    /* Modern Browsers */ url("/assets/fonts/permanent-marker-v9-latin-regular.ttf") format("truetype"),
-    /* Safari, Android, iOS */ url("/assets/fonts/permanent-marker-v9-latin-regular.svg#PermanentMarker")
-      format("svg"); /* Legacy iOS */
-}
-/* gaegu-regular - latin */
-@font-face {
-  font-family: "Gaegu";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/gaegu-v8-latin-regular.eot"); /* IE9 Compat Modes */
-  src: local("Gaegu Regular"), local("Gaegu-Regular"),
-    url("/assets/fonts/gaegu-v8-latin-regular.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("/assets/fonts/gaegu-v8-latin-regular.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/assets/fonts/gaegu-v8-latin-regular.woff") format("woff"),
-    /* Modern Browsers */ url("/assets/fonts/gaegu-v8-latin-regular.ttf") format("truetype"),
-    /* Safari, Android, iOS */ url("/assets/fonts/gaegu-v8-latin-regular.svg#Gaegu") format("svg"); /* Legacy iOS */
-}
-.App {
-  /* background-color: #282c34; */
-  /* background-color: #4897d8; */
-  background-color: #217ca3;
-  min-height: 100vh;
 
-  font-family: "Patrick Hand SC", cursive;
-  font-size: larger;
-  color: white;
-  overflow: hidden;
-  scroll-behavior: smooth !important;
-}
-
-.first-row {
-  height: 20%;
-  padding-bottom: 10%;
-}
-
-.create-story {
-  height: 100%;
-}
-
-.edit-story {
-  height: 100%;
-}
-
-.box {
+/* .box {
   box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034), 0 6.7px 5.3px rgba(0, 0, 0, 0.048),
     0 12.5px 10px rgba(0, 0, 0, 0.06), 0 22.3px 17.9px rgba(0, 0, 0, 0.072),
     0 41.8px 33.4px rgba(0, 0, 0, 0.086), 0 100px 80px rgba(0, 0, 0, 0.12);
-}
+} */
 
-textarea {
+/* textarea {
   resize: none !important;
-  /* overflow: hidden; */
-}
-.second-row {
-  margin-top: -8rem;
-}
+} */
 
+/* 
 .highlight {
   font-size: 2.25rem !important;
   font-family: "Permanent Marker", cursive;
   margin: 0rem;
   color: #f8a055;
-}
+} */
 
-.btn {
+/* .btn {
   box-shadow: var(--box-shadow);
-}
+} */
 
-.sm-hide {
+/* .sm-hide {
   display: none;
-}
+} */
 
-.new-story-btn {
+/* .new-story-btn {
   font-size: 2rem !important;
   padding: 1.5rem !important;
   margin-top: 1.5rem !important;
@@ -126,17 +44,16 @@ textarea {
   border-color: #ffdb5c !important;
   color: black !important;
   z-index: 5 !important;
-}
+} */
 .h1 {
   font-size: 12.5rem !important;
   font-family: "Permanent Marker", cursive;
   margin: 2rem 0 !important;
 }
 
-.signature {
-  /* font-family: "Great Vibes", cursive; */
+/* .signature {
   font-size: 2rem !important;
-}
+} */
 
 .negative-z-index {
   z-index: -5 !important;
@@ -196,6 +113,7 @@ textarea {
 .small-font {
   font-size: 2rem;
 }
+/* 
 .btn-home {
   font-size: 2rem !important;
   padding: 1.5rem !important;
@@ -231,11 +149,10 @@ textarea {
   background-color: #ffdb5c !important;
   border-color: #ffdb5c !important;
   color: black !important;
-}
-.form-cs-false {
-  margin: 3rem 15rem 2rem 15rem;
-  /* margin: 1rem; */
-}
+} */
+/* .form-cs-false {
+  margin: 3rem 12rem;
+} */
 
 .h1-cs-false {
   font-size: 5rem;
@@ -245,15 +162,6 @@ textarea {
   /* font-weight: bold;
 
     font-weight: bold; */
-}
-.go-btn-cs-false {
-  padding: 0.5em 2em 0.5em 2em !important;
-  font-size: 1.5rem !important;
-  margin-top: 1.5rem !important;
-
-  background-color: #ffdb5c !important;
-  border-color: #ffdb5c !important;
-  color: black !important;
 }
 
 .form-es-false {
@@ -297,7 +205,7 @@ textarea {
   color: black;
 }
 
-.arrow {
+/* .arrow {
   display: inline;
   width: 6px;
   height: 80px;
@@ -309,7 +217,7 @@ textarea {
   animation: 3s soft-blink infinite alternate;
   position: relative;
   opacity: 0;
-}
+} */
 .centered {
   margin: 0 auto !important;
 }
@@ -336,11 +244,11 @@ textarea {
   /* width: 50%; */
   padding: 1rem;
 }
-.footer {
+/* .footer {
   margin-top: auto;
   color: #000000;
   text-decoration: none !important;
-}
+} */
 
 @-webkit-keyframes soft-blink {
   0% {

@@ -1,0 +1,9 @@
+.create-form {
+  margin: 3rem 12rem;
+}
+
+@media all and (max-width: 700px) {
+  .create-form {
+    margin: 1rem;
+  }
+}
