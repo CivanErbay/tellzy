@@ -1,27 +1,10 @@
 import React, { Component } from "react";
 import { Row, Col, Container } from "react-bootstrap";
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import { db } from "./../config/firebaseConfig";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
-import LinkWithCopy from "./Reusable/LinkWithCopy";
+import ShareButtons from "./Reusable/ShareButtons";
 import "../styling/paper.css";
-import {
-    EmailShareButton,
-    FacebookShareButton,
-    TelegramShareButton,
-    TwitterShareButton,
-    WhatsappShareButton,
-} from "react-share"; // NEW SHARE BUTTON
-import {
-    EmailIcon,
-    FacebookIcon,
-    TelegramIcon,
-    TwitterIcon,
-    WhatsappIcon,
-} from "react-share";
-
-import ShareButton from "react-web-share-button";
 
 export default class ResultStory extends Component {
     constructor(props) {
@@ -171,65 +154,7 @@ export default class ResultStory extends Component {
                     <h3 className="text-capitalize mt-3 mb-4 text-center">
                         <u>Share it with your friends!</u>
                     </h3>
-                    {!isDesktop ? (
-                        <>
-                            {" "}
-                            <Row className="d-flex justify-content-center align-items-center my-5 w-100 flex-wrap">
-                                <div className="px-2">
-                                    <WhatsappShareButton
-                                        url={storyLink}
-                                        title={`Tellzy is awesome`}
-                                        children={""}
-                                    >
-                                        <WhatsappIcon size={45} round={true} />
-                                    </WhatsappShareButton>
-                                </div>
-                                <div className="px-2">
-                                    <TelegramShareButton
-                                        url={storyLink}
-                                        title={`Tellzy is awesome`}
-                                        children={""}
-                                    >
-                                        <TelegramIcon size={45} round={true} />
-                                    </TelegramShareButton>
-                                </div>
-                                <div className="px-2">
-                                    <FacebookShareButton
-                                        url={storyLink}
-                                        title={`Tellzy is awesome`}
-                                        children={""}
-                                    >
-                                        <FacebookIcon size={45} round={true} />
-                                    </FacebookShareButton>
-                                </div>
-                                <div className="px-2">
-                                    <TwitterShareButton
-                                        url={storyLink}
-                                        title={`Tellzy is awesome`}
-                                        children={""}
-                                    >
-                                        <TwitterIcon size={45} round={true} />
-                                    </TwitterShareButton>
-                                </div>
-                                <div className="px-2">
-                                    <EmailShareButton
-                                        url={storyLink}
-                                        title={`Tellzy is awesome`}
-                                        children={""}
-                                    >
-                                        <EmailIcon size={45} round={true} />
-                                    </EmailShareButton>
-                                </div>
-                            </Row>
-                        </>
-                    ) : (
-                        <LinkWithCopy
-                            link={storyLink}
-                            text="Result Link"
-                            isUnfold={""}
-                            setUnfold={this.storySetUnfold}
-                        ></LinkWithCopy>
-                    )}
+                    <ShareButtons link={storyLink} story={story}></ShareButtons>
                 </Row>
             </div>
         );
