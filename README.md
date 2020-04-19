@@ -22,7 +22,7 @@ BIG THINGS
 -   Landing Page: Random Quote Generator.
 -   Create Story: Random Participant Order
 -   Progress Page: Invisible Participants in Progress except the active Author
--   //DONE// privacy statement compliance. E G https://blog.logrocket.com/how-to-improve-social-engagement-with-the-web-share-api/
+-   //DONE// privacy statement compliance. E G https://blog.logrocket.com/how-to-improve-social-engagement-with-the-web-share-api/ --> Created privacy text here \_ https://www.websitepolicies.com/blog
 -   //DONE// implement FavIcon
 -   //DONE// Store Icons and Fonts on our Server - No more CDN's, because of slow loading time --> https://google-webfonts-helper.herokuapp.com/
 -   //DONE// visible Links + Copy to Clipboard --> Paco
