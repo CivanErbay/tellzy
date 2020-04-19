@@ -1,3 +1,11 @@
+.create-story {
+  padding: 1rem 0;
+}
+
+.create-story h1 {
+  font-size: 6rem !important;
+}
+
 .create-form {
   margin: 3rem 12rem;
 }

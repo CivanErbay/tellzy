@@ -95,10 +95,10 @@ export default class CreatingStory extends Component {
   }
 
   render() {
-    const { submitSuccess, nextParticipant, story, storyId } = this.state;
+    const { submitSuccess, nextParticipant, story, storyId, isRandom } = this.state;
 
     return (
-      <Row className="create-story my-5">
+      <Row className="create-story">
         <Col md className="text-right m-3">
           <Link to="/">
             <Button>Home</Button>
@@ -115,7 +115,7 @@ export default class CreatingStory extends Component {
             </>
           ) : (
             <>
-              <h1 className="h1-cs-false text-center">Create new story.</h1>
+              <h1 className="text-center">Create new story.</h1>
               <Form className="create-form" onSubmit={this.handleSubmit}>
                 <Form.Group>
                   <Form.Label>Your Name</Form.Label>
@@ -127,17 +127,30 @@ export default class CreatingStory extends Component {
                   />
                 </Form.Group>
                 {/* Participants */}
-                <Form.Group>
-                  <Form.Label>Authors</Form.Label>
-                  <Form.Control
-                    required
-                    as="textarea"
-                    rows="2"
-                    name="participantsEmails"
-                    placeholder="Write down the name of your buddies. Repeat them if you like."
-                    onChange={this.handleChange.bind(this)}
-                  />
-                </Form.Group>
+                <Row>
+                  <Col md={8}>
+                    <Form.Group>
+                      <Form.Label>Authors</Form.Label>
+                      <Form.Control
+                        required
+                        as="textarea"
+                        rows="2"
+                        name="participantsEmails"
+                        placeholder="Write down the name of your buddies. Repeat them if you like."
+                        onChange={this.handleChange.bind(this)}
+                      />
+                    </Form.Group>
+                  </Col>
+                  <Col md={4}>
+                    <Button
+                      name="isRandom"
+                      active={isRandom}
+                      onClick={() => this.setState({ isRandom: !isRandom })}
+                    >
+                      Random
+                    </Button>
+                  </Col>
+                </Row>
                 {/* TITLE */}
                 <Form.Group>
                   <Form.Label>Story Title</Form.Label>

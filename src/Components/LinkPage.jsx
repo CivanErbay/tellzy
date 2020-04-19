@@ -10,24 +10,7 @@ export default class ResultStory extends Component {
       isLoading: true,
       isError: false,
       story: {},
-      nextUnfold: false,
-      storyUnfold: false,
     };
-
-    this.nextSetUnfold = this.nextSetUnfold.bind(this);
-    this.storySetUnfold = this.storySetUnfold.bind(this);
-  }
-
-  nextSetUnfold() {
-    if (!this.state.nextUnfold) this.setState({ nextUnfold: true });
-
-    if (this.state.storyUnfold) this.setState({ storyUnfold: false });
-  }
-
-  storySetUnfold() {
-    if (!this.state.storyUnfold) this.setState({ storyUnfold: true });
-
-    if (this.state.nextUnfold) this.setState({ nextUnfold: false });
   }
 
   render() {
