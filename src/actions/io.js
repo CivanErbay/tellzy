@@ -19,6 +19,7 @@ export const queryAllStories = async (query) => {
       .collection("stories")
       // .where(query)
       // .orderBy("createdOn", "desc") // no createdOn data yet
+      .limit(10)
       .get()
       .then(function (querySnapshot) {
         let ids = querySnapshot.docs.map((doc) => doc.id);
