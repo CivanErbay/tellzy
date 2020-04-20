@@ -54,6 +54,9 @@ export default class ResultStory extends Component {
                                         </span>
                                         the Edit Link to continue the story!
                                     </p>
+                                    <h4>
+                                        <u>Edit Link:</u>
+                                    </h4>
                                     <Row className="d-flex justify-content-center align-items-center">
                                         <ShareButtons
                                             link={nextLink}
