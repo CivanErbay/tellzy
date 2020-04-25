@@ -1,6 +1,7 @@
 import firebase from "../config/firebaseConfig";
 const db = firebase.firestore();
 const auth = firebase.auth();
+var firebaseui = require("firebaseui");
 
 // Initialize the FirebaseUI Widget using Firebase.
 export const uiConfig = {
@@ -19,6 +20,7 @@ export const uiConfig = {
   // },
   // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
   signInFlow: "popup",
+  credentialHelper: firebaseui.auth.CredentialHelper.NONE,
   signInSuccessUrl: "main",
   signInOptions: [
     // Leave the lines as is for the providers you want to offer your users.
