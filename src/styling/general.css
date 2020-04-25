@@ -21,7 +21,7 @@
   border-color: #ffdb5c !important;
   color: black !important;
   z-index: 5 !important;
-  min-width: 200px !important;
+  /* min-width: 200px !important; */
   box-shadow: var(--box-shadow);
 }
 

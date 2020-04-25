@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row } from "react-bootstrap";
 import ShareButtons from "./Reusable/ShareButtons";
 import Button from "react-bootstrap/Button";
+import "../styling/linkPage.css";
 
 export default class ResultStory extends Component {
   constructor(props) {
