@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { addStory, makeid } from "../actions/io";
+import { addStory } from "../actions/io";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import auth from "../actions/auth";
+import auth, { user } from "../actions/auth";
 import { getUserData } from "../actions/io";
 import LinkPage from "./LinkPage";
 import "../styling/creating.css";
@@ -39,28 +39,26 @@ export default class CreatingStory extends Component {
     event.preventDefault();
 
     const {
-      story: { creatorEmail, storyTitle, storyText, participantsEmails },
+      story: { title, text, participants },
     } = this.state;
 
     const firstPart = {
-      author: creatorEmail,
-      timestamp: new Date(),
-      text: storyText,
+      createdBy: user.uid,
+      createdOn: new Date(),
+      text,
+      comment: "",
     };
 
+    // TODO only upload neccessary user info
     let participants = [
       {
-        email: creatorEmail,
-        secret: makeid(8),
-        isSubmitted: true,
-        submittedOn: new Date(),
+        ...user,
       },
     ];
 
-    const otherParticipants = participantsEmails.split(/[,|\s|\n]+/g).map((email) => {
+    const otherParticipants = participants.split(/[,|\s|\n]+/g).map((participant) => {
       return {
         email,
-        secret: makeid(8),
         isSubmitted: false,
         submittedOn: null,
       };
@@ -71,10 +69,10 @@ export default class CreatingStory extends Component {
     participants = participants.concat(otherParticipants);
 
     const newStory = {
-      creatorEmail,
-      storyTitle,
+      createdBy: user.uid,
+      title,
       participants,
-      storyParts: [firstPart],
+      parts: [firstPart],
       createdOn: new Date(),
     };
 
@@ -120,7 +118,7 @@ export default class CreatingStory extends Component {
                     as="textarea"
                     rows="1"
                     placeholder="Something memorable but descriptive"
-                    name="storyTitle"
+                    name="title"
                     onChange={this.handleChange.bind(this)}
                   />
                 </Form.Group>
@@ -131,7 +129,7 @@ export default class CreatingStory extends Component {
                     required
                     as="textarea"
                     rows="2"
-                    name="participantsEmails"
+                    name="participants"
                     placeholder={`Mini Mouse, ${user.displayName}, Pluto...`}
                     onChange={this.handleChange.bind(this)}
                   />
@@ -144,7 +142,7 @@ export default class CreatingStory extends Component {
                     as="textarea"
                     placeholder="Once upon a time..."
                     rows="8"
-                    name="storyText"
+                    name="text"
                     onChange={this.handleChange.bind(this)}
                   />
                 </Form.Group>
