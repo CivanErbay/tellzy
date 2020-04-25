@@ -3,6 +3,8 @@ import auth from "../actions/auth";
 import Navbar from "react-bootstrap/Navbar";
 import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
+import { Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 import SignInScreen from "./Reusable/SignInScreen";
 import "../styling/navBar.css";
@@ -30,22 +32,38 @@ export default class NavBar extends Component {
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">How To</Nav.Link>
+          <Nav className="mx-auto w-100 text-center">
+            <Col sm={4}>
+              <Row className="justify-content-center">
+                <Nav.Link href="#home">Home</Nav.Link>
+                <Nav.Link href="#link">How To</Nav.Link>
+              </Row>
+            </Col>
 
-            <Navbar.Brand href="#home">TELLZY style me</Navbar.Brand>
+            <Col sm={4}>
+              <Navbar.Brand href="#home">TELLZY</Navbar.Brand>
+            </Col>
             {auth.currentUser ? (
               <>
-                <Nav.Link href="#home">Social</Nav.Link>
-                <Nav.Link href="#home">Profile</Nav.Link>
-                <Nav.Link href="#link">Log Out</Nav.Link>
+                <Col lg={4}>
+                  <Row className="justify-content-around">
+                    <Nav.Link className="disabledCursor" href="#home">
+                      Social
+                    </Nav.Link>
+                    <Nav.Link href="#home">Profile</Nav.Link>
+                    <Nav.Link href="#link">Log Out</Nav.Link>
+                  </Row>
+                </Col>
               </>
             ) : (
               <>
-                <Nav.Link href="#home">Log In</Nav.Link>
-                <Nav.Link href="#link">Register</Nav.Link>
-                <Button onClick={this.handleShow}>FIREBASE</Button>
+                <Col sm={4}>
+                  <Row className="justify-content-center">
+                    <Nav.Link href="#home">Log In</Nav.Link>
+                    <Nav.Link href="#link">Register</Nav.Link>
+                    <Button onClick={handleShow}>FIREBASE</Button>
+                  </Row>
+                </Col>
               </>
             )}
           </Nav>
