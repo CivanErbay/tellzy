@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { db } from "./../config/firebaseConfig";
+import { addStory, makeid } from "../actions/io";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LinkPage from "./LinkPage";
@@ -42,7 +42,7 @@ export default class CreatingStory extends Component {
     let participants = [
       {
         email: creatorEmail,
-        secret: this.makeid(8),
+        secret: makeid(8),
         isSubmitted: true,
         submittedOn: new Date(),
       },
@@ -51,7 +51,7 @@ export default class CreatingStory extends Component {
     const otherParticipants = participantsEmails.split(/[,|\s|\n]+/g).map((email) => {
       return {
         email,
-        secret: this.makeid(8),
+        secret: makeid(8),
         isSubmitted: false,
         submittedOn: null,
       };
@@ -69,13 +69,7 @@ export default class CreatingStory extends Component {
       createdOn: new Date(),
     };
 
-    let docRef = await db
-      .collection("stories")
-      .add(newStory)
-      .catch(function (error) {
-        console.error("Error adding document: ", error);
-        return;
-      });
+    let docRef = await addStory(newStory);
 
     this.setState({
       submitSuccess: true,
@@ -83,16 +77,6 @@ export default class CreatingStory extends Component {
       storyId: docRef.id,
     });
   };
-
-  makeid(length) {
-    var result = "";
-    var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    var charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  }
 
   render() {
     const { submitSuccess, nextParticipant, story, storyId, isRandom } = this.state;

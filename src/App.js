@@ -5,6 +5,7 @@ import Contact from "./Components/Contact";
 import Admin from "./Components/Admin";
 import Landing from "./Components/Landing";
 import CreatingStory from "./Components/CreatingStory";
+import Main from "./Components/Main";
 import ResultStory from "./Components/ResultStory";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import EditStory from "./Components/EditStory";
@@ -20,6 +21,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Landing} />
+          <Route path="/main" component={Main} />
           <Route exact path="/story" component={CreatingStory} />
           <Route exact path="/story/:storyId" component={ResultStory} />
           <Route path="/story/:storyId/:secret" component={EditStory} />

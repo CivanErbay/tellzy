@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { db } from "./../config/firebaseConfig";
+import { getStoryRef, getStoryText, getStorySignature } from "../actions/io";
 import LinkPage from "./LinkPage";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
@@ -38,13 +38,7 @@ export default class EditStory extends Component {
   }
 
   getStory = async (storyId) => {
-    let storyRef = await db
-      .collection("stories")
-      .doc(storyId)
-      .get()
-      .catch((error) => {
-        console.log("Error getting document:", error);
-      });
+    let storyRef = await getStoryRef(storyId);
 
     if (storyRef && storyRef.exists) {
       const story = storyRef.data();
@@ -85,7 +79,7 @@ export default class EditStory extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const { storyId, story, storyText, validParticipant } = this.state;
-    let storyRef = db.collection("stories").doc(storyId);
+    let storyRef = await getStoryRef(storyId);
 
     // add new story part
     const newStoryPart = {

@@ -1,12 +1,30 @@
 import React, { Component } from "react";
-import { auth } from "../config/firebaseConfig";
+import auth from "../actions/auth";
 import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
+import Modal from "react-bootstrap/Modal";
+import SignInScreen from "./Reusable/SignInScreen";
 import "../styling/navBar.css";
 
 export default class NavBar extends Component {
+  state = {
+    showSignInScreen: false,
+  };
+
+  handleClose = () => this.setState({ showSignInScreen: false });
+  handleShow = () => this.setState({ showSignInScreen: true });
+
   render() {
-    console.log(auth.currentUser);
+    const { showSignInScreen } = this.state;
+
+    const signInModal = (
+      <Modal show={showSignInScreen} onHide={this.handleClose}>
+        <Modal.Body>
+          <SignInScreen />
+        </Modal.Body>
+      </Modal>
+    );
 
     return (
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -27,10 +45,12 @@ export default class NavBar extends Component {
               <>
                 <Nav.Link href="#home">Log In</Nav.Link>
                 <Nav.Link href="#link">Register</Nav.Link>
+                <Button onClick={this.handleShow}>FIREBASE</Button>
               </>
             )}
           </Nav>
         </Navbar.Collapse>
+        {signInModal}
       </Navbar>
     );
   }
