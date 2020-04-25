@@ -1,30 +1,35 @@
 .disabledCursor {
-    cursor: default;
+  cursor: default;
 }
 .navbar {
-    background-color: #f8a055 !important;
-    /* border-bottom: solid; */
+  background-color: #f8a055 !important;
+  /* border-bottom: solid; */
 }
 .navbar .nav-link {
-    margin: 0 2rem !important;
-    color: black !important;
-    font-size: 2rem !important;
+  margin: 0 2rem !important;
+  color: black !important;
+  font-size: 2rem !important;
+}
+
+.navbar .nav-link:hover {
+  color: rgba(0, 0, 0, 0.808) !important;
+  font-weight: 600;
 }
 
 .signin-div {
-    background-color: #f8a055;
-    padding: 2.5rem;
+  background-color: #f8a055;
+  padding: 2.5rem;
 }
 
 .navbar-brand {
-    font-size: 3.25rem !important;
-    font-family: "Permanent Marker", cursive;
-    margin: 0rem;
-    color: black !important;
+  font-size: 3.25rem !important;
+  font-family: "Permanent Marker", cursive;
+  margin: 0rem;
+  color: black !important;
 }
 .brand {
-    font-size: 5.25rem !important;
-    font-family: "Permanent Marker", cursive;
-    margin: 0rem;
-    color: black !important;
+  font-size: 5.25rem !important;
+  font-family: "Permanent Marker", cursive;
+  margin: 0rem;
+  color: black !important;
 }
