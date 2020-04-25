@@ -16,3 +16,9 @@ div h2 {
 li {
     list-style-type: none;
 }
+
+@media all and (max-width: 700px) {
+    .new-btn {
+        margin-top: 3rem !important;
+    }
+}

@@ -12,8 +12,8 @@ export default class SignInScreen extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1 className="brand">Tellzy</h1>
+      <div className="signin-div text-center">
+        <h1 className="brand mb-5">Tellzy</h1>
         {this.state.user ? (
           <div>{`User already logged in: ${user.displayName}`}</div>
         ) : (
