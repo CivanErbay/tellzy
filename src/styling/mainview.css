@@ -9,4 +9,10 @@ div h2 {
 }
 .list-wrap div {
     border: solid;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-top: 2.5rem;
+}
+li {
+    list-style-type: none;
 }
