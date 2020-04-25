@@ -1,2 +1,12 @@
-.mainview {
+.first-part {
+    min-height: 93vh;
+    width: 100%;
+    margin: 0 !important;
+    padding: 4rem 0 !important;
+}
+div h2 {
+    font-size: 3rem !important;
+}
+.list-wrap div {
+    border: solid;
 }
