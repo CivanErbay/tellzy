@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Row, Col } from "react-bootstrap";
-import { db } from "./../config/firebaseConfig";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import ShareButtons from "./Reusable/ShareButtons";
+import { getStoryRef } from "../actions/io";
 import "../styling/paper.css";
 
 export default class ResultStory extends Component {
@@ -38,13 +38,7 @@ export default class ResultStory extends Component {
   };
 
   async getStory(storyId) {
-    let storyRef = await db
-      .collection("stories")
-      .doc(storyId)
-      .get()
-      .catch(function (error) {
-        console.log("Error getting document:", error);
-      });
+    let storyRef = await getStoryRef(storyId);
 
     if (storyRef.exists) {
       const story = storyRef.data();
@@ -59,7 +53,7 @@ export default class ResultStory extends Component {
 
   render() {
     // story = {storyTitle, participants: [{email, isSubmitted}], storyParts: [{author, text}]}
-    const { story, isLoading, storyFinished, isDesktop, storyId } = this.state;
+    const { story, isLoading, storyFinished, storyId } = this.state;
 
     const storyLink = `https://tellzy.web.app/story/${storyId}`;
     return (

@@ -1,4 +1,5 @@
-import { db } from "../config/firebaseConfig";
+import firebase from "../config/firebaseConfig";
+const db = firebase.firestore();
 
 export const getStoryRef = async (storyId) => {
   let storyRef = await db
@@ -60,3 +61,5 @@ export const getStoryText = (story) => {
 export const getStorySignature = (story) => {
   return story.storyParts.reduce((acc, curr) => acc + curr.author + " ", "");
 };
+
+export default db;
