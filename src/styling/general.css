@@ -43,6 +43,10 @@ textarea {
 }
 
 @media all and (max-width: 700px) {
+  .sm-hide {
+    display: none !important;
+  }
+
   .btn {
     padding: 0.5rem !important;
     width: 100% !important;
