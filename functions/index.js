@@ -1,11 +1,6 @@
 const functions = require("firebase-functions");
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+const admin = require("firebase-admin");
+admin.initializeApp(functions.config().firebase);
 
 exports.createUserDoc = functions.auth.user().onCreate((user) => {
   const userDoc = {
@@ -20,5 +15,13 @@ exports.createUserDoc = functions.auth.user().onCreate((user) => {
     points: 0,
     achievements: [],
   };
-  const userDocRef = admin.firestore().collection("users").doc(user.uid).set(userDoc);
+
+  admin
+    .firestore()
+    .collection("users")
+    .doc(user.uid)
+    .set(userDoc)
+    .then((res) => {
+      console.log(`Document written at ${res.updateTime} for ${user.uid}`);
+    });
 });
