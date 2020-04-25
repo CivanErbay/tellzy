@@ -36,13 +36,15 @@ export default class NavBar extends Component {
           <Nav className="mx-auto w-100 text-center">
             <Col sm={4}>
               <Row className="justify-content-center">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">How To</Nav.Link>
+                <Nav.Link href="/#home">Home</Nav.Link>
+                <Nav.Link href="/#how-to">How To</Nav.Link>
               </Row>
             </Col>
 
             <Col sm={4}>
-              <Navbar.Brand href="#home">TELLZY</Navbar.Brand>
+              <Navbar.Brand href="#home" className="sm-hide">
+                TELLZY
+              </Navbar.Brand>
             </Col>
             {auth.currentUser ? (
               <>
@@ -60,7 +62,7 @@ export default class NavBar extends Component {
               <>
                 <Col sm={4}>
                   <Row className="justify-content-center">
-                    <Nav.Link href="#home" onClick={this.handleShow}>
+                    <Nav.Link href="" onClick={this.handleShow}>
                       Log In
                     </Nav.Link>
                     <Nav.Link href="#link">Register</Nav.Link>

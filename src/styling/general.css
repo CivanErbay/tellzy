@@ -4,6 +4,16 @@
     0 41.8px 33.4px rgba(0, 0, 0, 0.048), 0 10px 50px rgba(238, 8, 8, 0.061);
 }
 
+a:-webkit-any-link {
+  text-decoration: none;
+  color: inherit;
+}
+/* Deletes all initial margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   background-color: #217ca3;
   min-height: 100vh;

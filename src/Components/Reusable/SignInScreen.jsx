@@ -7,7 +7,6 @@ export default class SignInScreen extends React.Component {
     return (
       <div>
         <h1 className="brand">Tellzy</h1>
-        <p>Please sign-in:</p>
         <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
 
         {/* <div id="firebaseui-auth-container"></div>

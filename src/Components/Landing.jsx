@@ -41,7 +41,7 @@ export default class Landing extends Component {
             </Button>
           </Col>
           <Col md={7} className="text-center d-flex flex-column align-items-center justify-content-between">
-            <Row className="how-to">
+            <Row id="how-to" className="how-to">
               <div className="mr-auto">
                 <h2>
                   <b>How to</b>
