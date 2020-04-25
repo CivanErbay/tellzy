@@ -59,9 +59,10 @@ export default class NavBar extends Component {
               <>
                 <Col sm={4}>
                   <Row className="justify-content-center">
-                    <Nav.Link href="#home">Log In</Nav.Link>
+                    <Nav.Link href="#home" onClick={this.handleShow}>
+                      Log In
+                    </Nav.Link>
                     <Nav.Link href="#link">Register</Nav.Link>
-                    <Button onClick={handleShow}>FIREBASE</Button>
                   </Row>
                 </Col>
               </>
