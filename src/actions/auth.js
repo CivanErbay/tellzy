@@ -1,4 +1,4 @@
-import firebase, { db, auth } from "../config/firebaseConfig";
+import { db, auth } from "../config/firebaseConfig";
 
 export const signIn = (credentials) => {
   auth
