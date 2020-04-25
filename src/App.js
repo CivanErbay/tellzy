@@ -11,14 +11,12 @@ import EditStory from "./Components/EditStory";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styling/general.css";
 import "./styling/fonts.css";
-import NavBar from "./Components/navBar/Navbar";
+import NavBar from "./Components/Navbar";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <NavBar></NavBar>
-      </header>
+      <NavBar></NavBar>
       <Router>
         <Switch>
           <Route exact path="/" component={Landing} />

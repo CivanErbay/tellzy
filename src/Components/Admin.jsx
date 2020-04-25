@@ -81,7 +81,7 @@ export default class Admin extends Component {
           </Col>
           <Col md={8}>
             <div className="d-flex flex-column align-items-center">
-              {user ? (
+              {auth.currentUser ? (
                 <>
                   <div className="d-flex justify-content-center w-100">
                     <h2> Admin page </h2>
