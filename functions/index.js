@@ -25,3 +25,5 @@ exports.createUserDoc = functions.auth.user().onCreate((user) => {
       console.log(`Document written at ${res.updateTime} for ${user.uid}`);
     });
 });
+
+// TODO record last user log in into user data
