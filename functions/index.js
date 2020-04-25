@@ -1,4 +1,6 @@
 const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp(functions.config().firebase);
 
 exports.createUserDoc = functions.auth.user().onCreate((user) => {
   const userDoc = {
@@ -20,6 +22,6 @@ exports.createUserDoc = functions.auth.user().onCreate((user) => {
     .doc(user.uid)
     .set(userDoc)
     .then((res) => {
-      console.log(`Document written at ${res.updateTime}`);
+      console.log(`Document written at ${res.updateTime} for ${user.uid}`);
     });
 });
