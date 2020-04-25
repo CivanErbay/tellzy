@@ -2,6 +2,16 @@ import firebase from "../config/firebaseConfig";
 const db = firebase.firestore();
 const auth = firebase.auth();
 
+export const isUserLogged = () => {
+  auth.onAuthStateChanged(function (user) {
+    if (user) {
+      // User is signed in.
+    } else {
+      // No user is signed in.
+    }
+  });
+};
+
 // Initialize the FirebaseUI Widget using Firebase.
 export const uiConfig = {
   // callbacks: {
