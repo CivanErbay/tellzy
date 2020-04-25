@@ -1,6 +1,28 @@
 import firebase from "../config/firebaseConfig";
 const db = firebase.firestore();
 
+export const getUserRef = async (userId) => {
+  let userRef = await db
+    .collection("users")
+    .doc(userId)
+    .get()
+    .catch(function (error) {
+      console.log("Error getting document:", error);
+      return null;
+    });
+
+  return userRef;
+};
+
+export const getUserData = async (userId) => {
+  let userRef = await getUserRef(userId);
+  if (userRef.exists) {
+    return userRef.data();
+  } else {
+    console.log(userId, "Has no user doc!");
+  }
+};
+
 export const getStoryRef = async (storyId) => {
   let storyRef = await db
     .collection("stories")
@@ -12,6 +34,15 @@ export const getStoryRef = async (storyId) => {
     });
 
   return storyRef;
+};
+
+export const getStory = async (storyId) => {
+  let storyRef = await getStoryRef(storyId);
+  if (storyRef.exists) {
+    return storyRef.data();
+  } else {
+    console.log(storyId, "There is no such story");
+  }
 };
 
 export const queryAllStories = async (query) => {

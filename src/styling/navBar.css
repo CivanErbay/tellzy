@@ -1,8 +1,7 @@
 .disabledCursor {
-    cursor: default;
+  cursor: default;
 }
 
 .navbar .nav-link {
-    margin-right: 3rem !important;
-    margin-left: 3rem !important;
+  margin: 0 2rem !important;
 }

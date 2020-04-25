@@ -3,15 +3,9 @@ const db = firebase.firestore();
 const auth = firebase.auth();
 var firebaseui = require("firebaseui");
 
-export const isUserLogged = () => {
-  auth.onAuthStateChanged(function (user) {
-    if (user) {
-      // User is signed in.
-    } else {
-      // No user is signed in.
-    }
-  });
-};
+export var user = null;
+
+auth.onAuthStateChanged((newUser) => (user = newUser));
 
 // Initialize the FirebaseUI Widget using Firebase.
 export const uiConfig = {
