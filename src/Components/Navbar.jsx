@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import auth from "../actions/auth";
 import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
 import Nav from "react-bootstrap/Nav";
 import { Col } from "react-bootstrap";
 import { Row } from "react-bootstrap";
@@ -13,6 +12,8 @@ export default class NavBar extends Component {
   state = {
     showSignInScreen: false,
   };
+
+  componentDidMount = () => {};
 
   handleClose = () => this.setState({ showSignInScreen: false });
   handleShow = () => this.setState({ showSignInScreen: true });
