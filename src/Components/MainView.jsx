@@ -66,7 +66,7 @@ export default class MainView extends Component {
                 </Col>
                 <Col md className="text-left">
                     <Link to="/story">
-                        <Button>New Story</Button>
+                        <Button className="new-btn">New Story</Button>
                     </Link>
                 </Col>
             </Row>
