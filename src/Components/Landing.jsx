@@ -59,30 +59,79 @@ export default class Landing extends Component {
                     </Col>
                     <Col
                         md={7}
-                        className="text-center d-flex flex-column align-items-center justify-content-between"
+                        className="text-center d-flex flex-column align-items-center justify-content-center"
                     >
                         <Row id="how-to" className="how-to">
-                            <div className="mr-auto">
-                                <h2>
-                                    <b>How to</b>
-                                </h2>
-                            </div>
-                            <div className="wrap text-left small-font">
-                                <h3 className="mt-4 mb-4 small-font">
-                                    1. Start a <u>New Story</u> and invite some
-                                    friends
-                                </h3>
-                                <h3 className="small-font">
-                                    2. Send the <u>Edit Link</u> to your next
-                                    buddy
-                                </h3>
-                                <h3 className="mt-4 mb-4 small-font">
-                                    3. Check out your adventure at your{" "}
-                                    <u>Story Link!</u>
-                                </h3>
-                            </div>
-                            <div className="mt-auto">
-                                <Link to="/policy">Policy & Impressum</Link>
+                            <div className="d-flex flex-column justify-content-start">
+                                <div className="mr-auto">
+                                    <h2>
+                                        <b>How to</b>
+                                    </h2>
+                                </div>
+                                <Row className="howto">
+                                    <div className="d-flex align-items-center">
+                                        {/* <h3 className="mr-2">I</h3> */}
+                                        <p>
+                                            <b>What is Tellzy? </b> <br />{" "}
+                                            Tellzy is a tool for writing storys
+                                            together with your friends. Each of
+                                            the "authors" are continuing one
+                                            after another.
+                                        </p>
+                                        <img
+                                            className=""
+                                            src="/assets/images/pen.png"
+                                        ></img>
+                                    </div>
+                                </Row>
+                                <Row className="howto">
+                                    <div className="d-flex align-items-center">
+                                        <img
+                                            className=""
+                                            src="/assets/images/note.png"
+                                        ></img>
+                                        <p>
+                                            <b>Get started!</b> <br /> Register,
+                                            start a New Story and invite your
+                                            friends.{" "}
+                                        </p>
+                                    </div>
+                                </Row>
+                                <Row className="howto">
+                                    <div className="d-flex align-items-center">
+                                        <p>
+                                            <b>Story Progress</b> <br />
+                                            According to experience it takes a
+                                            while until all authors finished
+                                            their part. Meanwhile, keep progress
+                                            in your profile.
+                                        </p>
+                                        <img
+                                            className=""
+                                            src="/assets/images/pen2.png"
+                                        ></img>
+                                    </div>
+                                </Row>
+                                <Row className="howto">
+                                    <div className="d-flex align-items-center">
+                                        <img
+                                            className=""
+                                            src="/assets/images/friends.png"
+                                        ></img>
+                                        <p>
+                                            <b>Highlight </b>
+                                            <br />
+                                            Once the story is finished,
+                                            everybody is excited about the
+                                            result. Share the Story with the
+                                            other authors!
+                                        </p>
+                                    </div>
+                                </Row>
+
+                                <div className="mt-auto">
+                                    <Link to="/policy">Policy & Impressum</Link>
+                                </div>
                             </div>
                         </Row>
                     </Col>
