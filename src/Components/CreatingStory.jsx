@@ -112,7 +112,7 @@ export default class CreatingStory extends Component {
   render() {
     const { user, submitSuccess, newStory, storyLink, isRandom, userSearchResults } = this.state;
 
-    if (!user) return <div className="w-100 text-center">Loading...</div>;
+    if (!user) return <div className="w-100 text-center  my-5 py-5">Loading...</div>;
 
     return (
       <Row className="create-story">

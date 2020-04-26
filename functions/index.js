@@ -59,3 +59,17 @@ exports.userSearch = functions.https.onCall((data, context) => {
 
   // return { userSearchResults };
 });
+
+// grant user access to story
+exports.grantUserStoryEditAccess = functions.https.onCall((data, context) => {
+  const { storyId, userPublic } = data;
+
+  admin
+    .firestore()
+    .collection("stories")
+    .doc(storyId)
+    .update({ participants: firebase.firestore.FieldValue.arrayUnion(userPublic) })
+    .then((res) => {
+      console.log(`Document written at ${res.updateTime} for ${user.uid}`);
+    });
+});

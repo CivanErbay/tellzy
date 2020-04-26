@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { isEmpty } from "lodash";
 import auth from "../actions/auth";
-import { getStory, checkIsUserParticipant } from "../actions/io";
+import { getStory, checkIsUserParticipant, checkIsUserSubmitted } from "../actions/io";
+import { grantUserStoryEditAccess } from "../actions/functions";
 
 export default class EditStory extends Component {
   constructor(props) {
@@ -15,6 +16,9 @@ export default class EditStory extends Component {
     this.state = {
       user: null,
       story: null,
+      storyId: null,
+      isUserParticipant: false,
+      checkIsUserSubmitted: true,
     };
   }
 
@@ -27,9 +31,12 @@ export default class EditStory extends Component {
       match: { params },
     } = this.props;
     const storyId = params.storyId;
+    this.setState({ storyId });
     const story = await getStory(storyId);
+    // check iuser exists
     const isUserParticipant = checkIsUserParticipant(story, this.state.user.uid);
-    this.setState({ story, isUserParticipant });
+    const isUserSubmitted = checkIsUserSubmitted(story, this.state.user.uid);
+    this.setState({ story, isUserParticipant, isUserSubmitted });
   };
 
   getStory = async (storyId) => {
@@ -118,20 +125,27 @@ export default class EditStory extends Component {
     return nextParticipant;
   }
 
+  handleEditRequest = () => {
+    const { uid, displayName } = this.state.user;
+    const userPublic = { uid, displayName };
+    grantUserStoryEditAccess(this.state.storyId, userPublic);
+  };
+
   render() {
     const {
       user,
       submitSuccess,
       isUserParticipant,
+      isUserSubmitted,
       story,
       hintText,
       // nextParticipant,
     } = this.state;
 
-    if (!user) return <div className="w-100 text-center">Loading...</div>;
-    if (!story) return <div className="w-100 text-center">Story Loading...</div>;
-
+    if (!user) return <div className="w-100 text-center my-5 py-5">Loading...</div>;
+    if (!story) return <div className="w-100 text-center my-5 py-5">Story Loading...</div>;
     // const nextParticipant = this.getNextParticipant();
+    console.log(isUserParticipant, isUserSubmitted);
 
     return (
       <div className="edit-story">
@@ -143,34 +157,45 @@ export default class EditStory extends Component {
               <h2>{story.title}</h2>
 
               {/* TODO display only hint */}
-              <p>{story.finishedText}</p>
+              <p>{story.description}</p>
               <br />
-              <p className="signature ml-auto">Signature</p>
+              <p className="signature ml-auto">
+                {story.createdBy.displayName && story.createdBy.displayName}
+              </p>
             </div>
 
             {
               isUserParticipant ? (
-                <Form className="create-form" onSubmit={this.handleSubmit}>
-                  <Form.Group>
-                    <Form.Label>Continue the story!</Form.Label>
-                    <Form.Control
-                      required
-                      as="textarea"
-                      placeholder="Continue the adventure..."
-                      rows="10"
-                      name="storyText"
-                      onChange={this.handleChange.bind(this)}
-                    />
-                  </Form.Group>
-                  <br />
-                  <Button className="go-btn-cs-false" type="submit">
-                    Submit
-                  </Button>
-                </Form>
+                <>
+                  {isUserSubmitted ? (
+                    <div className="d-flex flex-column align-items-center">
+                      You already submitted
+                      <Button onClick={this.handleEditRequest}>Want again?</Button>
+                    </div>
+                  ) : (
+                    <Form className="create-form" onSubmit={this.handleSubmit}>
+                      <Form.Group>
+                        <Form.Label>Continue the story!</Form.Label>
+                        <Form.Control
+                          required
+                          as="textarea"
+                          placeholder="Continue the adventure..."
+                          rows="10"
+                          name="storyText"
+                          onChange={this.handleChange.bind(this)}
+                        />
+                      </Form.Group>
+                      <br />
+                      <Button className="go-btn-cs-false" type="submit">
+                        Submit
+                      </Button>
+                    </Form>
+                  )}
+                </>
               ) : (
-                <div className="text-center">
+                <div className="d-flex flex-column align-items-center">
                   You want to participate?
-                  <Button>Request Access</Button>
+                  <Button onClick={this.handleEditRequest}>Request Access</Button>
                 </div>
               )
               /*
