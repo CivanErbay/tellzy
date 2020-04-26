@@ -33,7 +33,7 @@ export default class NavBar extends Component {
     handleShow = () => this.setState({ showSignInScreen: true });
 
     render() {
-        const { showSignInScreen } = this.state;
+        const { showSignInScreen, user } = this.state;
 
         const signInModal = (
             <Modal show={showSignInScreen} onHide={this.handleClose}>

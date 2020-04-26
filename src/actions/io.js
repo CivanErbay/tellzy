@@ -66,8 +66,14 @@ export const queryAllStories = async (query) => {
 
 export const addStory = async (newStory) => {
   const { title, text } = newStory;
+  const firstParticipant = {
+    uid: auth.currentUser.uid,
+    displayName: auth.currentUser.displayName,
+    isSubmitted: true,
+  };
+
   const firstPart = {
-    createdBy: auth.currentUser.uid,
+    createdBy: firstParticipant,
     submittedOn: new Date(),
     text,
     comment: "",
@@ -76,8 +82,8 @@ export const addStory = async (newStory) => {
   const story = {
     title,
     createdOn: new Date(),
-    createdBy: auth.currentUser.uid,
-    participants: [auth.currentUser.uid],
+    createdBy: firstParticipant,
+    participants: [firstParticipant],
     description: "",
     language: "en",
     lastEdit: new Date(),
@@ -98,9 +104,16 @@ export const addStory = async (newStory) => {
   return { ...story, id: docRef.id };
 };
 
-export const checkIsUserParticipant = (story, userId) => {
-  const isParticipant = story.participants.filter((uid) => uid === userId);
+export const checkIsUserParticipant = (story, uid) => {
+  const isParticipant = story.participants.some((participant) => participant.uid === uid);
   return isParticipant;
+};
+
+export const checkIsUserSubmitted = (story, uid) => {
+  const isSubmitted = story.participants.some(
+    (participant) => participant.uid === uid && participant.isSubmitted
+  );
+  return isSubmitted;
 };
 
 export const getStoryLink = (storyId) => {
