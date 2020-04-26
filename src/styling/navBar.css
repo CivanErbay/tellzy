@@ -4,6 +4,7 @@
 .navbar {
     background-color: #f8a055 !important;
     /* border-bottom: solid; */
+    color: black;
 }
 .navbar .nav-link {
     margin: 0 2rem !important;
@@ -16,12 +17,12 @@
     padding: 2.5rem;
 }
 
-.navbar-brand {
-    font-size: 3.25rem !important;
-    font-family: "Permanent Marker", cursive;
-    margin: 0rem;
-    color: black !important;
+.navbar-brand img {
+    height: 15vh !important;
+    padding: 0 !important;
+    display: fixed !important;
 }
+
 .brand {
     font-size: 5.25rem !important;
     font-family: "Permanent Marker", cursive;
