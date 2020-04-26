@@ -16,7 +16,7 @@ export default class Landing extends Component {
                         <div className="d-flex flex-column align-items-center justify-content-center">
                             <img
                                 className="sm-show"
-                                src="/assets/images/logo-green.png"
+                                src="/assets/images/logo-white-no-gradient.png"
                             ></img>
                             <h1 className="h1 sm-hide">Tellzy</h1>
                             <div className="wrap">
@@ -49,7 +49,7 @@ export default class Landing extends Component {
                     <Col md className=""></Col>
                 </Row>
                 <Row className="second-part">
-                    <Col md className="mt-auto text-right col-two">
+                    <Col md className="mt-auto text-right">
                         <Button
                             className="sm-hide"
                             onClick={() => scroll.scrollToTop()}
@@ -59,7 +59,7 @@ export default class Landing extends Component {
                     </Col>
                     <Col
                         md={7}
-                        className="text-center d-flex flex-column align-items-center justify-content-center"
+                        className="text-center d-flex flex-column align-items-center justify-content-center col-border"
                     >
                         <Row id="how-to" className="how-to">
                             <div className="d-flex flex-column justify-content-start">
@@ -135,7 +135,7 @@ export default class Landing extends Component {
                             </div>
                         </Row>
                     </Col>
-                    <Col md className="mt-auto col-two h-100">
+                    <Col md className="mt-auto">
                         <Link to="/story" onClick={this.handleShow}>
                             <Button>New Story</Button>
                         </Link>

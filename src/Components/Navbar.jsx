@@ -44,7 +44,7 @@ export default class NavBar extends Component {
         );
 
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mx-auto w-100 text-center">
@@ -63,7 +63,7 @@ export default class NavBar extends Component {
 
                         <Col sm={4}>
                             <Navbar.Brand href="/#home" className="sm-hide">
-                                <img src="/assets/images/logo-green.png"></img>
+                                <img src="/assets/images/logo-gradient.png"></img>
                             </Navbar.Brand>
                         </Col>
                         <Col
