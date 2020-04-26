@@ -4,7 +4,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { signIn, signOut } from "../actions/auth";
 import { isEmpty } from "lodash";
-import { auth } from "../config/firebaseConfig";
+import auth from "./../actions/auth";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import ListGroup from "react-bootstrap/ListGroup";

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { db } from "./../config/firebaseConfig";
+import db from "./../actions/io";
 import LinkPage from "./LinkPage";
 import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
@@ -145,10 +145,10 @@ export default class EditStory extends Component {
 
     return (
       <div className="edit-story">
-        <Row className="">
-          <Col sm={2}>
+        <Row className="section">
+          <Col sm={2} className="text-right">
             <Link to="/">
-              <Button className="btn-home sm">Home</Button>
+              <Button className="sm">Home</Button>
             </Link>
           </Col>
           <Col sm={8} className="h-100">
@@ -160,7 +160,7 @@ export default class EditStory extends Component {
                   <>
                     {validParticipant.isSubmitted ? (
                       <div className="d-flex flex-column align-items-center">
-                        <h1 className="h1">Tellzy</h1>
+                        <h1 className="brand">Tellzy</h1>
 
                         <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                         {nextParticipant && (

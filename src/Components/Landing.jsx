@@ -11,7 +11,7 @@ export default class Landing extends Component {
   render() {
     return (
       <>
-        <Row className="first-part">
+        <Row className="section first-part">
           <Col md></Col>
           <Col md={7}>
             <div className="d-flex flex-column align-items-center justify-content-center">
