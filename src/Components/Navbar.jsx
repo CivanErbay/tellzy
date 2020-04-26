@@ -57,7 +57,7 @@ export default class NavBar extends Component {
 
                         <Col sm={4}>
                             <Navbar.Brand href="/#home" className="sm-hide">
-                                TELLZY
+                                <img src="/assets/images/logo.png"></img>
                             </Navbar.Brand>
                         </Col>
                         <Col
