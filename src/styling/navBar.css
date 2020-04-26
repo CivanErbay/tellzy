@@ -12,6 +12,11 @@
     font-size: 2rem !important;
 }
 
+.navbar .nav-link:hover {
+    color: rgba(0, 0, 0, 0.808) !important;
+    font-weight: 600;
+}
+
 .signin-div {
     background-color: #f8a055;
     padding: 2.5rem;
