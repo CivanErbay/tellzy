@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import { addStory } from "../actions/io";
+import { addStory, getStoryLink } from "../actions/io";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import auth from "../actions/auth";
@@ -10,15 +10,15 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { userSearch } from "../actions/functions";
 import LinkPage from "./LinkPage";
 import "../styling/creating.css";
+import ShareButtons from "./Reusable/ShareButtons";
 
 export default class CreatingStory extends Component {
   constructor(props) {
     super(props);
     this.state = {
       story: {},
-      storyId: "",
+      storyLink: "",
       submitSuccess: false,
-      isUnfold: false,
       userSearchResults: [],
       user: null,
     };
@@ -42,6 +42,7 @@ export default class CreatingStory extends Component {
     let query = event.target.value;
     if (query) {
       let userSearchResults = await userSearch(query);
+      // TODO
       console.log({ userSearchResults });
       this.setState({ userSearchResults });
     } else {
@@ -49,59 +50,74 @@ export default class CreatingStory extends Component {
     }
   };
 
+  // handleSubmit = async (event) => {
+  //   event.preventDefault();
+
+  //   const {
+  //     story: { title, text, participantNames },
+  //     user,
+  //   } = this.state;
+
+  //   const firstPart = {
+  //     createdBy: user.uid,
+  //     createdOn: new Date(),
+  //     text,
+  //     comment: "",
+  //   };
+
+  //   // TODO only upload neccessary user info
+  //   let participants = [
+  //     {
+  //       ...user,
+  //     },
+  //   ];
+
+  //   const otherParticipants = participantNames.split(/[,|\s|\n]+/g).map((participant) => {
+  //     return {
+  //       name: participant,
+  //       isSubmitted: false,
+  //       submittedOn: null,
+  //     };
+  //   });
+
+  //   const nextParticipant = otherParticipants[0];
+  //   // add all participants in one array
+  //   participants = participants.concat(otherParticipants);
+
+  //   const newStory = {
+  //     createdBy: user.uid,
+  //     title,
+  //     participants,
+  //     parts: [firstPart],
+  //     createdOn: new Date(),
+  //   };
+
+  //   let docRef = await addStory(newStory);
+
+  //   this.setState({
+  //     submitSuccess: true,
+  //     nextParticipant,
+  //     storyId: docRef.id,
+  //   });
+  // };
+
   handleSubmit = async (event) => {
     event.preventDefault();
-
-    const {
-      story: { title, text, participantNames },
-      user,
-    } = this.state;
-
-    const firstPart = {
-      createdBy: user.uid,
-      createdOn: new Date(),
-      text,
-      comment: "",
-    };
-
-    // TODO only upload neccessary user info
-    let participants = [
-      {
-        ...user,
-      },
-    ];
-
-    const otherParticipants = participantNames.split(/[,|\s|\n]+/g).map((participant) => {
-      return {
-        name: participant,
-        isSubmitted: false,
-        submittedOn: null,
-      };
-    });
-
-    const nextParticipant = otherParticipants[0];
-    // add all participants in one array
-    participants = participants.concat(otherParticipants);
-
-    const newStory = {
-      createdBy: user.uid,
-      title,
-      participants,
-      parts: [firstPart],
-      createdOn: new Date(),
-    };
-
-    let docRef = await addStory(newStory);
-
-    this.setState({
-      submitSuccess: true,
-      nextParticipant,
-      storyId: docRef.id,
-    });
+    const newStoryId = await addStory(this.state.story);
+    const storyLink = getStoryLink(newStoryId);
+    this.setState({ storyLink, submitSuccess: true });
   };
 
   render() {
-    const { user, submitSuccess, nextParticipant, story, storyId, isRandom, userSearchResults } = this.state;
+    const {
+      user,
+      submitSuccess,
+      nextParticipant,
+      story,
+      storyLink,
+      isRandom,
+      userSearchResults,
+    } = this.state;
 
     if (!user) return <div className="w-100 text-center">Loading...</div>;
 
@@ -109,13 +125,14 @@ export default class CreatingStory extends Component {
       <Row className="create-story">
         <Col md className="text-right"></Col>
         <Col md={7} className="h-100">
-          {submitSuccess ? (
+          {!submitSuccess ? (
             <>
-              <h1 className="h1-es-false text-center text-capitalize mb-3">
+              <h1 className="text-center">
                 <u>{story.storyTitle}.</u>
               </h1>
-              <h2 className="text-center h2-cs-false"></h2>
-              <LinkPage story={story} storyId={storyId} nextParticipant={nextParticipant}></LinkPage>
+              <h2 className="text-center">Send this link to your buddies</h2>
+              <ShareButtons link={storyLink} story={story}></ShareButtons>
+              {/* <LinkPage story={story} storyId={storyId} nextParticipant={nextParticipant}></LinkPage> */}
             </>
           ) : (
             <>
