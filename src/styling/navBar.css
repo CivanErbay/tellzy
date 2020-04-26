@@ -2,9 +2,9 @@
     cursor: default;
 }
 .navbar {
-    background-color: #eafdf8 !important;
+    background-color: #fcbf1e !important;
     border-bottom: solid;
-    color: black;
+    color: white;
 }
 .navbar .nav-link {
     margin: 0 2rem !important;
@@ -19,7 +19,7 @@
 }
 
 .signin-div {
-    background-color: #ffdb5c;
+    background-color: #fcbf1e;
     padding: 3.5rem;
 }
 .signin-div img {
@@ -50,5 +50,8 @@
         padding: 0 !important;
         margin: 0 !important;
         border-bottom: none;
+    }
+    .nav-column {
+        display: relative;
     }
 }

@@ -16,7 +16,7 @@ export default class Landing extends Component {
                         <div className="d-flex flex-column align-items-center justify-content-center">
                             <img
                                 className="sm-show"
-                                src="/assets/images/logo-white-no-gradient.png"
+                                src="/assets/images/logo-white-gradient.png"
                             ></img>
                             <h1 className="h1 sm-hide">Tellzy</h1>
                             <div className="wrap">
@@ -59,7 +59,7 @@ export default class Landing extends Component {
                     </Col>
                     <Col
                         md={7}
-                        className="text-center d-flex flex-column align-items-center justify-content-center col-border"
+                        className="text-center d-flex flex-column align-items-center justify-content-center col-color"
                     >
                         <Row id="how-to" className="how-to">
                             <div className="d-flex flex-column justify-content-start">
