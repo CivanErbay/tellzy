@@ -21,6 +21,7 @@ export const getUserData = async (userId) => {
     return userRef.data();
   } else {
     console.log(userId, "Has no user doc!");
+    return null;
   }
 };
 
@@ -101,11 +102,40 @@ export const addStory = async (newStory) => {
       return;
     });
 
+  // Also set this story for the user
+  db.collection("users")
+    .doc(auth.currentUser.uid)
+    .update({ storiesParticipant: firebase.firestore.FieldValue.arrayUnion(docRef.id) })
+    .then((res) => {
+      // console.log(`Document written at ${res.updateTime} for ${user.uid}`);
+    });
+
   return { ...story, id: docRef.id };
 };
 
-export const addStoryPart = async (storyId, storyPart, userPublic) => {
+export const addStoryPart = async (storyId, text, userPublic) => {
   // TODO as backend function
+  const part = {
+    createdBy: userPublic,
+    submittedOn: new Date(),
+    text,
+    comment: "",
+  };
+
+  db.collection("stories")
+    .doc(storyId)
+    .update({ lastEdit: new Date(), parts: firebase.firestore.FieldValue.arrayUnion(part) })
+    .then((res) => {
+      // console.log(`Document written at ${res.updateTime} for ${user.uid}`);
+    });
+
+  // Also set this story for the user
+  db.collection("users")
+    .doc(auth.currentUser.uid)
+    .update({ storiesParticipant: firebase.firestore.FieldValue.arrayUnion(storyId) })
+    .then((res) => {
+      // console.log(`Document written at ${res.updateTime} for ${user.uid}`);
+    });
 };
 
 export const checkIsUserParticipant = (story, uid) => {

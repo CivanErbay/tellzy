@@ -1,24 +1,30 @@
 .first-part {
-    min-height: 93vh;
-    width: 100%;
-    margin: 0 !important;
-    padding: 4rem 0 !important;
+  min-height: 93vh;
+  width: 100%;
+  margin: 0 !important;
+  padding: 4rem 0 !important;
 }
-div h2 {
-    font-size: 3rem !important;
+
+h2 {
+  font-size: 3rem !important;
 }
-.list-wrap div {
-    border: solid;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-    margin-top: 2.5rem;
+
+.list-wrap {
+  border: solid;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin-top: 2.5rem;
 }
+
+.list-wrap .list-item {
+}
+
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 @media all and (max-width: 700px) {
-    .new-btn {
-        margin-top: 3rem !important;
-    }
+  .new-btn {
+    margin-top: 3rem !important;
+  }
 }
