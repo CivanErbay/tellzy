@@ -175,7 +175,7 @@ a:-webkit-any-link {
 }
 .h1-es-false {
   font-size: 4rem !important;
-  margin: 4rem;
+  margin-bottom: 2rem;
 }
 .h2-cs-false {
   margin-top: 5rem;

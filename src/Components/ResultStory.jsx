@@ -129,8 +129,8 @@ export default class ResultStory extends Component {
           </Col>
           <Col></Col>
         </Row>
-        <Row className="d-flex flex-column align-items-center">
-          <h1 className="h1">Tellzy</h1>
+        <Row className="d-flex flex-column align-items-center pb-5">
+          <h1 className="brand">Tellzy</h1>
           <h3 className="text-capitalize mt-3 mb-4 text-center">
             <u>Share it with your friends!</u>
           </h3>

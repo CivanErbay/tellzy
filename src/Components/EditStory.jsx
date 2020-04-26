@@ -166,9 +166,7 @@ export default class EditStory extends Component {
                         {nextParticipant && (
                           <div className="d-flex flex-column align-items-center">
                             <p className="text-center">
-                              <b>{validParticipant.email}</b> has already edited the story with this link
-                              <br />
-                              Check the progress of the story in the <b>Result Link</b>
+                              This link for this page was for <b>{validParticipant.email}</b> and is submitted
                             </p>
                           </div>
                         )}

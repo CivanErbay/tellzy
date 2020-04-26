@@ -74,7 +74,7 @@ export default class ShareButtons extends Component {
         ) : (
           <LinkWithCopy
             link={link}
-            text={`${nextParticipant ? nextParticipant.email + "`s link" : "Finished Story"}`}
+            text={`${nextParticipant ? nextParticipant.email + "`s turn" : "Finished Story"}`}
           ></LinkWithCopy>
         )}
       </div>

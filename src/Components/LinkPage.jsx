@@ -48,7 +48,7 @@ export default class ResultStory extends Component {
                   <p className="p-cs-true text-center mt-3">
                     Send
                     <span className="highlight"> {nextParticipant.email} </span>
-                    the Edit Link to continue the story!
+                    this Edit Link to continue the story!
                   </p>
                   <Row className="d-flex justify-content-center align-items-center">
                     <ShareButtons
@@ -58,7 +58,7 @@ export default class ResultStory extends Component {
                     ></ShareButtons>
                   </Row>
 
-                  <p className="p2-cs-true2 text-center">
+                  <p className="p-cs-true text-center mt-3">
                     Soon you will get the whole story! <br />
                     In the meantime, track the status on this <br />
                     <a href={storyLink} target="_blank">
