@@ -144,8 +144,6 @@ export default class EditStory extends Component {
 
     if (!user) return <div className="w-100 text-center my-5 py-5">Loading...</div>;
     if (!story) return <div className="w-100 text-center my-5 py-5">Story Loading...</div>;
-    // const nextParticipant = this.getNextParticipant();
-    console.log(isUserParticipant, isUserSubmitted);
 
     return (
       <div className="edit-story">
