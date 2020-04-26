@@ -4,6 +4,8 @@ import Button from "react-bootstrap/Button";
 import { addStory, makeid } from "../actions/io";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import auth from "../actions/auth";
+import { getUserData } from "../actions/io";
 import LinkPage from "./LinkPage";
 import "../styling/creating.css";
 
@@ -15,8 +17,15 @@ export default class CreatingStory extends Component {
       storyId: "",
       submitSuccess: false,
       isUnfold: false,
+      user: null,
     };
   }
+
+  componentDidMount = () => {
+    auth.onAuthStateChanged((user) => {
+      this.setState({ user });
+    });
+  };
 
   handleChange(event) {
     let fieldName = event.target.name;
@@ -79,11 +88,13 @@ export default class CreatingStory extends Component {
   };
 
   render() {
-    const { submitSuccess, nextParticipant, story, storyId, isRandom } = this.state;
+    const { user, submitSuccess, nextParticipant, story, storyId, isRandom } = this.state;
+
+    if (!user) return <div className="w-100 text-center">Loading...</div>;
 
     return (
       <Row className="create-story">
-        <Col md className="text-right m-3">
+        <Col md className="text-right">
           <Link to="/">
             <Button>Home</Button>
           </Link>
@@ -101,40 +112,6 @@ export default class CreatingStory extends Component {
             <>
               <h1 className="text-center">Create new story.</h1>
               <Form className="create-form" onSubmit={this.handleSubmit}>
-                <Form.Group>
-                  <Form.Label>Your Name</Form.Label>
-                  <Form.Control
-                    required
-                    name="creatorEmail"
-                    placeholder="Donald Duck"
-                    onChange={this.handleChange.bind(this)}
-                  />
-                </Form.Group>
-                {/* Participants */}
-                <Row>
-                  <Col md={8}>
-                    <Form.Group>
-                      <Form.Label>Authors</Form.Label>
-                      <Form.Control
-                        required
-                        as="textarea"
-                        rows="2"
-                        name="participantsEmails"
-                        placeholder="Write down the name of your buddies. Repeat them if you like."
-                        onChange={this.handleChange.bind(this)}
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={4}>
-                    <Button
-                      name="isRandom"
-                      active={isRandom}
-                      onClick={() => this.setState({ isRandom: !isRandom })}
-                    >
-                      Random
-                    </Button>
-                  </Col>
-                </Row>
                 {/* TITLE */}
                 <Form.Group>
                   <Form.Label>Story Title</Form.Label>
@@ -147,6 +124,18 @@ export default class CreatingStory extends Component {
                     onChange={this.handleChange.bind(this)}
                   />
                 </Form.Group>
+                {/* Participants */}
+                <Form.Group>
+                  <Form.Label>Participants</Form.Label>
+                  <Form.Control
+                    required
+                    as="textarea"
+                    rows="2"
+                    name="participantsEmails"
+                    placeholder={`Mini Mouse, ${user.displayName}, Pluto...`}
+                    onChange={this.handleChange.bind(this)}
+                  />
+                </Form.Group>
                 {/* STAT STORY */}
                 <Form.Group>
                   <Form.Label>Start your Story!</Form.Label>
@@ -154,7 +143,7 @@ export default class CreatingStory extends Component {
                     required
                     as="textarea"
                     placeholder="Once upon a time..."
-                    rows="5"
+                    rows="8"
                     name="storyText"
                     onChange={this.handleChange.bind(this)}
                   />

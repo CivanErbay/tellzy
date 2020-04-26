@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styling/general.css";
 import "./styling/fonts.css";
 import NavBar from "./Components/Navbar";
+import SignInScreen from "./Components/Reusable/SignInScreen";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route path="/main" component={MainView} />
+          <Route path="/signUp" component={SignInScreen} />
           <Route exact path="/story" component={CreatingStory} />
           <Route exact path="/story/:storyId" component={ResultStory} />
           <Route path="/story/:storyId/:secret" component={EditStory} />

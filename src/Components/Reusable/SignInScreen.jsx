@@ -1,17 +1,28 @@
 import React from "react";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import auth, { uiConfig } from "../../actions/auth";
+import auth, { uiConfig, user } from "../../actions/auth";
 
 export default class SignInScreen extends React.Component {
-    render() {
-        return (
-            <div className="signin-div text-center">
-                <h1 className="brand mb-5">Tellzy</h1>
-                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+  state = { user: null };
+  componentDidMount = () => {
+    auth.onAuthStateChanged(async (user) => {
+      this.setState({ user });
+    });
+  };
 
-                {/* <div id="firebaseui-auth-container"></div>
+  render() {
+    return (
+      <div className="signin-div text-center">
+        <h1 className="brand mb-5">Tellzy</h1>
+        {this.state.user ? (
+          <div>{`User already logged in: ${user.displayName}`}</div>
+        ) : (
+          <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+        )}
+
+        {/* <div id="firebaseui-auth-container"></div>
         <div id="loader">Loading...</div> */}
-            </div>
-        );
-    }
+      </div>
+    );
+  }
 }
