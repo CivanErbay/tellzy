@@ -8,6 +8,7 @@ import Popover from "react-bootstrap/Popover";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import SignInScreen from "./Reusable/SignInScreen";
+import { animateScroll as scroll } from "react-scroll";
 import "../styling/navBar.css";
 
 export default class NavBar extends Component {
@@ -52,12 +53,17 @@ export default class NavBar extends Component {
                             className="d-flex justify-content-center align-items-center"
                         >
                             <Nav.Link href="/#home">Home</Nav.Link>
-                            <Nav.Link href="/#how-to">How To</Nav.Link>
+                            <Nav.Link
+                                href="/#how-to"
+                                onClick={() => scroll.scrollToBottom()}
+                            >
+                                How To
+                            </Nav.Link>
                         </Col>
 
                         <Col sm={4}>
                             <Navbar.Brand href="/#home" className="sm-hide">
-                                <img src="/assets/images/logo.png"></img>
+                                <img src="/assets/images/logo-black.png"></img>
                             </Navbar.Brand>
                         </Col>
                         <Col
@@ -66,12 +72,7 @@ export default class NavBar extends Component {
                         >
                             {auth.currentUser ? (
                                 <>
-                                    <Nav.Link
-                                        className="disabledCursor"
-                                        href="#social"
-                                    >
-                                        Social
-                                    </Nav.Link>
+                                    <Nav.Link href="/story">New Story</Nav.Link>
                                     <Nav.Link href="/main#home">
                                         Overview
                                     </Nav.Link>
