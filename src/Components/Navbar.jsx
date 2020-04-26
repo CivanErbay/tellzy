@@ -63,7 +63,7 @@ export default class NavBar extends Component {
 
                         <Col sm={4}>
                             <Navbar.Brand href="/#home" className="sm-hide">
-                                <img src="/assets/images/logo-black.png"></img>
+                                <img src="/assets/images/logo-green.png"></img>
                             </Navbar.Brand>
                         </Col>
                         <Col

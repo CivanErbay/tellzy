@@ -11,12 +11,12 @@ export default class Landing extends Component {
         return (
             <>
                 <Row className="first-part">
-                    <Col md></Col>
+                    <Col md className=""></Col>
                     <Col md={7}>
                         <div className="d-flex flex-column align-items-center justify-content-center">
                             <img
                                 className="sm-show"
-                                src="/assets/images/logo-white.png"
+                                src="/assets/images/logo-green.png"
                             ></img>
                             <h1 className="h1 sm-hide">Tellzy</h1>
                             <div className="wrap">
@@ -46,10 +46,10 @@ export default class Landing extends Component {
                             </div>
                         </div>
                     </Col>
-                    <Col md></Col>
+                    <Col md className=""></Col>
                 </Row>
                 <Row className="second-part">
-                    <Col md className="mt-auto text-right">
+                    <Col md className="mt-auto text-right col-two">
                         <Button
                             className="sm-hide"
                             onClick={() => scroll.scrollToTop()}
@@ -135,7 +135,7 @@ export default class Landing extends Component {
                             </div>
                         </Row>
                     </Col>
-                    <Col md className="mt-auto">
+                    <Col md className="mt-auto col-two h-100">
                         <Link to="/story" onClick={this.handleShow}>
                             <Button>New Story</Button>
                         </Link>
