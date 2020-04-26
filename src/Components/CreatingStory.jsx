@@ -107,11 +107,7 @@ export default class CreatingStory extends Component {
 
     return (
       <Row className="create-story">
-        <Col md className="text-right">
-          <Link to="/">
-            <Button>Home</Button>
-          </Link>
-        </Col>
+        <Col md className="text-right"></Col>
         <Col md={7} className="h-100">
           {submitSuccess ? (
             <>
