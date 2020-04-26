@@ -3,7 +3,7 @@
 }
 .navbar {
     background-color: #f8a055 !important;
-    /* border-bottom: solid; */
+    border-bottom: solid;
     color: black;
 }
 .navbar .nav-link {
@@ -18,9 +18,10 @@
 }
 
 .navbar-brand img {
-    height: 15vh !important;
-    padding: 0 !important;
-    display: fixed !important;
+    height: 20vh !important;
+    margin-bottom: -6rem !important;
+    display: block !important;
+    /* box-shadow: var(--box-shadow); */
 }
 
 .brand {
