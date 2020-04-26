@@ -2,7 +2,7 @@
     cursor: default;
 }
 .navbar {
-    background-color: #f8a055 !important;
+    background-color: #ffdb5c !important;
     border-bottom: solid;
     color: black;
 }
@@ -10,16 +10,25 @@
     margin: 0 2rem !important;
     color: black !important;
     font-size: 2rem !important;
+    /* border-right: solid;
+    border-left: solid;  
+     border-bottom: solid;
+    border-radius: 15px;
+    padding: 1.5rem !important; */
 }
 
 .navbar .nav-link:hover {
     color: rgba(0, 0, 0, 0.808) !important;
     font-weight: 600;
+    border-width: 0.25rem;
 }
 
 .signin-div {
-    background-color: #f8a055;
-    padding: 2.5rem;
+    background-color: #ffdb5c;
+    padding: 3.5rem;
+}
+.signin-div img {
+    height: 25vh;
 }
 
 .navbar-brand img {

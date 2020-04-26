@@ -5,7 +5,7 @@
     padding: 4rem 0 !important;
 }
 
-.first-part h1 {
+.first-part .h1 {
     font-size: 12.5rem !important;
     font-family: "Permanent Marker", cursive;
     margin: 2rem 0 !important;
@@ -16,7 +16,7 @@
     margin: 0 !important;
     padding: 2rem 0 !important;
     width: 100%;
-    background-color: #f8a055;
+    background-color: #ffb238;
     color: black;
 }
 
@@ -55,20 +55,37 @@
     z-index: 5 !important;
     width: 200px !important;
 }
+.sm-show {
+    display: none;
+}
 
 @media all and (max-width: 700px) {
     .first-part {
         padding: 1rem 0 !important;
     }
 
-    .first-part h1 {
-        font-size: 4.5rem !important;
-        margin: 2rem 0 !important;
+    .sm-show {
+        display: block;
     }
 
+    img {
+        /* margin-top: -4rem !important; */
+        height: 25vh !important;
+    }
+    .mobile-h1 {
+        font-size: 5.5rem !important;
+        font-family: "Permanent Marker", cursive;
+    }
+    .wrap {
+        height: 100%;
+        margin-top: 6rem !important;
+    }
     .how-to {
         padding: 0 2rem;
         margin: 0;
+    }
+    .h3-landing {
+        font-size: 2rem;
     }
 
     .footer {

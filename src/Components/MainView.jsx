@@ -34,11 +34,7 @@ export default class MainView extends Component {
 
         return (
             <Row className="first-part w-100 h-100 text-center">
-                <Col md>
-                    <Link to="/">
-                        <Button className="btn-home">Home</Button>
-                    </Link>
-                </Col>
+                <Col md></Col>
                 <Col sm={7}>
                     <ProgressInfo />
                     <div className="list-wrap">
