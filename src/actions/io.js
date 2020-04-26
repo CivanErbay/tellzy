@@ -1,5 +1,6 @@
 import firebase from "../config/firebaseConfig";
 const db = firebase.firestore();
+const auth = firebase.auth();
 
 export const getUserRef = async (userId) => {
   let userRef = await db
@@ -64,15 +65,46 @@ export const queryAllStories = async (query) => {
 };
 
 export const addStory = async (newStory) => {
-  let docRef = await db
+  const { title, text } = newStory;
+  const firstPart = {
+    createdBy: auth.currentUser.uid,
+    submittedOn: new Date(),
+    text,
+    comment: "",
+  };
+
+  const story = {
+    title,
+    createdOn: new Date(),
+    createdBy: auth.currentUser.uid,
+    participants: [auth.currentUser.uid],
+    description: "",
+    language: "en",
+    lastEdit: new Date(),
+    customization: {},
+    isFinished: false,
+    finishedText: text,
+    parts: [firstPart],
+  };
+
+  const docRef = await db
     .collection("stories")
-    .add(newStory)
+    .add(story)
     .catch(function (error) {
       console.error("Error adding document: ", error);
       return;
     });
 
-  return docRef;
+  return { ...story, id: docRef.id };
+};
+
+export const checkIsUserParticipant = (story, userId) => {
+  const isParticipant = story.participants.filter((uid) => uid === userId);
+  return isParticipant;
+};
+
+export const getStoryLink = (storyId) => {
+  return `https://tellzy.web.app/story/${storyId}`;
 };
 
 export const getStoryText = (story) => {

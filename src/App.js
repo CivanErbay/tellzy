@@ -14,6 +14,7 @@ import "./styling/general.css";
 import "./styling/fonts.css";
 import NavBar from "./Components/Navbar";
 import SignInScreen from "./Components/Reusable/SignInScreen";
+import Story from "./Components/Story";
 
 function App() {
   return (
@@ -25,8 +26,8 @@ function App() {
           <Route path="/main" component={MainView} />
           <Route path="/signUp" component={SignInScreen} />
           <Route exact path="/story" component={CreatingStory} />
-          <Route exact path="/story/:storyId" component={ResultStory} />
-          <Route path="/story/:storyId/:secret" component={EditStory} />
+          <Route exact path="/story/:storyId" component={EditStory} />
+          {/* <Route path="/story/:storyId/:secret" component={EditStory} /> */}
           <Route path="/policy" component={Policy} />
           <Route path="/contact" component={Contact} />
           <Route path="/admin" component={Admin} />
