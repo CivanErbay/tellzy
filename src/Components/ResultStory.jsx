@@ -61,7 +61,8 @@ export default class ResultStory extends Component {
     // story = {storyTitle, participants: [{email, isSubmitted}], storyParts: [{author, text}]}
     const { story, isLoading, storyFinished, isDesktop, storyId } = this.state;
 
-    const openParticipants = story.participants.filter((participant) => participant.isSubmitted);
+    const openParticipants =
+      !isLoading && story.participants.filter((participant) => participant.isSubmitted);
     const nextParticipant = openParticipants && openParticipants[0];
 
     const storyLink = `https://tellzy.web.app/story/${storyId}`;
