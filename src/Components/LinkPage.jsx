@@ -60,12 +60,11 @@ export default class ResultStory extends Component {
 
                   <p className="p2-cs-true2 text-center">
                     Soon you will get the whole story! <br />
-                    In the meantime, track the status on this <b>Progress</b> Link
+                    In the meantime, track the status on this <br />
+                    <a href={storyLink} target="_blank">
+                      <b>Progress Link</b>
+                    </a>
                   </p>
-
-                  <a href={storyLink} target="_blank">
-                    <Button className="btn-progress">Story Progress</Button>
-                  </a>
                 </>
               ) : (
                 <>
@@ -76,11 +75,7 @@ export default class ResultStory extends Component {
                       {story.participants.map((participant) => participant.email).join(", ")}
                     </span>
                   </p>
-                  <ShareButtons
-                    link={nextLink}
-                    nextParticipant={nextParticipant}
-                    story={story}
-                  ></ShareButtons>
+                  <ShareButtons link={storyLink} story={story}></ShareButtons>
                 </>
               )}
             </>

@@ -61,6 +61,9 @@ export default class ResultStory extends Component {
     // story = {storyTitle, participants: [{email, isSubmitted}], storyParts: [{author, text}]}
     const { story, isLoading, storyFinished, isDesktop, storyId } = this.state;
 
+    const openParticipants = story.participants.filter((participant) => participant.isSubmitted);
+    const nextParticipant = openParticipants && openParticipants[0];
+
     const storyLink = `https://tellzy.web.app/story/${storyId}`;
     return (
       <div className="w-100">
@@ -101,6 +104,22 @@ export default class ResultStory extends Component {
                           </li>
                         ))}
                       </ul>
+                      {nextParticipant && (
+                        <>
+                          <p className="p-cs-true text-center mt-3">
+                            Send
+                            <span className="highlight"> {nextParticipant.email} </span>
+                            the Edit Link to continue the story!
+                          </p>
+                          <Row className="d-flex justify-content-center align-items-center">
+                            <ShareButtons
+                              link={`https://tellzy.web.app/story/${storyId}/${nextParticipant.secret}`}
+                              nextParticipant={nextParticipant}
+                              story={story}
+                            ></ShareButtons>
+                          </Row>
+                        </>
+                      )}
                     </div>
                   )}
                 </div>
