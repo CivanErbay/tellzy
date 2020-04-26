@@ -98,6 +98,11 @@ export const addStory = async (newStory) => {
   return { ...story, id: docRef.id };
 };
 
+export const checkIsUserParticipant = (story, userId) => {
+  const isParticipant = story.participants.filter((uid) => uid === userId);
+  return isParticipant;
+};
+
 export const getStoryLink = (storyId) => {
   return `https://tellzy.web.app/story/${storyId}`;
 };

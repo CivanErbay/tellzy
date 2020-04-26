@@ -7,16 +7,18 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { isEmpty } from "lodash";
 import auth from "../actions/auth";
+import { getStory, checkIsUserParticipant } from "../actions/io";
 
 export default class EditStory extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: null,
+      story: null,
     };
   }
 
-  componentDidMount() {
+  componentDidMount = async () => {
     auth.onAuthStateChanged((user) => {
       this.setState({ user });
     });
@@ -25,7 +27,10 @@ export default class EditStory extends Component {
       match: { params },
     } = this.props;
     const storyId = params.storyId;
-  }
+    const story = await getStory(storyId);
+    const isUserParticipant = checkIsUserParticipant(story, this.state.user.uid);
+    this.setState({ story, isUserParticipant });
+  };
 
   getStory = async (storyId) => {
     let storyRef = await getStoryRef(storyId);
@@ -117,27 +122,59 @@ export default class EditStory extends Component {
     const {
       user,
       submitSuccess,
-      validParticipant,
+      isUserParticipant,
       story,
-      storyId,
       hintText,
       // nextParticipant,
     } = this.state;
 
     if (!user) return <div className="w-100 text-center">Loading...</div>;
+    if (!story) return <div className="w-100 text-center">Story Loading...</div>;
 
     // const nextParticipant = this.getNextParticipant();
 
     return (
       <div className="edit-story">
         <Row className="">
-          <Col sm={2}>
-            <Link to="/">
-              <Button className="btn-home sm">Home</Button>
-            </Link>
-          </Col>
+          <Col sm={2}></Col>
+
           <Col sm={8} className="h-100">
-            {/*               
+            <div className="paper-story">
+              <h2>{story.title}</h2>
+
+              {/* TODO display only hint */}
+              <p>{story.finishedText}</p>
+              <br />
+              <p className="signature ml-auto">Signature</p>
+            </div>
+
+            {
+              isUserParticipant ? (
+                <Form className="create-form" onSubmit={this.handleSubmit}>
+                  <Form.Group>
+                    <Form.Label>Continue the story!</Form.Label>
+                    <Form.Control
+                      required
+                      as="textarea"
+                      placeholder="Continue the adventure..."
+                      rows="10"
+                      name="storyText"
+                      onChange={this.handleChange.bind(this)}
+                    />
+                  </Form.Group>
+                  <br />
+                  <Button className="go-btn-cs-false" type="submit">
+                    Submit
+                  </Button>
+                </Form>
+              ) : (
+                <div className="text-center">
+                  You want to participate?
+                  <Button>Request Access</Button>
+                </div>
+              )
+              /*
+            {               
             {!isEmpty(validParticipant) ? (
               <>
                 {validParticipant.isSubmitted ? (
@@ -215,7 +252,8 @@ export default class EditStory extends Component {
                       </>
                     )}
                   </>
-                )} */}
+                )} */
+            }
             {/* </>
             ) : (
               <div className="d-flex justify-content-center p-deadlink-true">
