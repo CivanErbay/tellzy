@@ -4,8 +4,10 @@ import Button from "react-bootstrap/Button";
 import { addStory } from "../actions/io";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import auth, { user } from "../actions/auth";
-import { getUserData } from "../actions/io";
+import auth from "../actions/auth";
+import ListGroup from "react-bootstrap/ListGroup";
+// import { getUserData } from "../actions/io";
+import { userSearch } from "../actions/functions";
 import LinkPage from "./LinkPage";
 import "../styling/creating.css";
 
@@ -17,6 +19,7 @@ export default class CreatingStory extends Component {
       storyId: "",
       submitSuccess: false,
       isUnfold: false,
+      userSearchResults: [],
       user: null,
     };
   }
@@ -35,11 +38,23 @@ export default class CreatingStory extends Component {
     });
   }
 
+  handleUserSearch = async (event) => {
+    let query = event.target.value;
+    if (query) {
+      let userSearchResults = await userSearch(query);
+      console.log({ userSearchResults });
+      this.setState({ userSearchResults });
+    } else {
+      this.setState({ userSearchResults: [] });
+    }
+  };
+
   handleSubmit = async (event) => {
     event.preventDefault();
 
     const {
-      story: { title, text, participants },
+      story: { title, text, participantNames },
+      user,
     } = this.state;
 
     const firstPart = {
@@ -56,9 +71,9 @@ export default class CreatingStory extends Component {
       },
     ];
 
-    const otherParticipants = participants.split(/[,|\s|\n]+/g).map((participant) => {
+    const otherParticipants = participantNames.split(/[,|\s|\n]+/g).map((participant) => {
       return {
-        email,
+        name: participant,
         isSubmitted: false,
         submittedOn: null,
       };
@@ -86,7 +101,7 @@ export default class CreatingStory extends Component {
   };
 
   render() {
-    const { user, submitSuccess, nextParticipant, story, storyId, isRandom } = this.state;
+    const { user, submitSuccess, nextParticipant, story, storyId, isRandom, userSearchResults } = this.state;
 
     if (!user) return <div className="w-100 text-center">Loading...</div>;
 
@@ -122,6 +137,29 @@ export default class CreatingStory extends Component {
                     onChange={this.handleChange.bind(this)}
                   />
                 </Form.Group>
+                {/* PArticipants search */}
+                <Form.Group>
+                  <Form.Label>Participants</Form.Label>
+                  <Row>
+                    <Col>
+                      <Form.Control
+                        as="textarea"
+                        rows="1"
+                        name="userSearch"
+                        placeholder={`Search users...`}
+                        onChange={this.handleUserSearch}
+                      />
+                    </Col>
+                    <Col>
+                      <ListGroup variant="dark">
+                        {userSearchResults &&
+                          userSearchResults.map((user) => (
+                            <ListGroup.Item key={user.uid}>{user.displayName}</ListGroup.Item>
+                          ))}
+                      </ListGroup>
+                    </Col>
+                  </Row>
+                </Form.Group>
                 {/* Participants */}
                 <Form.Group>
                   <Form.Label>Participants</Form.Label>
@@ -129,7 +167,7 @@ export default class CreatingStory extends Component {
                     required
                     as="textarea"
                     rows="2"
-                    name="participants"
+                    name="participantNames"
                     placeholder={`Mini Mouse, ${user.displayName}, Pluto...`}
                     onChange={this.handleChange.bind(this)}
                   />

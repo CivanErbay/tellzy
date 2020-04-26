@@ -2,10 +2,11 @@ const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 admin.initializeApp(functions.config().firebase);
 
+// create user doc on user register
 exports.createUserDoc = functions.auth.user().onCreate((user) => {
   const userDoc = {
     uid: user.uid,
-    displayName: "",
+    displayName: user.displayName,
     language: "",
     storiesStarted: [],
     storiesParticipant: [],
@@ -27,3 +28,39 @@ exports.createUserDoc = functions.auth.user().onCreate((user) => {
 });
 
 // TODO record last user log in into user data
+
+// user friends search
+exports.userSearch = functions.https.onCall((data, context) => {
+  const userSearchText = data.query;
+  const uid = context.auth.uid;
+
+  const userSearchResultsRef = admin
+    .firestore()
+    .collection("users")
+    .where("displayName", ">=", userSearchText)
+    .where("displayName", "<=", userSearchText + "\uf8ff")
+    // .where("displayName", "==", true)
+    .limit(5);
+
+  return [
+    { displayName: "damn", uid: 123 },
+    { displayName: "bro", uid: 1232 },
+  ];
+
+  userSearchResultsRef
+    .get()
+    .then((querySnapshot) => {
+      return querySnapshot;
+      // if (querySnapshot) {
+      //   return querySnapshot.map((doc) => doc.data());
+      // } else {
+      //   return [];
+      // }
+    })
+    .catch((err) => {
+      return null;
+    });
+  // TODO only return relevant user data (displayName, lastLogIn...)
+
+  // return { userSearchResults };
+});
