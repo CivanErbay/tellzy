@@ -8,6 +8,18 @@ Share stories online!
 
 BIG THINGS
 
+-   REWORK Tellzy 2.0: User-Login + Reward/Experience
+    Components:
+    --> 1. Navbar with 2 states (loggedIN, loggedOUT)
+    --> 2. User MainView after LogIN
+    ---> 2.1 Open Storys
+    ---> 2.2 Finished Storys
+    ---> 2.3 Progress-Info (e.g. %-Progress and Title "Shakespare")
+    --> 3. Profile - Page
+    --> 4. Detailed How-To Section
+-   STYLING:
+    Illustrations:
+    --> 1. Implement Illustrations
 -   2 Languagemode also in german, very important!!
 -   Create Story: 2 Modes - Fun Stories (like now) and "serious" Story (with more Hints and information to keep the "roten Faden")
     --> show Random Sentences from somewhere of the written story, more or less, Keywoards (provided by Creator, or even authors in between?)
@@ -35,7 +47,3 @@ LONG TERM CHANGES
 -   Rework of "HOW TO"-Section (with Pictures and Examples to make it easier to understand what we our App is actually Doing!)
     --> "Dont think too much, just write", Rewarding experiences
 -   Result Page: Text Export and Share Function
-
-OPEN TASKS
-
--   (Headliner of EditStory.jsx & LinkPage.jsx) Story Title Header with the class .h1-es-false is set to display:none in MOBILE VIEW/media Query (because it sucks on LinkPage, but I didnt know how to ommit only there)
