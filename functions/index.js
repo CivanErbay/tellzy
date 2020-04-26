@@ -38,14 +38,9 @@ exports.userSearch = functions.https.onCall((data, context) => {
     .firestore()
     .collection("users")
     .where("displayName", ">=", userSearchText)
-    .where("displayName", "<=", userSearchText + "\uf8ff")
-    // .where("displayName", "==", true)
+    // .where("displayName", "<=", userSearchText + "\uf8ff")
+    // // .where("displayName", "==", true)
     .limit(5);
-
-  return [
-    { displayName: "damn", uid: 123 },
-    { displayName: "bro", uid: 1232 },
-  ];
 
   userSearchResultsRef
     .get()

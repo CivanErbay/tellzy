@@ -137,8 +137,9 @@ export default class CreatingStory extends Component {
                     onChange={this.handleChange.bind(this)}
                   />
                 </Form.Group>
+
                 {/* PArticipants search */}
-                <Form.Group>
+                {/* <Form.Group>
                   <Form.Label>Participants</Form.Label>
                   <Row>
                     <Col>
@@ -151,7 +152,7 @@ export default class CreatingStory extends Component {
                       />
                     </Col>
                     <Col>
-                      <ListGroup variant="dark">
+                      <ListGroup className="participants">
                         {userSearchResults &&
                           userSearchResults.map((user) => (
                             <ListGroup.Item key={user.uid}>{user.displayName}</ListGroup.Item>
@@ -159,9 +160,9 @@ export default class CreatingStory extends Component {
                       </ListGroup>
                     </Col>
                   </Row>
-                </Form.Group>
+                </Form.Group> */}
                 {/* Participants */}
-                <Form.Group>
+                {/* <Form.Group>
                   <Form.Label>Participants</Form.Label>
                   <Form.Control
                     required
@@ -171,7 +172,7 @@ export default class CreatingStory extends Component {
                     placeholder={`Mini Mouse, ${user.displayName}, Pluto...`}
                     onChange={this.handleChange.bind(this)}
                   />
-                </Form.Group>
+                </Form.Group> */}
                 {/* STAT STORY */}
                 <Form.Group>
                   <Form.Label>Start your Story!</Form.Label>
