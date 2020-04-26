@@ -16,7 +16,7 @@ export default class CreatingStory extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      story: {},
+      newStory: {},
       storyLink: "",
       submitSuccess: false,
       userSearchResults: [],
@@ -103,21 +103,14 @@ export default class CreatingStory extends Component {
 
   handleSubmit = async (event) => {
     event.preventDefault();
-    const newStoryId = await addStory(this.state.story);
-    const storyLink = getStoryLink(newStoryId);
-    this.setState({ storyLink, submitSuccess: true });
+    const newStory = await addStory(this.state.story);
+    const storyLink = getStoryLink(newStory.id);
+    console.log(newStory, storyLink);
+    this.setState({ storyLink, submitSuccess: true, newStory });
   };
 
   render() {
-    const {
-      user,
-      submitSuccess,
-      nextParticipant,
-      story,
-      storyLink,
-      isRandom,
-      userSearchResults,
-    } = this.state;
+    const { user, submitSuccess, newStory, storyLink, isRandom, userSearchResults } = this.state;
 
     if (!user) return <div className="w-100 text-center">Loading...</div>;
 
@@ -125,13 +118,13 @@ export default class CreatingStory extends Component {
       <Row className="create-story">
         <Col md className="text-right"></Col>
         <Col md={7} className="h-100">
-          {!submitSuccess ? (
+          {submitSuccess ? (
             <>
               <h1 className="text-center">
-                <u>{story.storyTitle}.</u>
+                <u>{newStory.title}.</u>
               </h1>
               <h2 className="text-center">Send this link to your buddies</h2>
-              <ShareButtons link={storyLink} story={story}></ShareButtons>
+              <ShareButtons link={storyLink} story={newStory}></ShareButtons>
               {/* <LinkPage story={story} storyId={storyId} nextParticipant={nextParticipant}></LinkPage> */}
             </>
           ) : (

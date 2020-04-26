@@ -95,7 +95,7 @@ export const addStory = async (newStory) => {
       return;
     });
 
-  return docRef.id;
+  return { ...story, id: docRef.id };
 };
 
 export const getStoryLink = (storyId) => {

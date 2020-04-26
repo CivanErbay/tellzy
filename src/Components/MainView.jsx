@@ -10,58 +10,52 @@ import ProgressInfo from "./Reusable/ProgressInfo";
 import "../styling/mainview.css";
 
 export default class MainView extends Component {
-    state = {
-        user: null,
-        userData: null,
-    };
+  state = {
+    user: null,
+    userData: null,
+  };
 
-    componentDidMount = () => {
-        auth.onAuthStateChanged(async (user) => {
-            if (user) {
-                this.setState({ user });
-                let userData = await getUserData(user.uid);
-                this.setState({ userData });
-            } else {
-                this.setState({ user, userData: null });
-            }
-        });
-    };
+  componentDidMount = () => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        this.setState({ user });
+        let userData = await getUserData(user.uid);
+        this.setState({ userData });
+      } else {
+        this.setState({ user, userData: null });
+      }
+    });
+  };
 
-    render() {
-        const { user, userData } = this.state;
+  render() {
+    const { user, userData } = this.state;
 
-        if (!user) return <div className="w-100 text-center">Loading...</div>;
+    if (!user) return <div className="w-100 text-center">Loading...</div>;
 
-        return (
-            <Row className="first-part w-100 h-100 text-center">
-                <Col md></Col>
-                <Col sm={7}>
-                    <ProgressInfo />
-                    <div className="list-wrap">
-                        {/* <h2>Active Storys</h2> */}
+    return (
+      <Row className="first-part w-100 h-100 text-center">
+        <Col md></Col>
+        <Col sm={7}>
+          <ProgressInfo />
+          <div className="list-wrap">
+            {/* <h2>Active Storys</h2> */}
 
-                        <StoryList
-                            heading="Active Stories"
-                            stories={[
-                                { title: "There Was a Cat!" },
-                                { title: "Loli alone at home" },
-                            ]}
-                        />
-                    </div>
-                    <div className="list-wrap">
-                        {/* <h2>Finished Storys</h2> */}
+            <StoryList
+              heading="Active Stories"
+              stories={[{ title: "There Was a Cat!" }, { title: "Loli alone at home" }]}
+            />
+          </div>
+          <div className="list-wrap">
+            {/* <h2>Finished Storys</h2> */}
 
-                        <StoryList
-                            heading="Finished Stories"
-                            stories={[
-                                { title: "There Was a Cat!" },
-                                { title: "Loli alone at home" },
-                            ]}
-                        />
-                    </div>
-                </Col>
-                <Col md className="text-left"></Col>
-            </Row>
-        );
-    }
+            <StoryList
+              heading="Finished Stories"
+              stories={[{ title: "There Was a Cat!" }, { title: "Loli alone at home" }]}
+            />
+          </div>
+        </Col>
+        <Col md className="text-left"></Col>
+      </Row>
+    );
+  }
 }
