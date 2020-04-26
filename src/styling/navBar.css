@@ -2,7 +2,7 @@
     cursor: default;
 }
 .navbar {
-    background-color: #ffdb5c !important;
+    background-color: #eafdf8 !important;
     border-bottom: solid;
     color: black;
 }
@@ -10,11 +10,6 @@
     margin: 0 2rem !important;
     color: black !important;
     font-size: 2rem !important;
-    /* border-right: solid;
-    border-left: solid;  
-     border-bottom: solid;
-    border-radius: 15px;
-    padding: 1.5rem !important; */
 }
 
 .navbar .nav-link:hover {
@@ -43,4 +38,17 @@
     font-family: "Permanent Marker", cursive;
     margin: 0rem;
     color: black !important;
+}
+
+@media all and (max-width: 700px) {
+    .navbar .nav-link {
+        margin: 0.5em !important;
+        padding: 1.5rem;
+        /* border: solid; */
+    }
+    .navbar {
+        padding: 0 !important;
+        margin: 0 !important;
+        border-bottom: none;
+    }
 }

@@ -2,13 +2,16 @@
     min-height: 93vh;
     width: 100%;
     margin: 0 !important;
-    padding: 4rem 0 !important;
+    /* padding: 4rem 0 !important; */
+    padding: 0 !important;
 }
 
 .first-part .h1 {
     font-size: 12.5rem !important;
     font-family: "Permanent Marker", cursive;
-    margin: 2rem 0 !important;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    letter-spacing: -8px;
 }
 
 .second-part {
@@ -16,15 +19,16 @@
     margin: 0 !important;
     padding: 2rem 0 !important;
     width: 100%;
-    background-color: #ffb238;
+    height: 100%;
+    background-color: #eafdf8;
     color: black;
 }
 
 .how-to {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
     height: 100%;
     padding: 2rem;
     margin: 2rem 0;
@@ -32,9 +36,6 @@
 
 .how-to h2 {
     font-size: 5rem;
-    border-right: solid;
-    border-bottom: solid;
-    padding: 0.6em;
     margin: 0 2rem 1rem 0 !important;
     border-width: 0.1em;
 }
@@ -49,8 +50,7 @@
     font-size: 2rem !important;
     padding: 1.5rem !important;
     /* margin-top: 1.5rem !important; */
-    background-color: #ffdb5c !important;
-    border-color: #ffdb5c !important;
+
     color: black !important;
     z-index: 5 !important;
     width: 200px !important;
@@ -58,7 +58,17 @@
 .sm-show {
     display: none;
 }
-
+/* .col-border {
+    border-right: solid;
+    border-left: solid;
+} */
+.wrap h3 {
+    font-size: 3.5rem;
+    margin-top: 1%;
+}
+.wrap div {
+    margin-top: 10%;
+}
 @media all and (max-width: 700px) {
     .first-part {
         padding: 1rem 0 !important;
@@ -78,14 +88,31 @@
     }
     .wrap {
         height: 100%;
-        margin-top: 6rem !important;
+        margin-top: 1 rem !important;
+        /* margin-left: rem !important; */
+    }
+    .wrap h3 {
+        margin-left: 2rem !important;
+        padding: 0.5rem !important;
     }
     .how-to {
         padding: 0 2rem;
         margin: 0;
+        font-size: 3.5rem !important;
     }
-    .h3-landing {
-        font-size: 2rem;
+    .howto {
+        font-size: 1rem;
+        /* border: solid; */
+        /* border-radius: 50%; */
+        background-color: white;
+        margin: 2rem 0;
+        padding: 0.5rem;
+    }
+    .howto img {
+        height: 10vh !important;
+    }
+    .howto h3 {
+        font-size: 8rem;
     }
 
     .footer {
