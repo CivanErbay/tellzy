@@ -104,6 +104,10 @@ export const addStory = async (newStory) => {
   return { ...story, id: docRef.id };
 };
 
+export const addStoryPart = async (storyId, storyPart, userPublic) => {
+  // TODO as backend function
+};
+
 export const checkIsUserParticipant = (story, uid) => {
   const isParticipant = story.participants.some((participant) => participant.uid === uid);
   return isParticipant;
