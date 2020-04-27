@@ -10,6 +10,7 @@
     margin: 0 2rem;
     color: black !important;
     font-size: 2rem !important;
+    /* font-family: "Caveat Brush", cursive; */
 }
 
 .navbar .nav-link:hover {
@@ -39,25 +40,31 @@
     margin: 0rem;
     color: black !important;
 }
+.mobile-brand {
+    display: none;
+}
 
 @media all and (max-width: 700px) {
     .navbar .nav-link {
-        padding: 2.5rem !important;
-        border-bottom: solid;
-        border-width: 0.75rem;
+        padding: 0.5rem !important;
+        /* border-bottom: solid;
+        border-width: 0.25rem; */
+        font-size: 1.5rem !important;
+        text-align: left;
     }
     .navbar {
         border-bottom: none;
         padding: 0 !important;
         margin: 0 !important;
     }
-    .d-flex {
-        padding: 0 !important;
-        margin: 0 !important;
+    .mobile-brand {
+        font-family: "Permanent Marker", cursive;
+        font-size: 2rem;
+        display: block;
     }
     .nav-link {
         width: 100% !important;
-        font-weight: bold;
+
         padding: 0 !important;
         margin: 0 !important;
     }

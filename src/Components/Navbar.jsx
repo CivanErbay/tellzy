@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useRef, useEffect } from "react";
 import auth, { signOut } from "../actions/auth";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import SignInScreen from "./Reusable/SignInScreen";
 import { animateScroll as scroll } from "react-scroll";
+
 import "../styling/navBar.css";
 
 export default class NavBar extends Component {
@@ -34,6 +35,9 @@ export default class NavBar extends Component {
 
     render() {
         const { showSignInScreen, user } = this.state;
+        var Scroll = require("react-scroll");
+        // var h2 = Scroll.h2;
+        var scroller = Scroll.scroller;
 
         const signInModal = (
             <Modal show={showSignInScreen} onHide={this.handleClose}>
@@ -45,7 +49,13 @@ export default class NavBar extends Component {
 
         return (
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                <Navbar.Toggle
+                    aria-controls="basic-navbar-nav"
+                    className="m-2"
+                />
+                <Navbar.Brand href="/#home" className="mx-auto">
+                    <div className="mobile-brand">Tellzy</div>
+                </Navbar.Brand>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mx-auto w-100 text-center ">
                         <Col
@@ -55,7 +65,12 @@ export default class NavBar extends Component {
                             <Nav.Link href="/#home">Home</Nav.Link>
                             <Nav.Link
                                 href="/#how-to"
-                                onClick={() => scroll.scrollToBottom()}
+                                onClick={() =>
+                                    scroller.scrollTo("scroll-aim", {
+                                        duration: 1500,
+                                        smooth: true,
+                                    })
+                                }
                             >
                                 How To
                             </Nav.Link>
@@ -74,7 +89,7 @@ export default class NavBar extends Component {
                                 <>
                                     <Nav.Link href="/story">New Story</Nav.Link>
                                     <Nav.Link href="/main#home">
-                                        {auth.currentUser.displayName} Overview
+                                        {auth.currentUser.displayName}
                                     </Nav.Link>
                                     <OverlayTrigger
                                         trigger="click"
