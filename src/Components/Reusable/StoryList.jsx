@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getStory } from "../../actions/io";
+import Table from "react-bootstrap/Table";
 var moment = require("moment");
 
 export default class StoryList extends Component {
@@ -19,18 +20,29 @@ export default class StoryList extends Component {
     return (
       <div className="list-wrap">
         <h2>{heading}</h2>
-        <ul>
-          {storiesData.map(function (story, index) {
-            return (
-              <li key={index} className={"list-item d-flex justify-content-around"}>
-                <h5>{story.title}</h5>
-                <p>by {story.createdBy.displayName}</p>
-                <p>With {story.participants.length} participants</p>
-                {/* <p>Created on {moment(story.createdOn.seconds)}</p> */}
-              </li>
-            );
-          })}
-        </ul>
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Creator</th>
+              <th>Number of participants</th>
+              <th>Created on</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {storiesData.map(function (story, index) {
+              return (
+                <tr key={index} className="">
+                  <td>{story.title}</td>
+                  <td>by {story.createdBy.displayName}</td>
+                  <td>With {story.participants.length} participants</td>
+                  <td>{moment(new Date(story.createdOn.toDate())).calendar()}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
       </div>
     );
   }
