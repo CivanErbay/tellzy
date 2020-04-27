@@ -2,14 +2,15 @@
     cursor: default;
 }
 .navbar {
-    background-color: #eafdf8 !important;
+    background-color: #fcbf1e !important;
     border-bottom: solid;
-    color: black;
+    color: white;
 }
 .navbar .nav-link {
-    margin: 0 2rem !important;
+    margin: 0 2rem;
     color: black !important;
     font-size: 2rem !important;
+    /* font-family: "Caveat Brush", cursive; */
 }
 
 .navbar .nav-link:hover {
@@ -19,7 +20,7 @@
 }
 
 .signin-div {
-    background-color: #ffdb5c;
+    background-color: #fcbf1e;
     padding: 3.5rem;
 }
 .signin-div img {
@@ -39,16 +40,42 @@
     margin: 0rem;
     color: black !important;
 }
+.mobile-brand {
+    display: none;
+}
 
 @media all and (max-width: 700px) {
     .navbar .nav-link {
-        margin: 0.5em !important;
-        padding: 1.5rem;
-        /* border: solid; */
+        padding: 0.5rem !important;
+        /* border-bottom: solid;
+        border-width: 0.25rem; */
+        font-size: 1.5rem !important;
+        text-align: left;
     }
     .navbar {
+        border-bottom: none;
         padding: 0 !important;
         margin: 0 !important;
-        border-bottom: none;
+    }
+    .mobile-brand {
+        font-family: "Permanent Marker", cursive;
+        font-size: 2rem;
+        display: block;
+    }
+    .nav-link {
+        width: 100% !important;
+
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .col {
+        flex-direction: column !important;
+    }
+    .signin-div {
+        padding: 1rem;
+    }
+    .bb {
+        width: 100% !important;
+        margin: 0 auto;
     }
 }

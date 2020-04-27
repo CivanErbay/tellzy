@@ -20,24 +20,40 @@
     padding: 2rem 0 !important;
     width: 100%;
     height: 100%;
-    background-color: #eafdf8;
+    /* background-color: #eafdf8; */
+    background-color: #035aa6;
     color: black;
 }
 
 .how-to {
     display: flex;
-    /* flex-direction: column;
-    justify-content: center;
-    align-items: center; */
     height: 100%;
     padding: 2rem;
     margin: 2rem 0;
+    font-size: 1.5rem;
 }
 
 .how-to h2 {
-    font-size: 5rem;
-    margin: 0 2rem 1rem 0 !important;
-    border-width: 0.1em;
+    font-size: 8rem !important;
+}
+.howto div {
+    margin: 1rem 0 !important;
+    /* border: solid; */
+    background-color: #40bad5;
+    padding: 1.5rem !important;
+    /* border-color: #035aa6; */
+    /* border-radius: 25px;
+
+    box-shadow: var(--box-shadow); */
+}
+.inner-div {
+    background-color: #fcbf1e !important;
+    border-radius: 25px;
+
+    box-shadow: var(--box-shadow);
+}
+.inner-div .inner-div {
+    box-shadow: none;
 }
 
 .footer {
@@ -58,10 +74,11 @@
 .sm-show {
     display: none;
 }
-/* .col-border {
-    border-right: solid;
-    border-left: solid;
-} */
+.col-color {
+    background-color: #40bad5 !important;
+    box-shadow: var(--box-shadow);
+    border-radius: 25px;
+}
 .wrap h3 {
     font-size: 3.5rem;
     margin-top: 1%;
@@ -69,31 +86,53 @@
 .wrap div {
     margin-top: 10%;
 }
+.caveat-font {
+    font-family: "Caveat Brush", cursive;
+    font-size: 1.5em;
+    margin-bottom: -1rem;
+}
+.howto img {
+    height: 25vh;
+}
+.illustration-width {
+    height: 10vh !important;
+}
+
 @media all and (max-width: 700px) {
     .first-part {
         padding: 1rem 0 !important;
     }
-
+    .second-part {
+        background-color: #fcbf1e !important;
+    }
     .sm-show {
         display: block;
     }
-
-    img {
-        /* margin-top: -4rem !important; */
-        height: 25vh !important;
+    .inner-div {
+        background-color: #40bad5 !important;
     }
+    /* .policy {
+        font-size: 0.5em !important;
+    } */
+
     .mobile-h1 {
         font-size: 5.5rem !important;
         font-family: "Permanent Marker", cursive;
     }
+    .mobile-column {
+        flex-direction: column !important;
+    }
     .wrap {
         height: 100%;
-        margin-top: 1 rem !important;
-        /* margin-left: rem !important; */
+        margin-top: 2rem !important;
     }
     .wrap h3 {
         margin-left: 2rem !important;
         padding: 0.5rem !important;
+        font-size: 2rem !important;
+    }
+    .how-to h2 {
+        font-size: 3.5rem !important;
     }
     .how-to {
         padding: 0 2rem;
@@ -102,19 +141,30 @@
     }
     .howto {
         font-size: 1rem;
-        /* border: solid; */
-        /* border-radius: 50%; */
-        background-color: white;
+        border: solid;
+        border-color: #035aa6;
+        background-color: #40bad5;
         margin: 2rem 0;
         padding: 0.5rem;
+        box-shadow: var(--box-shadow);
     }
     .howto img {
-        height: 10vh !important;
+        height: 12vh !important;
+    }
+    .howto div {
+        border: none !important;
+        box-shadow: none;
+        padding: 0 !important;
+        margin: 0.5rem !important;
     }
     .howto h3 {
-        font-size: 8rem;
+        font-size: 2rem;
     }
 
+    .col-color {
+        background-color: #fcbf1e !important;
+        box-shadow: none;
+    }
     .footer {
         margin: 0;
     }

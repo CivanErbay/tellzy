@@ -13,7 +13,7 @@ export default class SignInScreen extends React.Component {
     render() {
         return (
             <div className="signin-div text-center">
-                <img src="/assets/images/logo-black.png"></img>
+                <img src="/assets/images/logo-white-gradient.png"></img>
                 {this.state.user ? (
                     <div>{`User already logged in: ${user.displayName}`}</div>
                 ) : (
