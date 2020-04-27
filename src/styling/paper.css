@@ -1,26 +1,5 @@
-.paper-story {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 80%;
-    line-height: 1.5;
-    background-image: url(/assets/images/paper2-min.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: black;
-    filter: brightness(1.3);
-    margin: 4rem 6%;
-    border-radius: 5px;
-    padding: 5rem 10%;
-    font-size: 30px;
-    font-family: "Gaegu", cursive;
-}
-
 h2 {
     text-align: center;
-
     text-transform: capitalize;
     font-size: 4.5rem !important;
     font-size: 4rem !important;
@@ -34,17 +13,30 @@ h2 {
     margin-left: auto;
 }
 
+.paper-wrap {
+    background-color: #fbfbf8;
+    box-shadow: var(--box-shadow);
+    padding: 2.5rem;
+    border-radius: 25px;
+    color: black;
+    text-align: left;
+    line-height: 1.5;
+    padding: 8rem;
+}
 @media all and (max-width: 700px) {
-    .paper-story {
-        font-size: 1.25rem;
-        margin: 2rem 1rem;
-        padding: 1rem;
-    }
-
     h2 {
         text-align: center;
-
         text-transform: capitalize;
+    }
+
+    .paper-wrap {
+        background-color: #fbfbf8;
+        box-shadow: var(--box-shadow);
+        padding: 0;
+        border-radius: 25px;
+        color: black;
+        text-align: left;
+        font-size: 1rem;
     }
 
     .signature {
