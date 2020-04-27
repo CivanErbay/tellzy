@@ -186,7 +186,7 @@ export default class Landing extends Component {
                             <Link to="" onClick={this.handleShow}>
                                 <Button>New Story</Button>
                             </Link>
-                            <div className="mt-5 text-center">
+                            <div className="mt-5 text-center sm-show">
                                 <Link to="/policy">Policy & Impressum</Link>
                             </div>
                         </>
