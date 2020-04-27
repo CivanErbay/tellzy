@@ -37,7 +37,7 @@ export default class Landing extends Component {
                                     </i>{" "}
                                     <br />
                                     <p className="text-right">
-                                        <b> - Maya Angelou</b>
+                                        <b> Maya Angelou</b>
                                     </p>
                                 </div>
                                 <h1 className="text-center sm-show mobile-h1">
@@ -63,82 +63,108 @@ export default class Landing extends Component {
                     >
                         <Row id="how-to" className="how-to">
                             <div className="d-flex flex-column justify-content-start">
-                                <div className="mr-auto">
-                                    <h2>
-                                        <b>How to</b>
+                                <div className="text-center">
+                                    <h2 className="caveat-font mb-4">
+                                        {" "}
+                                        <u> How To</u>
                                     </h2>
                                 </div>
                                 <Row className="howto">
-                                    <div className="d-flex align-items-center">
-                                        {/* <h3 className="mr-2">I</h3> */}
-                                        <p>
-                                            <b>What is Tellzy? </b> <br />{" "}
-                                            Tellzy is a tool for writing storys
-                                            together with your friends. Each of
-                                            the "authors" are continuing one
-                                            after another.
-                                        </p>
+                                    <div className="d-flex align-items-center text-left mobile-column">
                                         <img
-                                            className=""
+                                            className="illustration-width sm-show"
                                             src="/assets/images/pen.png"
                                         ></img>
+                                        <img
+                                            className=" sm-hide"
+                                            src="/assets/images/pen-high.png"
+                                        ></img>
+                                        <p>
+                                            <h3 className="caveat-font">
+                                                <b>What is Tellzy? </b>
+                                            </h3>
+                                            <br /> Tellzy is a{" "}
+                                            <b>collective story-writing game</b>
+                                            , i.e. you are writing a story
+                                            together with your friends. Each of
+                                            you are continuing this story{" "}
+                                            <b>one after another.</b>
+                                        </p>
                                     </div>
                                 </Row>
                                 <Row className="howto">
-                                    <div className="d-flex align-items-center">
+                                    <div className="d-flex align-items-center text-left">
+                                        <p className="">
+                                            <h3 className="caveat-font">
+                                                <b>Get started! </b>
+                                            </h3>
+                                            <br />{" "}
+                                            <b>
+                                                Create your personal Author
+                                                profile
+                                            </b>
+                                            , start a New Story and invite your
+                                            friends. Keep in mind, that every
+                                            one of you needs to be an author to
+                                            continue the story.
+                                        </p>
                                         <img
                                             className=""
                                             src="/assets/images/note.png"
                                         ></img>
-                                        <p>
-                                            <b>Get started!</b> <br /> Register,
-                                            start a New Story and invite your
-                                            friends.{" "}
-                                        </p>
                                     </div>
                                 </Row>
                                 <Row className="howto">
-                                    <div className="d-flex align-items-center">
-                                        <p>
-                                            <b>Story Progress</b> <br />
-                                            According to experience it takes a
-                                            while until all authors finished
-                                            their part. Meanwhile, keep progress
-                                            in your profile.
-                                        </p>
+                                    <div className="d-flex align-items-center text-left">
                                         <img
                                             className=""
                                             src="/assets/images/pen2.png"
                                         ></img>
+                                        <p>
+                                            <h3 className="caveat-font">
+                                                <b>Good Thing takes time</b>
+                                            </h3>
+                                            <br />
+                                            According to our experience it{" "}
+                                            <b>takes a while</b> until all
+                                            authors finish their parts.
+                                            Meanwhile, stay informed about the
+                                            <b> story progress</b> in your
+                                            profile.
+                                        </p>
                                     </div>
                                 </Row>
                                 <Row className="howto">
-                                    <div className="d-flex align-items-center">
+                                    <div className="d-flex align-items-center text-left mobile-column ">
+                                        <p classname="ml-4">
+                                            <h3 className="caveat-font">
+                                                <b>Grand Finale </b>
+                                            </h3>
+                                            <br />
+                                            Once the story is finished,
+                                            everybody is excited about the
+                                            result. <b>Share the Story</b> with
+                                            your co-authors and your friends!
+                                        </p>
                                         <img
                                             className=""
                                             src="/assets/images/friends.png"
                                         ></img>
-                                        <p>
-                                            <b>Highlight </b>
-                                            <br />
-                                            Once the story is finished,
-                                            everybody is excited about the
-                                            result. Share the Story with the
-                                            other authors!
-                                        </p>
                                     </div>
                                 </Row>
 
-                                <div className="mt-auto">
+                                <div className="mt-5">
                                     <Link to="/policy">Policy & Impressum</Link>
                                 </div>
                             </div>
                         </Row>
                     </Col>
                     <Col md className="mt-auto">
-                        <Link to="/story" onClick={this.handleShow}>
-                            <Button>New Story</Button>
-                        </Link>
+                        <>
+                            <Link to="" onClick={this.handleShow}>
+                                <Button>New Story</Button>
+                            </Link>
+                        </>
                     </Col>
                 </Row>
             </>

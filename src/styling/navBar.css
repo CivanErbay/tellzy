@@ -7,7 +7,7 @@
     color: white;
 }
 .navbar .nav-link {
-    margin: 0 2rem !important;
+    margin: 0 2rem;
     color: black !important;
     font-size: 2rem !important;
 }
@@ -42,16 +42,33 @@
 
 @media all and (max-width: 700px) {
     .navbar .nav-link {
-        margin: 0.5em !important;
-        padding: 1.5rem;
-        /* border: solid; */
+        padding: 2.5rem !important;
+        border-bottom: solid;
+        border-width: 0.75rem;
     }
     .navbar {
+        border-bottom: none;
         padding: 0 !important;
         margin: 0 !important;
-        border-bottom: none;
     }
-    .nav-column {
-        display: relative;
+    .d-flex {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .nav-link {
+        width: 100% !important;
+        font-weight: bold;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .col {
+        flex-direction: column !important;
+    }
+    .signin-div {
+        padding: 1rem;
+    }
+    .bb {
+        width: 100% !important;
+        margin: 0 auto;
     }
 }

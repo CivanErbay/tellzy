@@ -47,10 +47,10 @@ export default class NavBar extends Component {
             <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mx-auto w-100 text-center">
+                    <Nav className="mx-auto w-100 text-center ">
                         <Col
                             sm={4}
-                            className="d-flex justify-content-center align-items-center nav-column"
+                            className="d-flex justify-content-center align-items-center mobile-column"
                         >
                             <Nav.Link href="/#home">Home</Nav.Link>
                             <Nav.Link
@@ -68,7 +68,7 @@ export default class NavBar extends Component {
                         </Col>
                         <Col
                             lg={4}
-                            className="d-flex justify-content-center align-items-center"
+                            className="d-flex justify-content-center align-items-center mobile-column"
                         >
                             {auth.currentUser ? (
                                 <>
@@ -99,14 +99,14 @@ export default class NavBar extends Component {
                                     </OverlayTrigger>
                                 </>
                             ) : (
-                                <>
+                                <div className="mobile-column bb d-flex align-items center justify-content-center mx-auto">
                                     <Nav.Link href="" onClick={this.handleShow}>
                                         Log In
                                     </Nav.Link>
                                     <Nav.Link href="" onClick={this.handleShow}>
                                         Register
                                     </Nav.Link>
-                                </>
+                                </div>
                             )}
                         </Col>
                     </Nav>
