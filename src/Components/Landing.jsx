@@ -97,7 +97,7 @@ export default class Landing extends Component {
                                     </div>
                                 </Row>
                                 <Row className="howto">
-                                    <div className="d-flex align-items-center text-left mobile-column  inner-div">
+                                    <div className="d-flex align-items-center text-left inner-div">
                                         <div className="inner-div">
                                             <p>
                                                 {" "}
@@ -126,11 +126,8 @@ export default class Landing extends Component {
                                     </div>
                                 </Row>
                                 <Row className="howto">
-                                    <div className="d-flex align-items-center text-left mobile-column  inner-div">
-                                        <img
-                                            className="h-100"
-                                            src="/assets/images/house.png"
-                                        ></img>
+                                    <div className="d-flex align-items-center text-left mobile-column inner-div">
+                                        <img src="/assets/images/house.png"></img>
                                         <div className="inner-div">
                                             <p>
                                                 <h3 className="caveat-font">

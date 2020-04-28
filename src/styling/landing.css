@@ -31,16 +31,18 @@
     padding: 2rem;
     margin: 2rem 0;
     font-size: 1.5rem;
+    /* margin-right:
+    margin-left:  */
 }
 
 .how-to h2 {
     font-size: 8rem !important;
 }
 .howto div {
-    margin: 1rem 0 !important;
+    margin: 1rem 1rem !important;
     /* border: solid; */
     background-color: #40bad5;
-    padding: 1.5rem !important;
+    padding: 1rem 1.5rem !important;
     /* border-color: #035aa6; */
     /* border-radius: 25px;
     box-shadow: var(--box-shadow); */
@@ -94,7 +96,10 @@
     height: 25vh;
 }
 .illustration-width {
-    height: 10vh !important;
+    height: 11vh !important;
+}
+.first-part .sm-show {
+    height: 20vh;
 }
 
 @media all and (max-width: 700px) {
@@ -145,8 +150,9 @@
         box-shadow: var(--box-shadow);
     }
     .howto img {
-        height: 12vh !important;
+        height: 20vh;
     }
+
     .howto div {
         border: none !important;
         box-shadow: none;
