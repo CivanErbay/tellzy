@@ -12,5 +12,6 @@ export const userSearch = async (query) => {
 
 export const grantUserStoryEditAccess = async (storyId, userPublic) => {
   let res = await functions.httpsCallable("grantUserStoryEditAccess")({ storyId, userPublic });
+  //   data = { success: true }
   return res.data;
 };

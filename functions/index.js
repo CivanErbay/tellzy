@@ -31,13 +31,13 @@ exports.createUserDoc = functions.auth.user().onCreate((user) => {
 
 // user friends search
 exports.userSearch = functions.https.onCall((data, context) => {
-  const userSearchText = data.query;
-  const uid = context.auth.uid;
+  const { query } = data;
+  const { uid } = context.auth;
 
   const userSearchResultsRef = admin
     .firestore()
     .collection("users")
-    .where("displayName", ">=", userSearchText)
+    .where("displayName", ">=", query)
     // .where("displayName", "<=", userSearchText + "\uf8ff")
     // // .where("displayName", "==", true)
     .limit(5);
@@ -45,31 +45,79 @@ exports.userSearch = functions.https.onCall((data, context) => {
   userSearchResultsRef
     .get()
     .then((querySnapshot) => {
-      return querySnapshot;
-      // if (querySnapshot) {
-      //   return querySnapshot.map((doc) => doc.data());
-      // } else {
-      //   return [];
-      // }
+      if (querySnapshot) {
+        return querySnapshot.map((doc) => doc.data());
+      } else {
+        return null;
+      }
     })
     .catch((err) => {
       return null;
     });
   // TODO only return relevant user data (displayName, lastLogIn...)
-
-  // return { userSearchResults };
 });
 
 // grant user access to story
-exports.grantUserStoryEditAccess = functions.https.onCall((data, context) => {
+exports.grantUserStoryEditAccess = functions.https.onCall(async (data, context) => {
   const { storyId, userPublic } = data;
+  const { uid } = context.auth;
+  userPublic = { ...userPublic, isSubmitted: false };
 
-  admin
+  await admin
     .firestore()
     .collection("stories")
     .doc(storyId)
-    .update({ participants: firebase.firestore.FieldValue.arrayUnion(userPublic) })
+    .update({ participants: admin.firestore.FieldValue.arrayUnion(userPublic) })
     .then((res) => {
-      console.log(`Document written at ${res.updateTime} for ${user.uid}`);
+      console.log(`Story updated for new user ${uid}`);
+    })
+    .catch((err) => {
+      return { requestSucess: false };
     });
+
+  await admin
+    .firestore()
+    .collection("users")
+    .doc(uid)
+    .update({ storiesParticipant: admin.firestore.FieldValue.arrayUnion(storyId) })
+    .then((res) => {
+      console.log(`User updated for new story ${uid}`);
+    })
+    .catch((err) => {
+      return { requestSucess: false };
+    });
+
+  return { requestSucess: true };
+});
+
+exports.addStoryPart = functions.https.onCall(async (data, context) => {
+  const { storyPart, userPublic } = data;
+  const { uid } = context.auth;
+  userPublic = { ...userPublic, isSubmitted: true };
+
+  await admin
+    .firestore()
+    .collection("stories")
+    .doc(storyId)
+    .update({ parts: admin.firestore.FieldValue.arrayUnion(storyPart) })
+    .then((res) => {
+      console.log(`Story updated for new user ${uid}`);
+    })
+    .catch((err) => {
+      return { requestSucess: false };
+    });
+
+  await admin
+    .firestore()
+    .collection("users")
+    .doc(uid)
+    .update({ storiesParticipant: admin.firestore.FieldValue.arrayUnion(storyId) })
+    .then((res) => {
+      console.log(`User updated for new story ${uid}`);
+    })
+    .catch((err) => {
+      return { requestSucess: false };
+    });
+
+  return { requestSucess: true };
 });

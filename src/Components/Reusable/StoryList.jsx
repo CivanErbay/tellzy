@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getStory } from "../../actions/io";
 import Table from "react-bootstrap/Table";
+import { Redirect } from "react-router-dom";
 var moment = require("moment");
 
 export default class StoryList extends Component {
@@ -11,6 +12,11 @@ export default class StoryList extends Component {
   componentDidMount = () => {
     const promises = this.props.stories.map((id) => getStory(id));
     Promise.all(promises).then((storiesData) => this.setState({ storiesData }));
+  };
+
+  handleRedirect = (story) => {
+    console.log(story);
+    return <Redirect to={`/story/${story.id}`} />;
   };
 
   render() {
@@ -25,18 +31,18 @@ export default class StoryList extends Component {
             <tr>
               <th>Title</th>
               <th>Creator</th>
-              <th>Number of participants</th>
+              <th>Authors</th>
               <th>Created on</th>
             </tr>
           </thead>
 
           <tbody>
-            {storiesData.map(function (story, index) {
+            {storiesData.map((story, index) => {
               return (
-                <tr key={index} className="">
+                <tr key={index} className="list-item" onClick={() => this.handleRedirect(story)}>
                   <td>{story.title}</td>
                   <td>by {story.createdBy.displayName}</td>
-                  <td>With {story.participants.length} participants</td>
+                  <td>{story.participants.map((participant) => participant.displayName)}</td>
                   <td>{moment(new Date(story.createdOn.toDate())).calendar()}</td>
                 </tr>
               );

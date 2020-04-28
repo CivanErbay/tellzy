@@ -17,6 +17,8 @@ h2 {
 }
 
 .list-wrap .list-item {
+  text-transform: capitalize;
+  cursor: pointer;
 }
 
 li {

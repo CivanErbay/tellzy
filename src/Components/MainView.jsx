@@ -36,7 +36,7 @@ export default class MainView extends Component {
       <Row className="first-part w-100 h-100 text-center">
         <Col md></Col>
         <Col sm={7}>
-          <ProgressInfo />
+          <ProgressInfo userData={userData} />
           {/* <h2>Active Storys</h2> */}
 
           <StoryList heading="Participant Stories" stories={storiesParticipant} />

@@ -32,7 +32,7 @@ export default class ShareButtons extends Component {
 
   render() {
     const { isDesktop } = this.state;
-    const { link, nextParticipant, story } = this.props;
+    const { heading, link, nextParticipant, story } = this.props;
     const title = nextParticipant
       ? `Hey ${nextParticipant.email}, continue the story "${story.storyTitle}" at Tellzy`
       : `${story.storyTitle} is finished`;
@@ -71,7 +71,7 @@ export default class ShareButtons extends Component {
             </Row>
           </>
         ) : (
-          <LinkWithCopy link={link} text={linkWithCopyText}></LinkWithCopy>
+          <LinkWithCopy link={link} text={heading}></LinkWithCopy>
         )}
       </div>
     );

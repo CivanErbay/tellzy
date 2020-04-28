@@ -39,96 +39,17 @@ export default class EditStory extends Component {
     this.setState({ story, isUserParticipant, isUserSubmitted });
   };
 
-  getStory = async (storyId) => {
-    let storyRef = await getStoryRef(storyId);
-
-    if (storyRef && storyRef.exists) {
-      const story = storyRef.data();
-      // check that secret is valid among participants
-      const validParticipant = story.participants.filter(
-        (participant) => participant.secret && this.state.secret === participant.secret
-      )[0];
-
-      // make hint text
-      let hintText = story.storyParts.map((part) => part.text).join(" "); // join all parts
-      const hintTextArray = hintText.split(" "); // split for every word
-      // let hintText = "";
-      if (validParticipant) {
-        // get hint text to display
-        if (hintTextArray.length > 50)
-          hintText = hintTextArray.slice(hintTextArray.length - 45, hintTextArray.length).join(" ");
-      }
-
-      this.setState({
-        story,
-        hintText,
-        validParticipant,
-      });
-    } else {
-      // doc.data() will be undefined in this case
-      console.log("No such document!");
-      this.setState({ error: true });
-    }
-  };
-
   handleChange(event) {
     let fieldName = event.target.name;
     let fleldVal = event.target.value;
     this.setState({ ...this.state, [fieldName]: fleldVal });
   }
 
-  handleSubmit = async (event) => {
-    event.preventDefault();
-    const { storyId, story, storyText, validParticipant } = this.state;
-    let storyRef = await getStoryRef(storyId);
-
-    // add new story part
-    const newStoryPart = {
-      author: validParticipant.email,
-      timestamp: new Date(),
-      text: storyText,
-    };
-    story.storyParts.push(newStoryPart);
-
-    // set this participant to submitted
-    story.participants = story.participants.map((participant) => {
-      if (participant.secret === validParticipant.secret)
-        return {
-          ...validParticipant,
-          isSubmitted: true,
-          submittedOn: new Date(),
-        };
-      else return participant;
-    });
-
-    await storyRef.set({ ...story }, { merge: true }).catch(function (error) {
-      console.error("Error adding document: ", error);
-      this.setState({ error: true });
-      return;
-    });
-
-    // const nextParticipant = this.getNextParticipant();
-    this.setState({
-      submitSuccess: true,
-      // nextParticipant,
-    });
-  };
-
-  getNextParticipant() {
-    const { story } = this.state;
-    if (isEmpty(story)) return;
-
-    let nextParticipant = null;
-    let unsubmitted = story.participants.filter((participant) => !participant.isSubmitted);
-    if (unsubmitted.length > 0) nextParticipant = unsubmitted[0];
-
-    return nextParticipant;
-  }
-
-  handleEditRequest = () => {
+  handleEditRequest = async () => {
     const { uid, displayName } = this.state.user;
-    const userPublic = { uid, displayName };
-    grantUserStoryEditAccess(this.state.storyId, userPublic);
+    const requestSucess = await grantUserStoryEditAccess(this.state.storyId, { uid, displayName });
+    console.log(requestSucess);
+    this.setState({ requestSucess });
   };
 
   render() {
@@ -162,128 +83,39 @@ export default class EditStory extends Component {
               </p>
             </div>
 
-            {
-              isUserParticipant ? (
-                <>
-                  {isUserSubmitted ? (
-                    <div className="d-flex flex-column align-items-center">
-                      You already submitted
-                      <Button onClick={this.handleEditRequest}>Want again?</Button>
-                    </div>
-                  ) : (
-                    <Form className="create-form" onSubmit={this.handleSubmit}>
-                      <Form.Group>
-                        <Form.Label>Continue the story!</Form.Label>
-                        <Form.Control
-                          required
-                          as="textarea"
-                          placeholder="Continue the adventure..."
-                          rows="10"
-                          name="storyText"
-                          onChange={this.handleChange.bind(this)}
-                        />
-                      </Form.Group>
-                      <br />
-                      <Button className="go-btn-cs-false" type="submit">
-                        Submit
-                      </Button>
-                    </Form>
-                  )}
-                </>
-              ) : (
-                <div className="d-flex flex-column align-items-center">
-                  You want to participate?
-                  <Button onClick={this.handleEditRequest}>Request Access</Button>
-                </div>
-              )
-              /*
-            {               
-            {!isEmpty(validParticipant) ? (
+            {isUserParticipant ? (
               <>
-                {validParticipant.isSubmitted ? (
+                {isUserSubmitted ? (
                   <div className="d-flex flex-column align-items-center">
-                    <h1 className="h1">Tellzy</h1>
-
-                    <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
-                    {nextParticipant && (
-                      <div className="d-flex flex-column align-items-center">
-                        <p className="text-center">
-                          <b>{validParticipant.email}</b> has already edited the story with this link
-                          <br />
-                          Check the progress of the story in the <b>Result Link</b>
-                        </p>
-                      </div>
-                    )}
-
-                    <LinkPage story={story} storyId={storyId} nextParticipant={nextParticipant}></LinkPage>
+                    You already submitted
+                    <Button onClick={this.handleEditRequest}>Want again?</Button>
                   </div>
                 ) : (
-                  <>
-                    <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
-                    {submitSuccess ? (
-                      <>
-                        <LinkPage
-                          story={story}
-                          storyId={storyId}
-                          nextParticipant={nextParticipant}
-                        ></LinkPage>
-                      </>
-                    ) : (
-                      <>
-                        <h3 className="text-center">
-                          You are the{" "}
-                          {story.participants.reduce((acc, curr) => (acc += curr.isSubmitted ? 1 : 0), 1)}/
-                          {story.participants.length} author
-                        </h3>
-
-                        <Form className="form-es-false" onSubmit={this.handleSubmit}>
-                          <Form.Group>
-                            <Form.Label>
-                              Previously on{" "}
-                              <span className="text-capitalize">
-                                "{story.storyTitle}
-                                "...
-                              </span>
-                            </Form.Label>
-                            <Form.Control
-                              className="hint-text"
-                              readOnly
-                              as="textarea"
-                              value={hintText}
-                              name="hintText"
-                            />
-                          </Form.Group>
-                          <Form.Group>
-                            <Form.Label>
-                              <span className="highlight">{validParticipant.email}</span> can continue the
-                              story
-                            </Form.Label>
-                            <Form.Control
-                              required
-                              as="textarea"
-                              placeholder="Continue the adventure..."
-                              rows="10"
-                              name="storyText"
-                              onChange={this.handleChange.bind(this)}
-                            />
-                          </Form.Group>
-
-                          <Button className="go-btn-cs-false" type="submit">
-                            Submit
-                          </Button>
-                        </Form>
-                      </>
-                    )}
-                  </>
-                )} */
-            }
-            {/* </>
+                  <Form className="create-form" onSubmit={this.handleSubmit}>
+                    <Form.Group>
+                      <Form.Label>Continue the story!</Form.Label>
+                      <Form.Control
+                        required
+                        as="textarea"
+                        placeholder="Continue the adventure..."
+                        rows="10"
+                        name="storyText"
+                        onChange={this.handleChange.bind(this)}
+                      />
+                    </Form.Group>
+                    <br />
+                    <Button className="go-btn-cs-false" type="submit">
+                      Submit
+                    </Button>
+                  </Form>
+                )}
+              </>
             ) : (
-              <div className="d-flex justify-content-center p-deadlink-true">
-                <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
-                Sorry, the edit link for this story is not valid.
+              <div className="d-flex flex-column align-items-center">
+                You want to participate?
+                <Button onClick={this.handleEditRequest}>Request Access</Button>
               </div>
-            )} */}
+            )}
           </Col>
           <Col sm={2}></Col>
         </Row>

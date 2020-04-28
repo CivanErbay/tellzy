@@ -124,7 +124,7 @@ export default class CreatingStory extends Component {
                 <u>{newStory.title}.</u>
               </h1>
               <h2 className="text-center">Send this link to your buddies</h2>
-              <ShareButtons link={storyLink} story={newStory}></ShareButtons>
+              <ShareButtons heading="Edit Link" link={storyLink} story={newStory}></ShareButtons>
               {/* <LinkPage story={story} storyId={storyId} nextParticipant={nextParticipant}></LinkPage> */}
             </>
           ) : (
