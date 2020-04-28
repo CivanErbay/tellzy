@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import { db } from "./../config/firebaseConfig";
+import { Row, Col } from "react-bootstrap";
+import db from "../actions/io";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import ShareButtons from "./Reusable/ShareButtons";
