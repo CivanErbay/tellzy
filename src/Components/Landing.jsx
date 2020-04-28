@@ -9,9 +9,6 @@ import "../styling/landing.css";
 
 export default class Landing extends Component {
     render() {
-        // var Scroll = require("react-scroll");
-        // var h2 = Scroll.h2;
-        // var scroller = Scroll.scroller;
         return (
             <>
                 <Row className="first-part">
