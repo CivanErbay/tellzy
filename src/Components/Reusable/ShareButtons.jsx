@@ -100,7 +100,7 @@ export default class ShareButtons extends Component {
                 ) : (
                     <LinkWithCopy
                         link={link}
-                        text="Result Link"
+                        text={nextParticipant ? "Edit Link" : "Story Link"}
                         isUnfold={""}
                         setUnfold={this.storySetUnfold}
                     ></LinkWithCopy>

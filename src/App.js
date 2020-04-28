@@ -11,26 +11,33 @@ import EditStory from "./Components/EditStory";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styling/general.css";
 import "./styling/fonts.css";
+import NavBar from "./Components/Navbar";
 
 function App() {
-  return (
-    <div className="App">
-      {/* <header className="App-header">
-        <Navbar></Navbar>
-      </header> */}
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/story" component={CreatingStory} />
-          <Route exact path="/story/:storyId" component={ResultStory} />
-          <Route path="/story/:storyId/:secret" component={EditStory} />
-          <Route path="/policy" component={Policy} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/admin" component={Admin} />
-        </Switch>
-      </Router>
-    </div>
-  );
+    return (
+        <div id="home" className="App">
+            <NavBar></NavBar>
+
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={Landing} />
+                    <Route exact path="/story" component={CreatingStory} />
+                    <Route
+                        exact
+                        path="/story/:storyId"
+                        component={ResultStory}
+                    />
+                    <Route
+                        path="/story/:storyId/:secret"
+                        component={EditStory}
+                    />
+                    <Route path="/policy" component={Policy} />
+                    <Route path="/contact" component={Contact} />
+                    <Route path="/admin" component={Admin} />
+                </Switch>
+            </Router>
+        </div>
+    );
 }
 
 export default App;

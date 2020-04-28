@@ -104,11 +104,7 @@ export default class CreatingStory extends Component {
 
         return (
             <Row className="create-story my-5">
-                <Col md className="text-right m-3">
-                    <Link to="/">
-                        <Button>Home</Button>
-                    </Link>
-                </Col>
+                <Col md className="text-right m-3"></Col>
                 <Col md={7} className="h-100">
                     {submitSuccess ? (
                         <>
@@ -136,7 +132,7 @@ export default class CreatingStory extends Component {
                                     <Form.Control
                                         required
                                         name="creatorEmail"
-                                        placeholder="Donald Duck"
+                                        placeholder="Daisy"
                                         onChange={this.handleChange.bind(this)}
                                     />
                                 </Form.Group>
@@ -146,9 +142,9 @@ export default class CreatingStory extends Component {
                                     <Form.Control
                                         required
                                         as="textarea"
-                                        rows="2"
+                                        rows="4"
                                         name="participantsEmails"
-                                        placeholder="Write down the name of your buddies. Repeat them if you like."
+                                        placeholder='Names of participating friends - they should know each other. Names should be comma or space seperated. Example: "Micky Donald Mini Dagobert". Repeat them if you like to write several parts per author.'
                                         onChange={this.handleChange.bind(this)}
                                     />
                                 </Form.Group>
@@ -177,7 +173,7 @@ export default class CreatingStory extends Component {
                                     />
                                 </Form.Group>
 
-                                <Button type="submit" className="w-50">
+                                <Button type="submit" className="w-50 journey">
                                     Start Journey
                                 </Button>
                             </Form>

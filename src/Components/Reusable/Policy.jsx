@@ -5,12 +5,9 @@ import { Link } from "react-router-dom";
 export default class Policy extends Component {
     render() {
         return (
-            <div className="px-5 pb-5">
-                <Link to="/">
-                    <Button className="btn-home2">Home</Button>
-                </Link>
+            <div className="px-5 pb-5 mt-5">
                 <h1>Impressum</h1>
-                <p>Paco Muro, Moritz Michels, Max Jansen, Civan Erbay</p>
+                <p>Paco Muro, Civan Erbay, Moritz Michels, Max Jansen</p>
                 <p>Brüsseler Str. 37</p>
                 <p>50674 Cologne</p>
                 <p>Germany</p>
@@ -258,10 +255,12 @@ export default class Policy extends Component {
                     <a
                         target="_blank"
                         rel="nofollow"
-                        href="https://tellzy.web.app/contact"
+                        //href="https://tellzy.web.app/contact"
+                        href="#"
                     >
                         contact form
-                    </a>
+                    </a>{" "}
+                    or leave a message here: <b>civan.erbay@web.de</b>
                 </p>
                 <p>This document was last updated on April 16, 2020</p>
             </div>

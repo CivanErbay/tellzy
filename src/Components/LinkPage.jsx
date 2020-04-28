@@ -66,14 +66,17 @@ export default class ResultStory extends Component {
                                         Soon you will get the whole story!{" "}
                                         <br />
                                         In the meantime, track the status on
-                                        this <b>Progress</b> Link
+                                        this <br />{" "}
+                                        <a href={storyLink} target="_blank">
+                                            <b>Progress Link </b>{" "}
+                                        </a>
                                     </p>
 
-                                    <a href={storyLink} target="_blank">
+                                    {/* <a href={storyLink} target="_blank">
                                         <Button className="btn-progress">
                                             Story Progress
                                         </Button>
-                                    </a>
+                                    </a> */}
                                 </>
                             ) : (
                                 <>
@@ -91,11 +94,9 @@ export default class ResultStory extends Component {
                                         </span>
                                     </p>
                                     <ShareButtons
-                                        link={nextLink}
-                                        nextParticipant={nextParticipant}
+                                        link={storyLink}
                                         story={story}
                                     ></ShareButtons>
-                                    }
                                 </>
                             )}
                         </>

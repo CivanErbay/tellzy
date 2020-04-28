@@ -1,54 +1,126 @@
 @font-face {
-  font-family: "Patrick Hand";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/patrick-hand-v13-latin-regular.eot"); /* IE9 Compat Modes */
-  src: local("Patrick Hand"), local("PatrickHand-Regular"),
-    url("/assets/fonts/patrick-hand-v13-latin-regular.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("/assets/fonts/patrick-hand-v13-latin-regular.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/assets/fonts/patrick-hand-v13-latin-regular.woff") format("woff"),
-    /* Modern Browsers */ url("/assets/fonts/patrick-hand-v13-latin-regular.ttf") format("truetype"),
-    /* Safari, Android, iOS */ url("/assets/fonts/patrick-hand-v13-latin-regular.svg#PatrickHand")
-      format("svg"); /* Legacy iOS */
+    font-family: "Patrick Hand";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/patrick-hand-v13-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Patrick Hand"), local("PatrickHand-Regular"),
+        url("/assets/fonts/patrick-hand-v13-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */ url("/assets/fonts/patrick-hand-v13-latin-regular.woff2")
+            format("woff2"),
+        /* Super Modern Browsers */
+            url("/assets/fonts/patrick-hand-v13-latin-regular.woff")
+            format("woff"),
+        /* Modern Browsers */
+            url("/assets/fonts/patrick-hand-v13-latin-regular.ttf")
+            format("truetype"),
+        /* Safari, Android, iOS */
+            url("/assets/fonts/patrick-hand-v13-latin-regular.svg#PatrickHand")
+            format("svg"); /* Legacy iOS */
+}
+/* architects-daughter-regular - latin */
+@font-face {
+    font-family: "Architects Daughter";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/architects-daughter-v10-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Architects Daughter Regular"),
+        local("ArchitectsDaughter-Regular"),
+        url("/assets/fonts/architects-daughter-v10-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */
+            url("/assets/fonts/architects-daughter-v10-latin-regular.woff2")
+            format("woff2"),
+        /* Super Modern Browsers */
+            url("/assets/fonts/architects-daughter-v10-latin-regular.woff")
+            format("woff"),
+        /* Modern Browsers */
+            url("/assets/fonts/architects-daughter-v10-latin-regular.ttf")
+            format("truetype"),
+        /* Safari, Android, iOS */
+            url("/assets/fonts/architects-daughter-v10-latin-regular.svg#ArchitectsDaughter")
+            format("svg"); /* Legacy iOS */
 }
 /* patrick-hand-sc-regular - latin */
 @font-face {
-  font-family: "Patrick Hand SC";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/patrick-hand-sc-v7-latin-regular.eot"); /* IE9 Compat Modes */
-  src: local("Patrick Hand SC"), local("PatrickHandSC-Regular"),
-    url("/assets/fonts/patrick-hand-sc-v7-latin-regular.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("/assets/fonts/patrick-hand-sc-v7-latin-regular.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/assets/fonts/patrick-hand-sc-v7-latin-regular.woff") format("woff"),
-    /* Modern Browsers */ url("/assets/fonts/patrick-hand-sc-v7-latin-regular.ttf") format("truetype"),
-    /* Safari, Android, iOS */ url("/assets/fonts/patrick-hand-sc-v7-latin-regular.svg#PatrickHandSC")
-      format("svg"); /* Legacy iOS */
+    font-family: "Patrick Hand SC";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/patrick-hand-sc-v7-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Patrick Hand SC"), local("PatrickHandSC-Regular"),
+        url("/assets/fonts/patrick-hand-sc-v7-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */
+            url("/assets/fonts/patrick-hand-sc-v7-latin-regular.woff2")
+            format("woff2"),
+        /* Super Modern Browsers */
+            url("/assets/fonts/patrick-hand-sc-v7-latin-regular.woff")
+            format("woff"),
+        /* Modern Browsers */
+            url("/assets/fonts/patrick-hand-sc-v7-latin-regular.ttf")
+            format("truetype"),
+        /* Safari, Android, iOS */
+            url("/assets/fonts/patrick-hand-sc-v7-latin-regular.svg#PatrickHandSC")
+            format("svg"); /* Legacy iOS */
 }
 /* permanent-marker-regular - latin */
 @font-face {
-  font-family: "Permanent Marker";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/permanent-marker-v9-latin-regular.eot"); /* IE9 Compat Modes */
-  src: local("Permanent Marker Regular"), local("PermanentMarker-Regular"),
-    url("/assets/fonts/permanent-marker-v9-latin-regular.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("/assets/fonts/permanent-marker-v9-latin-regular.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/assets/fonts/permanent-marker-v9-latin-regular.woff") format("woff"),
-    /* Modern Browsers */ url("/assets/fonts/permanent-marker-v9-latin-regular.ttf") format("truetype"),
-    /* Safari, Android, iOS */ url("/assets/fonts/permanent-marker-v9-latin-regular.svg#PermanentMarker")
-      format("svg"); /* Legacy iOS */
+    font-family: "Permanent Marker";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/permanent-marker-v9-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Permanent Marker Regular"), local("PermanentMarker-Regular"),
+        url("/assets/fonts/permanent-marker-v9-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */
+            url("/assets/fonts/permanent-marker-v9-latin-regular.woff2")
+            format("woff2"),
+        /* Super Modern Browsers */
+            url("/assets/fonts/permanent-marker-v9-latin-regular.woff")
+            format("woff"),
+        /* Modern Browsers */
+            url("/assets/fonts/permanent-marker-v9-latin-regular.ttf")
+            format("truetype"),
+        /* Safari, Android, iOS */
+            url("/assets/fonts/permanent-marker-v9-latin-regular.svg#PermanentMarker")
+            format("svg"); /* Legacy iOS */
 }
-/* gaegu-regular - latin */
 @font-face {
-  font-family: "Gaegu";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/assets/fonts/gaegu-v8-latin-regular.eot"); /* IE9 Compat Modes */
-  src: local("Gaegu Regular"), local("Gaegu-Regular"),
-    url("/assets/fonts/gaegu-v8-latin-regular.eot?#iefix") format("embedded-opentype"),
-    /* IE6-IE8 */ url("/assets/fonts/gaegu-v8-latin-regular.woff2") format("woff2"),
-    /* Super Modern Browsers */ url("/assets/fonts/gaegu-v8-latin-regular.woff") format("woff"),
-    /* Modern Browsers */ url("/assets/fonts/gaegu-v8-latin-regular.ttf") format("truetype"),
-    /* Safari, Android, iOS */ url("/assets/fonts/gaegu-v8-latin-regular.svg#Gaegu") format("svg"); /* Legacy iOS */
+    font-family: "Caveat Brush";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/caveat-brush-v5-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Caveat Brush"), local("CaveatBrush-Regular"),
+        url("/assets/fonts/caveat-brush-v5-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */ url("/assets/fonts/caveat-brush-v5-latin-regular.woff2")
+            format("woff2"),
+        /* Super Modern Browsers */
+            url("/assets/fonts/fonts/caveat-brush-v5-latin-regular.woff")
+            format("woff"),
+        /* Modern Browsers */
+            url("/assets/fonts/fonts/caveat-brush-v5-latin-regular.ttf")
+            format("truetype"),
+        /* Safari, Android, iOS */
+            url("/assets/fonts/fonts/caveat-brush-v5-latin-regular.svg#CaveatBrush")
+            format("svg"); /* Legacy iOS */
+}
+/* chilanka-regular - latin */
+@font-face {
+    font-family: "Chilanka";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/chilanka-v5-latin-regular.eot"); /* IE9 Compat Modes */
+    src: local("Chilanka Regular"), local("Chilanka-Regular"),
+        url("/assets/fonts//chilanka-v5-latin-regular.eot?#iefix")
+            format("embedded-opentype"),
+        /* IE6-IE8 */ url("/assets/fonts//chilanka-v5-latin-regular.woff2")
+            format("woff2"),
+        /* Super Modern Browsers */
+            url("/assets/fonts//chilanka-v5-latin-regular.woff") format("woff"),
+        /* Modern Browsers */ url("/assets/fonts/chilanka-v5-latin-regular.ttf")
+            format("truetype"),
+        /* Safari, Android, iOS */
+            url("/assets/fonts//chilanka-v5-latin-regular.svg#Chilanka")
+            format("svg"); /* Legacy iOS */
 }

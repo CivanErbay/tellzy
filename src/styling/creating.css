@@ -1,9 +1,14 @@
 .create-form {
-  margin: 3rem 12rem;
+    margin: 3rem 12rem;
 }
 
 @media all and (max-width: 700px) {
-  .create-form {
-    margin: 1rem;
-  }
+    .create-form {
+        margin: 1rem;
+    }
+    .journey {
+        background-color: #fcbf1e !important;
+        border-color: #fcbf1e !important;
+        color: black !important;
+    }
 }

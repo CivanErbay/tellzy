@@ -154,11 +154,7 @@ export default class EditStory extends Component {
         return (
             <div className="edit-story">
                 <Row className="">
-                    <Col sm={2}>
-                        <Link to="/">
-                            <Button className="btn-home sm">Home</Button>
-                        </Link>
-                    </Col>
+                    <Col sm={2}></Col>
                     <Col sm={8} className="h-100">
                         {isLoading ? (
                             <p>Loading...</p>

@@ -73,17 +73,13 @@ export default class ResultStory extends Component {
         return (
             <div className="w-100">
                 <Row>
-                    <Col>
-                        <Link to="/">
-                            <Button className="btn-home">Home</Button>
-                        </Link>
-                    </Col>
+                    <Col></Col>
                     <Col sm={8} className="h-100 px-sm-5 px-1">
                         <div>
                             {isLoading ? (
                                 <p>Loading...</p>
                             ) : (
-                                <div className="paper-story">
+                                <div className="paper-wrap mt-5">
                                     <h2>{story.storyTitle}</h2>
                                     {storyFinished ? (
                                         <>
@@ -135,7 +131,7 @@ export default class ResultStory extends Component {
                                                             -{" "}
                                                             {participant.isSubmitted
                                                                 ? "Submitted"
-                                                                : "Come on..."}
+                                                                : "Awaiting"}
                                                         </li>
                                                     )
                                                 )}

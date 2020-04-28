@@ -313,9 +313,9 @@ a:-webkit-any-link {
     }
 
     .h1-cs-false {
-        margin-top: 2rem;
+        margin-top: 1rem;
         margin-bottom: 2rem;
-        text-decoration: underline;
+
         font-size: 3rem;
     }
     .h1-es-false {
