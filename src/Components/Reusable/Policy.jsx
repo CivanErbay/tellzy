@@ -6,6 +6,7 @@ export default class Policy extends Component {
   componentDidMount = () => {
     window.scrollTo(0, 0);
   };
+
   render() {
     return (
       <div className="px-5 pb-5 mt-5">

@@ -180,13 +180,11 @@ export default class EditStory extends Component {
                       <>
                         <h1 className="h1-es-false text-center text-capitalize">{story.storyTitle}.</h1>
                         {submitSuccess ? (
-                          <>
-                            <LinkPage
-                              story={story}
-                              storyId={storyId}
-                              nextParticipant={nextParticipant}
-                            ></LinkPage>
-                          </>
+                          <LinkPage
+                            story={story}
+                            storyId={storyId}
+                            nextParticipant={nextParticipant}
+                          ></LinkPage>
                         ) : (
                           <>
                             <h3 className="text-center">
