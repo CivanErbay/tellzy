@@ -3,12 +3,17 @@ import { Row } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
 import { animateScroll as scroll } from "react-scroll";
 import "../styling/landing.css";
+const quotes = require ("../styling/quotes.json")
 
 export default class Landing extends Component {
   render() {
+    function quoteGen() {     
+      return quotes[Math.floor(Math.random()*quotes.length)]
+    }
+    const finalQuote = quoteGen()
+
     return (
       <>
         <Row className="first-part">
@@ -22,7 +27,7 @@ export default class Landing extends Component {
                 <h3 className="h3-landing">share your imagination.</h3>
                 <h3 className="h3-landing">simple & exciting.</h3>
                 <div className="landing-quote sm-hide">
-                  <i> “There is no greater agony than bearing an untold story inside you.” </i> <br />
+                  <i> {finalQuote.text} </i> <br />
                   <p className="text-right">
                     <b> Maya Angelou</b>
                   </p>
