@@ -1,4 +1,6 @@
-import firebase, { db } from "../config/firebaseConfig";
+import firebase from "../config/firebaseConfig";
+const db = firebase.firestore();
+export default db;
 
 export const getStoryRef = async (storyId) => {
   let storyRef = await db

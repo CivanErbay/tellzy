@@ -1,74 +1,82 @@
 .first-part {
-    min-height: 100vh;
-    width: 100%;
-    margin: 0 !important;
-    padding: 4rem 0 !important;
+  /* min-height: 100vh;
+  width: 100%;
+  margin: 0 !important;
+  padding: 4rem 0 !important; */
 }
 
 .first-part h1 {
+  font-size: 12.5rem !important;
+  font-family: "Permanent Marker", cursive;
+  margin: 2rem 0 !important;
 }
 
 .second-part {
-    min-height: 100vh;
-    margin: 0 !important;
-    padding: 2rem 0 !important;
-    width: 100%;
-    background-color: #f8a055;
-    color: black;
+  min-height: 100vh;
+  margin: 0 !important;
+  padding: 2rem 0 !important;
+  width: 100%;
+  background-color: #f8a055;
+  color: black;
 }
 
 .how-to {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 2rem;
-    margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 2rem;
+  margin: 2rem 0;
 }
 
 .how-to h2 {
-    font-size: 5rem;
-    border-right: solid;
-    border-bottom: solid;
-    padding: 0.6em;
-    margin: 0 2rem 1rem 0 !important;
-    border-width: 0.1em;
+  font-size: 5rem;
+  border-right: solid;
+  border-bottom: solid;
+  padding: 0.6em;
+  margin: 0 2rem 1rem 0 !important;
+  border-width: 0.1em;
 }
 
 .footer {
-    width: 100%;
-    margin: 2rem 0;
-    text-align: center;
+  width: 100%;
+  margin: 2rem 0;
+  text-align: center;
 }
 
 .btn {
-    font-size: 2rem !important;
-    padding: 1.5rem !important;
-    /* margin-top: 1.5rem !important; */
-    background-color: #ffdb5c !important;
-    border-color: #ffdb5c !important;
-    color: black !important;
-    z-index: 5 !important;
-    width: 200px !important;
+  font-size: 2rem !important;
+  padding: 1.5rem !important;
+  /* margin-top: 1.5rem !important; */
+  background-color: #ffdb5c !important;
+  border-color: #ffdb5c !important;
+  color: black !important;
+  z-index: 5 !important;
+  width: 200px !important;
 }
 
 @media all and (max-width: 700px) {
-    .first-part {
-        padding: 1rem 0 !important;
-    }
+  .first-part {
+    padding: 1rem 0 !important;
+  }
 
-    .how-to {
-        padding: 0 2rem;
-        margin: 0;
-    }
+  .first-part h1 {
+    font-size: 4.5rem !important;
+    margin: 2rem 0 !important;
+  }
 
-    .footer {
-        margin: 0;
-    }
+  .how-to {
+    padding: 0 2rem;
+    margin: 0;
+  }
 
-    .btn {
-        padding: 0.5rem !important;
-        width: 80% !important;
-    }
+  .footer {
+    margin: 0;
+  }
+
+  .btn {
+    padding: 0.5rem !important;
+    width: 80% !important;
+  }
 }

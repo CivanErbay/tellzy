@@ -18,15 +18,15 @@ export default class LinkWithCopy extends Component {
     const { isCopied } = this.state;
     const { link, text } = this.props;
     return (
-      <div className="d-flex flex-column justify-content-center align-items-center my-4">
+      <div className="btn w-100 d-flex flex-column justify-content-center align-items-center my-4">
         <CopyToClipboard className="clipboard" text={link} onCopy={this.setCopied}>
           <span>
             <Row className="row-cs-true p-3">
-              <div className="d-flex flex-column align-items-center">
+              <div className="d-flex flex-column align-items-center mx-3">
                 <p className="mr-3 my-auto copy-cs-true">{text}</p>
                 {isCopied ? <>Copied!</> : <>Copy me</>}
               </div>
-              {isCopied ? <i className="fas fa-check fa-3x"></i> : <i className="far fa-copy fa-3x"></i>}
+              {isCopied ? <i className="fas fa-check fa-2x"></i> : <i className="far fa-copy fa-2x"></i>}
               {/* <img src="assets/images/copy.png" /> */}
               {this.props.children}
             </Row>
