@@ -5,14 +5,14 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { animateScroll as scroll } from "react-scroll";
 import "../styling/landing.css";
-const quotes = require ("../styling/quotes.json")
+const quotes = require("../styling/quotes.json");
 
 export default class Landing extends Component {
   render() {
-    function quoteGen() {     
-      return quotes[Math.floor(Math.random()*quotes.length)]
+    function quoteGen() {
+      return quotes[Math.floor(Math.random() * quotes.length)];
     }
-    const finalQuote = quoteGen()
+    const finalQuote = quoteGen();
 
     return (
       <>
@@ -22,20 +22,19 @@ export default class Landing extends Component {
             <div className="d-flex flex-column align-items-center justify-content-center">
               <img className="sm-show" src="/assets/images/logo-white-gradient.png"></img>
               <div className="wrap text-left">
-              <h1 className="h1 sm-hide">Tellzy</h1>
-      
+                <h1 className="h1 sm-hide">Tellzy</h1>
+
                 <h3 className="h3-landing text-left">collective storytelling.</h3>
                 <h3 className="h3-landing text-left">share your imagination.</h3>
                 <h3 className="h3-landing text-left">simple & exciting.</h3>
-                </div>
-                <div className="landing-quote sm-hide">
-                  <i> {finalQuote.text} </i> <br />
-                  <p className="text-right">
-                    <b>{finalQuote.author}</b>
-                  </p>
-                  </div>
-                <h1 className="text-center sm-show mobile-h1">Tellzy</h1>
-           
+              </div>
+              <div className="landing-quote sm-hide">
+                <i> {finalQuote.text} </i> <br />
+                <p className="text-right">
+                  <b>{finalQuote.author}</b>
+                </p>
+              </div>
+              <h1 className="text-center sm-show mobile-h1">Tellzy</h1>
             </div>
           </Col>
           <Col md className=""></Col>
@@ -61,30 +60,25 @@ export default class Landing extends Component {
                     <img className="illustration-width sm-show" src="/assets/images/pen.png"></img>
                     <img className="sm-hide" src="/assets/images/pen-high.png"></img>
                     <div className="inner-div">
-                      <p>
-                        <h3 className="caveat-font">
-                          <b>What is Tellzy? </b>
-                        </h3>
-                        <br /> Tellzy is a <b>collective story-writing game</b>, i.e. you are writing a story
-                        together with your friends. Each of you is continuing this story{" "}
-                        <b>one after another.</b>
-                      </p>
+                      <h3 className="caveat-font">
+                        <b>What is Tellzy? </b>
+                      </h3>
+                      <br /> Tellzy is a <b>collective story-writing game</b>, i.e. you are writing a story
+                      together with your friends. Each of you is continuing this story{" "}
+                      <b>one after another.</b>
                     </div>
                   </div>
                 </Row>
                 <Row className="howto">
                   <div className="d-flex align-items-center mobile-column text-left inner-div">
                     <div className="inner-div">
-                      <p>
-                        {" "}
-                        <h3 className="caveat-font">
-                          <b>Get started! </b>
-                        </h3>
-                        <br /> <b>Create your personal author profile</b>, start a new story and invite your
-                        friends. Keep in mind, that
-                        <b> every one of you needs to be a registered author </b>
-                        to continue the story.
-                      </p>
+                      <h3 className="caveat-font">
+                        <b>Get started! </b>
+                      </h3>
+                      <br /> <b>Create your personal author profile</b>, start a new story and invite your
+                      friends. Keep in mind, that
+                      <b> every one of you needs to be a registered author </b>
+                      to continue the story.
                     </div>
                     <img className="" src="/assets/images/note.png"></img>
                   </div>
@@ -93,29 +87,25 @@ export default class Landing extends Component {
                   <div className="d-flex align-items-center text-left mobile-column inner-div">
                     <img src="/assets/images/house.png"></img>
                     <div className="inner-div">
-                      <p>
-                        <h3 className="caveat-font">
-                          <b>Good Thing takes time</b>
-                        </h3>
-                        <br />
-                        According to our experience it <b>takes a while</b> until all authors finish their
-                        parts. Meanwhile, stay informed about the
-                        <b> story progress</b> in your profile.
-                      </p>
+                      <h3 className="caveat-font">
+                        <b>Good Thing takes time</b>
+                      </h3>
+                      <br />
+                      According to our experience it <b>takes a while</b> until all authors finish their
+                      parts. Meanwhile, stay informed about the
+                      <b> story progress</b> in your profile.
                     </div>
                   </div>
                 </Row>
                 <Row className="howto">
                   <div className="d-flex align-items-center text-left mobile-column inner-div ">
-                    <div className="inner-div">
-                      <p classname="ml-4">
-                        <h3 className="caveat-font">
-                          <b>Grand Finale </b>
-                        </h3>
-                        <br />
-                        Once the story is finished, everybody is excited about the result.{" "}
-                        <b>Share the Story</b> with your co-authors and your friends!
-                      </p>
+                    <div className="inner-div ml-4">
+                      <h3 className="caveat-font">
+                        <b>Grand Finale </b>
+                      </h3>
+                      <br />
+                      Once the story is finished, everybody is excited about the result.{" "}
+                      <b>Share the Story</b> with your co-authors and your friends!
                     </div>
                     <img className="" src="/assets/images/friends.png"></img>
                   </div>
