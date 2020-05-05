@@ -23,6 +23,21 @@ h2 {
     line-height: 1.8;
     padding: 8rem;
 }
+ul > li {
+    list-style-type: none !important;
+    display: inline-block;
+    margin: .5rem;
+    /* border: solid; */
+    padding: 1rem;
+    background-color: #ffdb5c;
+    zoom: 1;
+    border-radius: 25px;
+    *display: inline;
+}
+.prog {
+    font-size: 2rem !important;
+    border-bottom: solid;
+}
 @media all and (max-width: 700px) {
     h2 {
         text-align: center;

@@ -81,11 +81,12 @@
     border-radius: 25px;
 }
 .wrap h3 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     margin-top: 1%;
+  
 }
-.wrap div {
-    margin-top: 10%;
+.wrap {
+    padding: 1.5em 2em 1em 2em;
 }
 .caveat-font {
     font-family: "Caveat Brush", cursive;
@@ -126,10 +127,11 @@
     .wrap {
         height: 100%;
         margin-top: 2rem !important;
+        padding: 0rem !important;
     }
     .wrap h3 {
         margin-left: 2rem !important;
-        padding: 0.5rem !important;
+        padding: 0.2rem !important;
         font-size: 2rem !important;
     }
     .how-to h2 {

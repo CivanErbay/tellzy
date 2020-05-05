@@ -21,19 +21,21 @@ export default class Landing extends Component {
           <Col md={7}>
             <div className="d-flex flex-column align-items-center justify-content-center">
               <img className="sm-show" src="/assets/images/logo-white-gradient.png"></img>
+              <div className="wrap text-left">
               <h1 className="h1 sm-hide">Tellzy</h1>
-              <div className="wrap">
-                <h3 className="h3-landing">collective storytelling.</h3>
-                <h3 className="h3-landing">share your imagination.</h3>
-                <h3 className="h3-landing">simple & exciting.</h3>
+      
+                <h3 className="h3-landing text-left">collective storytelling.</h3>
+                <h3 className="h3-landing text-left">share your imagination.</h3>
+                <h3 className="h3-landing text-left">simple & exciting.</h3>
+                </div>
                 <div className="landing-quote sm-hide">
                   <i> {finalQuote.text} </i> <br />
                   <p className="text-right">
-                    <b> Maya Angelou</b>
+                    <b>{finalQuote.author}</b>
                   </p>
-                </div>
+                  </div>
                 <h1 className="text-center sm-show mobile-h1">Tellzy</h1>
-              </div>
+           
             </div>
           </Col>
           <Col md className=""></Col>

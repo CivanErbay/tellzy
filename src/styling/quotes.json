@@ -6,17 +6,27 @@
     },
     {
         "id": 2,
-        "text": "There is no greater agony than bearing an untold story inside her.",
-        "author": "Maya Angelou"
+        "text": "Reading is that fruitful miracle of a communication in the midst of solitude.",
+        "author": "Proust-M"
     },
     {
         "id": 3,
-        "text": "There is no greater agony than bearing an untold story inside me.",
-        "author": "Maya Angelou"
+        "text": "The man who reads nothing at all is better educated than the man who reads nothing but newspapers.",
+        "author": "Thomas Jefferson"
     },
     {
         "id": 4,
-        "text": "There is no greater agony than bearing an untold story inside us.",
-        "author": "Maya Angelou"
+        "text": "We write to taste life twice, in the moment and in retrospect.",
+        "author": "Anais Nin"
+    },
+    {
+        "id": 4,
+        "text": "Fantasy is hardly an escape from reality. It's a way of understanding it.",
+        "author": "Lloyd Alexander"
+    }
+    ,    {
+        "id": 4,
+        "text": "The scariest moment is always just before you start.",
+        "author": "Stephen King"
     }
 ]

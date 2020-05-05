@@ -18,8 +18,7 @@ BIG THINGS
     --> 3. Profile - Page
     --> 4. Detailed How-To Section
 -   STYLING:
-    Illustrations:
-    --> 1. Implement Illustrations
+
 -   2 Languagemode also in german, very important!!
 -   Create Story: 2 Modes - Fun Stories (like now) and "serious" Story (with more Hints and information to keep the "roten Faden")
     --> show Random Sentences from somewhere of the written story, more or less, Keywoards (provided by Creator, or even authors in between?)
@@ -30,20 +29,20 @@ BIG THINGS
     SMALL THINGS
 
 -   Creating Story: Add Names into a Box which is able to do Drag&Drop and make position changeable
--   Landing Page: Illustrations
--   Landing Page: Random Quote Generator.
 -   Create Story: Random Participant Order
 -   Progress Page: Invisible Participants in Progress except the active Author
+-   //DONE// Landing Page: Illustrations
+-   //DONE// Landing Page: Random Quote Generator.
 -   //DONE// privacy statement compliance. E G https://blog.logrocket.com/how-to-improve-social-engagement-with-the-web-share-api/ --> Created privacy text here \_ https://www.websitepolicies.com/blog
 -   //DONE// implement FavIcon
 -   //DONE// Store Icons and Fonts on our Server - No more CDN's, because of slow loading time --> https://google-webfonts-helper.herokuapp.com/
 -   //DONE// visible Links + Copy to Clipboard --> Paco
--   //DONE//implement Preview function on Link
--   //DONE77Impressum & Datenschutz
+-   //DONE// implement Preview function on Link
+-   //DONE// Impressum & Datenschutz
     (- make Links personal (e.g. Linda's Link, Paco's Link etc.))
 
 LONG TERM CHANGES
 
--   Rework of "HOW TO"-Section (with Pictures and Examples to make it easier to understand what we our App is actually Doing!)
+-   //DONE// Rework of "HOW TO"-Section (with Pictures and Examples to make it easier to understand what we our App is actually Doing!)
     --> "Dont think too much, just write", Rewarding experiences
 -   Result Page: Text Export and Share Function

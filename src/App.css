@@ -62,9 +62,7 @@ a:-webkit-any-link {
 .negative-z-index {
     z-index: -5 !important;
 }
-.wrap {
-    font-size: 4rem !important;
-}
+
 
 .wrap h3 {
     padding: 0.3rem;
@@ -223,7 +221,6 @@ a:-webkit-any-link {
 }
 .landing-quote {
     font-size: 1.5rem;
-    margin-top: 2rem;
 }
 .share-button {
     color: white !important;
@@ -346,7 +343,7 @@ a:-webkit-any-link {
     }
 
     .hint-text {
-        height: 155px !important;
+        height: 200px !important;
     }
     .result-true-text {
         margin: 0 !important;

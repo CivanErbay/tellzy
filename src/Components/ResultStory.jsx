@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import ShareButtons from "./Reusable/ShareButtons";
 import "../styling/paper.css";
+import { isEmpty } from "lodash";
 
 export default class ResultStory extends Component {
     constructor(props) {
@@ -15,6 +16,7 @@ export default class ResultStory extends Component {
             storyFinished: false,
             story: {},
             storyId: null,
+            validParticipant: {},
             isDesktop: window.innerWidth > 700,
         };
     }
@@ -59,6 +61,15 @@ export default class ResultStory extends Component {
         }
     }
 
+    shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+    
+
+  
     render() {
         // story = {storyTitle, participants: [{email, isSubmitted}], storyParts: [{author, text}]}
         const {
@@ -69,7 +80,11 @@ export default class ResultStory extends Component {
             storyId,
         } = this.state;
 
+        story.participants && this.shuffleArray(story.participants)
+        const authors = story.participants && story.participants.map(participant => participant.email)
+  
         const storyLink = `https://tellzy.web.app/story/${storyId}`;
+        
         return (
             <div className="w-100">
                 <Row>
@@ -105,10 +120,8 @@ export default class ResultStory extends Component {
                                         </>
                                     ) : (
                                         <div>
-                                            <p>Story in progress... </p>
-                                            <br />
-                                            <p>What the heck is going on?</p>
-                                            <p>
+                                            
+                                            <p className="text-center prog">
                                                 {story.participants.reduce(
                                                     (acc, curr) =>
                                                         (acc += curr.isSubmitted
@@ -119,23 +132,29 @@ export default class ResultStory extends Component {
                                                 /{story.participants.length}{" "}
                                                 have submitted
                                             </p>
-                                            <ul>
-                                                {story.participants.map(
-                                                    (participant) => (
+                                            <p className="text-center">Story in progress... </p>
+                                       
+                                            <ul className="text-center">
+                                                {authors.map(
+                                                    (author) => (
                                                         <li
                                                             key={
-                                                                participant.email
+                                                                author
                                                             }
-                                                        >
-                                                            {participant.email}{" "}
-                                                            -{" "}
+                                                        >   
+                                                            {author}
+                                                            
+                                                            {/* -{" "}
                                                             {participant.isSubmitted
                                                                 ? "Submitted"
-                                                                : "Awaiting"}
+                                                                : "Awaiting"} */}
+                                                            
                                                         </li>
                                                     )
                                                 )}
+                                           
                                             </ul>
+                                           
                                         </div>
                                     )}
                                 </div>

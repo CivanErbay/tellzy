@@ -55,12 +55,14 @@ export default class EditStory extends Component {
 
       // make hint text
       let hintText = story.storyParts.map((part) => part.text).join(" "); // join all parts
+      console.log(hintText)
       const hintTextArray = hintText.split(" "); // split for every word
+      console.log(hintTextArray)
       // let hintText = "";
       if (validParticipant) {
         // get hint text to display
         if (hintTextArray.length > 40)
-          hintText = hintTextArray.slice(hintTextArray.length - 25, hintTextArray.length).join(" ");
+          hintText = hintTextArray.slice(hintTextArray.length - 75, hintTextArray.length).join(" ");
       }
 
       this.setState({
@@ -121,7 +123,7 @@ export default class EditStory extends Component {
   };
 
   getNextParticipant() {
-    const { story } = this.state;
+    const story = this.state.story;
     if (isEmpty(story)) return;
 
     let nextParticipant = null;
@@ -164,8 +166,7 @@ export default class EditStory extends Component {
                           <div className="d-flex flex-column align-items-center">
                             <p className="text-center">
                               <b>{validParticipant.email}</b> has already edited the story with this link
-                              <br />
-                              Check the progress of the story in the <b>Result Link</b>
+                              
                             </p>
                           </div>
                         )}
@@ -208,6 +209,7 @@ export default class EditStory extends Component {
                                   as="textarea"
                                   value={hintText}
                                   name="hintText"
+                                  rows="5"
                                 />
                               </Form.Group>
                               <Form.Group>

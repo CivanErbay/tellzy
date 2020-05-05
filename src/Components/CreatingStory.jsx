@@ -68,7 +68,7 @@ export default class CreatingStory extends Component {
             storyTitle,
             participants,
             storyParts: [firstPart],
-            createdOn: new Date(),
+            createdOn: new Date()
         };
 
         let docRef = await db
