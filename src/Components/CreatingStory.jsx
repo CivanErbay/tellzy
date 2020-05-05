@@ -144,7 +144,7 @@ export default class CreatingStory extends Component {
                                         as="textarea"
                                         rows="4"
                                         name="participantsEmails"
-                                        placeholder='Names of participating friends - they should know each other. Names should be comma or space seperated. Example: "Micky Donald Mini Dagobert". Repeat them if you like to write several parts per author.'
+                                        placeholder='Names of upcoming authors - they should know each other. Comma or space seperated. Repeat them if you like. Example: "Micky Donald Mini Dagobert".'
                                         onChange={this.handleChange.bind(this)}
                                     />
                                 </Form.Group>
