@@ -6,6 +6,7 @@ import LinkPage from "./LinkPage";
 // import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { isEmpty } from "lodash";
+import Modal from "react-bootstrap/Modal";
 
 export default class EditStory extends Component {
   constructor(props) {
@@ -14,11 +15,13 @@ export default class EditStory extends Component {
       isLoading: true,
       validParticipant: {},
       hintText: "",
+      fullText: "",
       storyId: "",
       secret: "",
       story: {},
       submitSuccess: false,
       nextParticipant: null,
+      showTextScreen: false,
     };
   }
 
@@ -55,14 +58,15 @@ export default class EditStory extends Component {
 
       // make hint text
       let hintText = story.storyParts.map((part) => part.text).join(" "); // join all parts
-      //   console.log(hintText);
+      const fullText = hintText
+    
       const hintTextArray = hintText.split(" "); // split for every word
       //   console.log(hintTextArray);
       // let hintText = "";
       if (validParticipant) {
         // get hint text to display
         if (hintTextArray.length > 70)
-          hintText = hintTextArray.slice(hintTextArray.length - 50, hintTextArray.length).join(" ");
+          hintText = hintTextArray.slice(hintTextArray.length - 60, hintTextArray.length).join(" ");
       }
       
       this.setState({
@@ -70,6 +74,7 @@ export default class EditStory extends Component {
         isLoading: false,
         hintText,
         validParticipant,
+        fullText
       });
     } else {
       // doc.data() will be undefined in this case
@@ -122,6 +127,7 @@ export default class EditStory extends Component {
     });
   };
 
+
   getNextParticipant() {
     const story = this.state.story;
     if (isEmpty(story)) return;
@@ -133,6 +139,10 @@ export default class EditStory extends Component {
     return nextParticipant;
   }
 
+  
+  handleClose = () => this.setState({ showTextScreen: false });
+  handleShow = () => this.setState({ showTextScreen: true });
+
   render() {
     const {
       submitSuccess,
@@ -141,10 +151,24 @@ export default class EditStory extends Component {
       storyId,
       isLoading,
       hintText,
-      // nextParticipant,
+      fullText,
+      showTextScreen
     } = this.state;
 
     const nextParticipant = this.getNextParticipant();
+
+    const showTextModal = (
+      <Modal show={showTextScreen} onHide={this.handleClose} className="noselect">
+        <Modal.Body>
+          <div>
+            <h2 className="text-center mt-3">{story.storyTitle}</h2>
+          <p>{fullText.split(hintText).join("")}</p>
+          <p className="unblur">{hintText}</p>
+          </div>
+        </Modal.Body>
+      </Modal>
+    );
+
 
     return (
       <div className="edit-story">
@@ -211,6 +235,9 @@ export default class EditStory extends Component {
                                   rows="5"
                                 />
                               </Form.Group>
+                              {showTextModal}
+                           
+                              <Button onClick={this.handleShow}>Preview</Button>
                               <Form.Group>
                                 <Form.Label>
                                   <span className="highlight">{validParticipant.email}</span> can continue the

@@ -22,7 +22,8 @@ a:-webkit-any-link {
     /* font-family: "Architects Daughter", cursive; */
     /* font-family: "Caveat Brush", cursive; */
     /* font-family: 'Neucha', cursive; */
-    font-family: 'Itim', cursive;
+    /* font-family: 'Itim', cursive; */
+    font-family: 'Neucha', cursive; 
     font-size: 1.5rem;
     color: white;
     overflow: hidden;
@@ -55,6 +56,33 @@ a:-webkit-any-link {
     color: #f8a055;
 }
 
+.modal-content {
+    background-color: #E0D3AF;
+    border-radius: 15px;
+    font-family: 'Neucha', cursive; 
+    font-weight: bold;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+  
+.modal-body p {
+    color: transparent;
+   text-shadow: 0 0 7px rgba(0,0,0,0.7);
+   background-color: #E0D3AF;
+   padding: 1.25rem;
+}
+.unblur {
+    text-shadow: 0 0 0px rgba(0,0,0,0.7)!important;
+  
+}
 textarea {
     resize: none !important;
     /* overflow: hidden; */
