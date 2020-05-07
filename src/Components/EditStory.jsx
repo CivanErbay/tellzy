@@ -64,7 +64,7 @@ export default class EditStory extends Component {
         if (hintTextArray.length > 40)
           hintText = hintTextArray.slice(hintTextArray.length - 75, hintTextArray.length).join(" ");
       }
-
+      
       this.setState({
         story,
         isLoading: false,
