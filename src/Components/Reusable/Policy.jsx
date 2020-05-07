@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
 
 export default class Policy extends Component {
   componentDidMount = () => {
@@ -21,7 +19,7 @@ export default class Policy extends Component {
           is an agreement between Website Operator (&quot;Website Operator&quot;, &quot;us&quot;,
           &quot;we&quot; or &quot;our&quot;) and you (&quot;User&quot;, &quot;you&quot; or &quot;your&quot;).
           This Policy sets forth the general guidelines and acceptable and prohibited uses of the{" "}
-          <a target="_blank" rel="nofollow" href="https://tellzy.web.app">
+          <a target="_blank" rel="noopener noreferrer" href="https://tellzy.web.app">
             tellzy.web.app
           </a>{" "}
           website and any of its products or services (collectively, &quot;Website&quot; or
@@ -166,6 +164,7 @@ export default class Policy extends Component {
             target="_blank"
             title="Generate acceptable use policy"
             href="https://www.websitepolicies.com/acceptable-use-policy-generator"
+            rel="noopener noreferrer"
           >
             WebsitePolicies
           </a>
@@ -183,7 +182,7 @@ export default class Policy extends Component {
           concerning any matter relating to it, you may do so via the{" "}
           <a
             target="_blank"
-            rel="nofollow"
+            rel="noopener noreferrer"
             //href="https://tellzy.web.app/contact"
             href="#"
           >

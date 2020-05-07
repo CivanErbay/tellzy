@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import db from "../actions/io";
 import LinkPage from "./LinkPage";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { isEmpty } from "lodash";
 
@@ -55,14 +55,14 @@ export default class EditStory extends Component {
 
       // make hint text
       let hintText = story.storyParts.map((part) => part.text).join(" "); // join all parts
-      console.log(hintText)
+      //   console.log(hintText);
       const hintTextArray = hintText.split(" "); // split for every word
-      console.log(hintTextArray)
+      //   console.log(hintTextArray);
       // let hintText = "";
       if (validParticipant) {
         // get hint text to display
-        if (hintTextArray.length > 40)
-          hintText = hintTextArray.slice(hintTextArray.length - 75, hintTextArray.length).join(" ");
+        if (hintTextArray.length > 70)
+          hintText = hintTextArray.slice(hintTextArray.length - 50, hintTextArray.length).join(" ");
       }
       
       this.setState({
@@ -166,7 +166,6 @@ export default class EditStory extends Component {
                           <div className="d-flex flex-column align-items-center">
                             <p className="text-center">
                               <b>{validParticipant.email}</b> has already edited the story with this link
-                              
                             </p>
                           </div>
                         )}
