@@ -1,0 +1,10 @@
+.hint-modal p {
+  color: transparent;
+  text-shadow: 0 0 7px rgba(0, 0, 0, 0.7);
+  background-color: #e0d3af;
+  padding: 1.25rem;
+}
+
+.unblur {
+  text-shadow: 0 0 0px rgba(0, 0, 0, 0.7) !important;
+}

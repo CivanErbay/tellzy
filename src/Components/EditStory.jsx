@@ -6,6 +6,7 @@ import LinkPage from "./LinkPage";
 // import { Link } from "react-router-dom";
 import { Row, Col } from "react-bootstrap";
 import { isEmpty } from "lodash";
+import ".././styling/editPage.css";
 import Modal from "react-bootstrap/Modal";
 
 export default class EditStory extends Component {
@@ -19,6 +20,7 @@ export default class EditStory extends Component {
       storyId: "",
       secret: "",
       story: {},
+      storyText: "",
       submitSuccess: false,
       nextParticipant: null,
       showTextScreen: false,
@@ -58,8 +60,8 @@ export default class EditStory extends Component {
 
       // make hint text
       let hintText = story.storyParts.map((part) => part.text).join(" "); // join all parts
-      const fullText = hintText
-    
+      const fullText = hintText;
+
       const hintTextArray = hintText.split(" "); // split for every word
       //   console.log(hintTextArray);
       // let hintText = "";
@@ -68,13 +70,13 @@ export default class EditStory extends Component {
         if (hintTextArray.length > 70)
           hintText = hintTextArray.slice(hintTextArray.length - 60, hintTextArray.length).join(" ");
       }
-      
+
       this.setState({
         story,
         isLoading: false,
         hintText,
         validParticipant,
-        fullText
+        fullText,
       });
     } else {
       // doc.data() will be undefined in this case
@@ -83,11 +85,11 @@ export default class EditStory extends Component {
     }
   };
 
-  handleChange(event) {
+  handleChange = (event) => {
     let fieldName = event.target.name;
     let fleldVal = event.target.value;
     this.setState({ ...this.state, [fieldName]: fleldVal });
-  }
+  };
 
   handleSubmit = async (event) => {
     event.preventDefault();
@@ -127,7 +129,6 @@ export default class EditStory extends Component {
     });
   };
 
-
   getNextParticipant() {
     const story = this.state.story;
     if (isEmpty(story)) return;
@@ -139,7 +140,6 @@ export default class EditStory extends Component {
     return nextParticipant;
   }
 
-  
   handleClose = () => this.setState({ showTextScreen: false });
   handleShow = () => this.setState({ showTextScreen: true });
 
@@ -152,23 +152,23 @@ export default class EditStory extends Component {
       isLoading,
       hintText,
       fullText,
-      showTextScreen
+      showTextScreen,
+      storyText,
     } = this.state;
 
     const nextParticipant = this.getNextParticipant();
 
     const showTextModal = (
-      <Modal show={showTextScreen} onHide={this.handleClose} className="noselect">
+      <Modal show={showTextScreen} onHide={this.handleClose} className="hint-modal noselect">
         <Modal.Body>
           <div>
             <h2 className="text-center mt-3">{story.storyTitle}</h2>
-          <p>{fullText.split(hintText).join("")}</p>
-          <p className="unblur">{hintText}</p>
+            <p>{fullText.split(hintText).join("")}</p>
+            <p className="unblur">{hintText}</p>
           </div>
         </Modal.Body>
       </Modal>
     );
-
 
     return (
       <div className="edit-story">
@@ -236,7 +236,7 @@ export default class EditStory extends Component {
                                 />
                               </Form.Group>
                               {showTextModal}
-                           
+
                               <Button onClick={this.handleShow}>Preview</Button>
                               <Form.Group>
                                 <Form.Label>
@@ -249,7 +249,9 @@ export default class EditStory extends Component {
                                   placeholder="Continue the adventure..."
                                   rows="10"
                                   name="storyText"
-                                  onChange={this.handleChange.bind(this)}
+                                  className={`${storyText.split(" ").length > 50 ? "alert" : ""}`}
+                                  onChange={(e) => storyText.split(" ").length < 50 && this.handleChange(e)}
+                                  // CIVAN TODO
                                 />
                               </Form.Group>
 
